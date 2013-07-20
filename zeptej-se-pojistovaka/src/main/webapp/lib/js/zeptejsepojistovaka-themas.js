@@ -3,18 +3,16 @@ var ENTER_KEY_CODE = 13;
 // http://stackoverflow.com/questions/10896749/what-does-function-function-window-jquery-do
 !function($) {
 	$(function() {
-		// Enables tooltips of all elements which have "data-toggle" attribute equal to "tooltip".
-		$("[data-toggle='tooltip']").tooltip();
-
-		setUpAddThemaControls();
-		setUpRemoveThemaControls();
+		enableBootstrapTooltips();
+		initAddThemaControls();
+		initRemoveThemaControls();
 	});
 }(window.jQuery);
 
 /**
  * Adds controls for adding a new thema.
  */
-function setUpAddThemaControls() {
+function initAddThemaControls() {
 	$('#addThema > button').click(handleAddThema);
 	$('#addThema > input').keypress(function(e) {
 		if (e.which == ENTER_KEY_CODE) {
@@ -28,11 +26,11 @@ function setUpAddThemaControls() {
  */
 function handleAddThema() {
 	var html = getThemaHtml($('#addThema > input').val(), {
-		'buttonAdditionalClasses' : 'btn-mini'
+		'buttonAdditionalClasses' : 'btn-link btn-mini'
 	});
-	$('#themas > div:last-child').prev().after(html);
-	$('#addThema > input').val('');
-	setUpRemoveThemaControls();
+	$('#themas .span12 > div:last-child').prev().after(html);
+	clearVal($('#addThema > input'));
+	initRemoveThemaControls();
 }
 
 function getThemaHtml(themaName, params) {
@@ -52,8 +50,8 @@ function getThemaIconHtml(iconName) {
 /**
  * Adds controls for removing an existing thema.
  */
-function setUpRemoveThemaControls() {
-	$('#themas button').has("i[class='icon-remove']").click(handleRemoveThema);
+function initRemoveThemaControls() {
+	$('#themas button').has('i[class="icon-remove"]').click(handleRemoveThema);
 }
 
 function handleRemoveThema() {

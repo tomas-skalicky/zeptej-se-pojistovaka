@@ -11,4 +11,12 @@
 		<param-name>webAppRootKey</param-name>
 		<param-value>zeptejSePojistovaka.cz</param-value>
 	</context-param>
+
+
+
+    <!-- Special pages -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <!-- /Special pages -->
 </web-app>

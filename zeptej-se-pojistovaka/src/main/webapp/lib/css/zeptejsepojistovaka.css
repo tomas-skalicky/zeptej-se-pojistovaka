@@ -1,0 +1,451 @@
+@CHARSET "UTF-8";
+
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    background-color: #EBEAE1;
+}
+
+a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
+    color: #3B5998
+}
+
+.clear {
+    clear: both;
+}
+
+.grey {
+    color: grey;
+}
+
+.color-container {
+    border-radius: 12px;
+    box-shadow: 0 0 20px #333333;
+}
+
+.white-container {
+    background-color: white;
+}
+
+.shadow-colored-container {
+    background-color: #D9D8CD;
+    color: white;
+}
+
+.dark-grey-container {
+    background-color: #333333;
+    color: white;
+}
+
+.left-header {
+    margin-right: 10px;
+    padding-right: 4px;
+    text-align: right;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.right-header {
+    margin-left: 10px;
+    padding-left: 4px;
+    text-align: left;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.dot {
+    font-weight: bold;
+}
+
+#header-video-wrapper {
+    padding: 10px;
+    box-shadow: none;
+}
+
+#introduction-wrapper,#questionsAndAnswers>h3,#themas h4,#facebook-comments h4,footer,footer .btn {
+    font-family: 'Gentium Book Basic', Georgia, serif;
+}
+
+#introduction-wrapper blockquote {
+    padding-left: 25px;
+}
+
+#action-bar {
+    height: 25px;
+    padding: 20px;
+}
+
+#questionsAndAnswers>h3 {
+    position: relative;
+    z-index: 2001;
+}
+
+#questionsAndAnswers article {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    clear: both;
+}
+
+#questionsAndAnswers article .popover {
+    display: block;
+    position: relative;
+    z-index: 3003;
+    box-shadow: none;
+}
+
+#askQuestionBar button,.new button.submit,.edit button.submit,.edit button.cancel {
+    font-weight: bold;
+    float: right;
+}
+
+.question>.popover-wrapper {
+    float: left;
+}
+
+.answer>.popover-wrapper {
+    float: right;
+}
+
+#askQuestion {
+    position: relative;
+}
+
+#questionsAndAnswers section.new .popover-title,#questionsAndAnswers section.edit .popover-title,#questionsAndAnswers section.new .popover-content,#questionsAndAnswers section.edit .popover-content
+    {
+    padding: 0;
+    width: 100%;
+}
+
+#questionsAndAnswers section.new input[type="text"],#questionsAndAnswers section.edit input[type="text"],#questionsAndAnswers section.new textarea,#questionsAndAnswers section.edit textarea
+    {
+    margin-bottom: 0;
+    width: 100%;
+    border: 0;
+    box-shadow: none;
+}
+
+#questionsAndAnswers section.new .popover-title input[type="text"],#questionsAndAnswers section.edit .popover-title input[type="text"]
+    {
+    padding: 8px 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#questionsAndAnswers section.new .popover-content textarea,#questionsAndAnswers section.edit .popover-content textarea
+    {
+    padding: 9px 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#questionsAndAnswers section .submit,#questionsAndAnswers section .cancel {
+    margin-top: 3px;
+}
+
+#questionsAndAnswers article .question,#questionsAndAnswers article .answer {
+    padding-top: 1px;
+    padding-bottom: 2px;
+    position: relative;
+    z-index: 3001;
+}
+
+#questionsAndAnswers article .figure {
+    display: inline-block;
+    position: relative;
+    z-index: 3002;
+}
+
+#questionsAndAnswers article .question img.figure {
+    float: left;
+    padding-top: 10px;
+}
+
+#questionsAndAnswers article .answer img.figure {
+    float: right;
+    padding-top: 20px;
+}
+
+#questionsAndAnswers .popover-title,#questionsAndAnswers .popover-contents {
+    position: relative;
+}
+
+#questionsAndAnswers .popover .controls {
+    position: absolute;
+    top: 0;
+    right: 3px;
+}
+
+#questionsAndAnswers .popover .controls i {
+    background-color: #D9D8CD;
+    border-radius: 2px;
+    margin: 0 0 0 1px;
+    vertical-align: top;
+}
+
+#questionsAndAnswers .popover .controls i:hover,#questionsAndAnswers .popover .controls i:focus {
+    background-color: transparent;
+    background-image: url("../../bootstrap/img/glyphicons-halflings.png");
+    border-radius: 0;
+    cursor: pointer;
+}
+
+#questionsAndAnswers .popover-footer {
+    padding: 0 14px;
+}
+
+#questionsAndAnswers .popover-footer,#questionsAndAnswers .popover-footer button {
+    font-size: 11px;
+}
+
+#questionsAndAnswers .popover-footer .btn {
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+#themas .btn-group,#themas .row-fluid {
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+#themas .btn-link {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+#facebook-comments {
+    padding-top: 40px;
+}
+
+footer .span6 {
+    padding-top: 7px;
+    padding-bottom: 1px;
+}
+
+footer .btn {
+    color: #D9D8CD;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75);
+    text-decoration: underline;
+}
+
+footer .btn:hover {
+    color: white;
+}
+
+.fb-comments,.fb-comments span,.fb-comments iframe[style] {
+    width: 100% !important;
+}
+
+@media ( max-width : 847px) {
+    body {
+        background-image: none;
+    }
+    .container {
+        padding: 0;
+        box-shadow: none;
+    }
+    .header-video-size {
+        width: 400px;
+        height: 225px;
+    }
+    #introduction-wrapper,#action-bar,#contents-wrapper,footer {
+        margin-top: 10px;
+    }
+    #introduction-wrapper {
+        float: left;
+        margin-top: 10px;
+    }
+    #introduction-wrapper blockquote div {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    #contents-wrapper {
+        padding: 20px 0 30px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+    .question.edit .submit {
+        margin-right: 69px;
+    }
+    .answer.edit .submit {
+        margin-right: 79px;
+    }
+    .question.edit .cancel,.answer.edit .cancel {
+        margin-right: -146px;
+    }
+    #questionsAndAnswers article .popover.left,.answer.new .submit {
+        margin-right: 10px;
+    }
+    #questionsAndAnswers article .question .popover {
+        max-width: 680px;
+    }
+    #questionsAndAnswers article .answer .popover {
+        max-width: 620px;
+    }
+    #askQuestionBar,#questionsAndAnswers>div>div,#themas>div,#facebook-comments>div {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    footer .color-container {
+        border-radius: 12px;
+    }
+}
+
+@media ( min-width : 848px) {
+    body {
+        background-image: url("../../images/honda-accord-insurance-broke-crash-safety-accident.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: top center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
+    .container {
+        background-color: #EBEAE1;
+        padding: 40px;
+        border-radius: 50px;
+    }
+    #contents-wrapper {
+        padding: 50px 0 60px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        position: relative;
+        z-index: 1001;
+    }
+    .question.edit .submit,.answer.edit .submit {
+        margin-right: 69px;
+    }
+    .question.edit .cancel,.answer.edit .cancel {
+        margin-right: -146px;
+    }
+    #questionsAndAnswers {
+        border-right: 1px solid #D9D8CD;
+    }
+    #askQuestionBar,#questionsAndAnswers>div>div {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    #themas>div,#facebook-comments>div {
+        padding-left: 15px;
+        padding-right: 25px;
+    }
+    footer {
+        position: relative;
+        z-index: 1000;
+    }
+    footer .color-container {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+}
+
+@media ( min-width : 848px) and (max-width: 1059px) {
+    .header-video-size {
+        width: 400px;
+        height: 225px;
+    }
+    #action-bar,#contents-wrapper {
+        margin-top: 14px;
+    }
+    #introduction-wrapper {
+        height: 245px;
+    }
+    #introduction-wrapper blockquote div {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    #addThema input {
+        width: 150px;
+    }
+    #questionsAndAnswers article .question .popover {
+        width: 303px;
+        max-width: 303px;
+    }
+    #questionsAndAnswers article .answer .popover {
+        width: 253px;
+        max-width: 253px;
+    }
+}
+
+@media ( max-width : 1059px) {
+    #questionsAndAnswers article .popover.right .arrow {
+        top: 35px;
+    }
+    #questionsAndAnswers article .popover.left .arrow {
+        top: 27px;
+    }
+    #questionsAndAnswers article .question img.figure {
+        width: 45px;
+    }
+    #questionsAndAnswers article .answer img.figure {
+        width: 40px;
+    }
+}
+
+@media ( min-width : 1060px) {
+    #questionsAndAnswers article .popover.right .arrow {
+        top: 50px;
+    }
+    #questionsAndAnswers article .popover.left .arrow {
+        top: 32px;
+    }
+    #questionsAndAnswers article .question img.figure {
+        width: 67px;
+    }
+    #questionsAndAnswers article .answer img.figure {
+        width: 60px;
+    }
+}
+
+@media ( min-width : 1060px) and (max-width: 1279px) {
+    .header-video-size {
+        width: 512px;
+        height: 288px;
+    }
+    #action-bar,#contents-wrapper {
+        margin-top: 17px;
+    }
+    #introduction-wrapper {
+        height: 308px;
+    }
+    #introduction-wrapper blockquote div {
+        font-size: 19px;
+        line-height: 30px;
+    }
+    #questionsAndAnswers article .question .popover {
+        width: 408px;
+        max-width: 408px;
+    }
+    #questionsAndAnswers article .answer .popover {
+        width: 339px;
+        max-width: 339px;
+    }
+}
+
+@media ( min-width : 1280px) {
+    .header-video-size {
+        width: 640px;
+        height: 360px;
+    }
+    #action-bar,#contents-wrapper {
+        margin-top: 20px;
+    }
+    #introduction-wrapper {
+        height: 380px;
+    }
+    #introduction-wrapper blockquote div {
+        font-size: 20px;
+        line-height: 40px;
+    }
+    #questionsAndAnswers article .question .popover {
+        width: 537px;
+        max-width: 537px;
+    }
+    #questionsAndAnswers article .answer .popover {
+        width: 468px;
+        max-width: 468px;
+    }
+}
