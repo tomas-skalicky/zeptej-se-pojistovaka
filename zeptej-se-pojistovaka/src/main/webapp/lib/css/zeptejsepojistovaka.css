@@ -75,11 +75,6 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
     padding: 20px;
 }
 
-#questionsAndAnswers>h3 {
-    position: relative;
-    z-index: 2001;
-}
-
 #questionsAndAnswers article {
     padding-top: 10px;
     padding-bottom: 15px;

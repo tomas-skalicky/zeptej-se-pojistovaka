@@ -107,7 +107,8 @@
                                                                 class="dot">·</span>
                                                             <button class="answer btn btn-link" type="button">Odpovědět</button>
                                                             <span class="dot">·</span> <input
-                                                                name='creationTimestamp' type='hidden' value='1374346915000' /><span
+                                                                name='creationTimestamp' type='hidden'
+                                                                value='1374346915000' /><span
                                                                 class="time continuouslyUpdated"></span>
                                                         </div>
                                                     </div>
@@ -134,7 +135,8 @@
                                                             <span class="authorName"><a
                                                                 href="<c:url value="/kontakt" />">Marie
                                                                     Skalická</a></span> <span class="dot">·</span> <input
-                                                                name='creationTimestamp' type='hidden' value='1374346944000' /><span
+                                                                name='creationTimestamp' type='hidden'
+                                                                value='1374346944000' /><span
                                                                 class="time continuouslyUpdated"></span>
                                                         </div>
                                                     </div>
@@ -162,7 +164,8 @@
                                                             <span class="authorName"><a
                                                                 href="<c:url value="/kontakt" />">Marie
                                                                     Skalická</a></span> <span class="dot">·</span> <input
-                                                                name='creationTimestamp' type='hidden' value='1374346953000' /><span
+                                                                name='creationTimestamp' type='hidden'
+                                                                value='1374346953000' /><span
                                                                 class="time continuouslyUpdated"></span>
                                                         </div>
                                                     </div>
@@ -202,7 +205,8 @@
                                                                 class="dot">·</span>
                                                             <button class="answer btn btn-link" type="button">Odpovědět</button>
                                                             <span class="dot">·</span> <input
-                                                                name='creationTimestamp' type='hidden' value='1374296515000' /><span
+                                                                name='creationTimestamp' type='hidden'
+                                                                value='1374296515000' /><span
                                                                 class="time continuouslyUpdated"></span>
                                                         </div>
                                                     </div>
@@ -233,7 +237,8 @@
                                                                 class="dot">·</span>
                                                             <button class="answer btn btn-link" type="button">Odpovědět</button>
                                                             <span class="dot">·</span> <input
-                                                                name='creationTimestamp' type='hidden' value='1374271315000' /><span
+                                                                name='creationTimestamp' type='hidden'
+                                                                value='1374271315000' /><span
                                                                 class="time continuouslyUpdated"></span>
                                                         </div>
                                                     </div>
@@ -256,7 +261,8 @@
                                                             <span class="authorName"><a
                                                                 href="<c:url value="/kontakt" />">Marie
                                                                     Skalická</a></span> <span class="dot">·</span> <input
-                                                                name='creationTimestamp' type='hidden' value='1374271855000' /><span
+                                                                name='creationTimestamp' type='hidden'
+                                                                value='1374271855000' /><span
                                                                 class="time continuouslyUpdated"></span>
                                                         </div>
                                                     </div>
@@ -296,7 +302,8 @@
                                                                 class="dot">·</span>
                                                             <button class="answer btn btn-link" type="button">Odpovědět</button>
                                                             <span class="dot">·</span> <input
-                                                                name='creationTimestamp' type='hidden' value='1374235855000' /><span
+                                                                name='creationTimestamp' type='hidden'
+                                                                value='1374235855000' /><span
                                                                 class="time continuouslyUpdated"></span>
                                                         </div>
                                                     </div>
@@ -328,7 +335,8 @@
                                                             <span class="authorName"><a
                                                                 href="<c:url value="/kontakt" />">Marie
                                                                     Skalická</a></span> <span class="dot">·</span> <input
-                                                                name='creationTimestamp' type='hidden' value='1332413882588' /><span
+                                                                name='creationTimestamp' type='hidden'
+                                                                value='1332413882588' /><span
                                                                 class="time continuouslyUpdated"></span>
                                                         </div>
                                                     </div>

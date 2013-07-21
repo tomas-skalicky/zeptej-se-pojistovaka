@@ -351,7 +351,7 @@ function initEditAndDeleteAnswerControls(elements) {
 		showEditAnswerForm(e);
 	});
 	elements.find('.controls .delete').click(function(e) {
-		handleDeleteAnswer(e);
+		showDeleteAnswerModal(e);
 	});
 }
 
@@ -557,7 +557,7 @@ function handleEditAnswerCancel(e) {
 	editedAnswerElement.toggle();
 }
 
-function handleDeleteAnswer(e) {
+function showDeleteAnswerModel(e) {
 	var answerForm = $(e.currentTarget).closest('section.answer');
 	alert(answerForm.find('.answerText').html());
 	// TODO
