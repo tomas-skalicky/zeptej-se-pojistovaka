@@ -85,9 +85,11 @@
                                                             <span class="questionThema">Popover top</span><span
                                                                 class="controls"><i
                                                                 class="icon-pencil icon-white edit"
-                                                                data-toggle="tooltip" title="Upravit"></i><i
-                                                                class="icon-remove icon-white delete"
-                                                                data-toggle="tooltip" title="Vymazat"></i></span>
+                                                                data-toggle="tooltip" title="Upravit"></i><a
+                                                                href="#deleteQuestionAnswerModal" role="button"
+                                                                data-toggle="modal" class="delete"><i
+                                                                    class="icon-remove icon-white"
+                                                                    data-toggle="tooltip" title="Smazat"></i></a></span>
                                                         </h3>
                                                         <div class="popover-content">
                                                             <div class="questionText">
@@ -156,9 +158,11 @@
                                                                 venenatis vestibulum.</div>
                                                             <span class="controls"><i
                                                                 class="icon-pencil icon-white edit"
-                                                                data-toggle="tooltip" title="Upravit"></i><i
-                                                                class="icon-remove icon-white delete"
-                                                                data-toggle="tooltip" title="Vymazat"></i></span>
+                                                                data-toggle="tooltip" title="Upravit"></i><a
+                                                                href="#deleteQuestionAnswerModal" role="button"
+                                                                data-toggle="modal" class="delete"><i
+                                                                    class="icon-remove icon-white"
+                                                                    data-toggle="tooltip" title="Smazat"></i></a></span>
                                                         </div>
                                                         <div class="popover-footer grey">
                                                             <span class="authorName"><a
@@ -186,9 +190,11 @@
                                                             <span class="questionThema">Popover top</span><span
                                                                 class="controls"><i
                                                                 class="icon-pencil icon-white edit"
-                                                                data-toggle="tooltip" title="Upravit"></i><i
-                                                                class="icon-remove icon-white delete"
-                                                                data-toggle="tooltip" title="Vymazat"></i></span>
+                                                                data-toggle="tooltip" title="Upravit"></i><a
+                                                                href="#deleteQuestionAnswerModal" role="button"
+                                                                data-toggle="modal" class="delete"><i
+                                                                    class="icon-remove icon-white"
+                                                                    data-toggle="tooltip" title="Smazat"></i></a></span>
                                                         </h3>
                                                         <div class="popover-content">
                                                             <div class="questionText">
@@ -283,9 +289,11 @@
                                                             <span class="questionThema">Popover top</span><span
                                                                 class="controls"><i
                                                                 class="icon-pencil icon-white edit"
-                                                                data-toggle="tooltip" title="Upravit"></i><i
-                                                                class="icon-remove icon-white delete"
-                                                                data-toggle="tooltip" title="Vymazat"></i></span>
+                                                                data-toggle="tooltip" title="Upravit"></i><a
+                                                                href="#deleteQuestionAnswerModal" role="button"
+                                                                data-toggle="modal" class="delete"><i
+                                                                    class="icon-remove icon-white"
+                                                                    data-toggle="tooltip" title="Smazat"></i></a></span>
                                                         </h3>
                                                         <div class="popover-content">
                                                             <div class="questionText">
@@ -327,9 +335,11 @@
                                                             </div>
                                                             <span class="controls"><i
                                                                 class="icon-pencil icon-white edit"
-                                                                data-toggle="tooltip" title="Upravit"></i><i
-                                                                class="icon-remove icon-white delete"
-                                                                data-toggle="tooltip" title="Vymazat"></i></span>
+                                                                data-toggle="tooltip" title="Upravit"></i><a
+                                                                href="#deleteQuestionAnswerModal" role="button"
+                                                                data-toggle="modal" class="delete"><i
+                                                                    class="icon-remove icon-white"
+                                                                    data-toggle="tooltip" title="Smazat"></i></a></span>
                                                         </div>
                                                         <div class="popover-footer grey">
                                                             <span class="authorName"><a
@@ -495,6 +505,21 @@
                 <p>&copy; 2013 Marie Skalická</p>
             </div>
         </footer>
+    </div>
+
+
+    <!-- Modals -->
+    <div id="deleteQuestionAnswerModal" class="modal hide" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <input name="questionOrAnswerId" type="hidden" />
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 name="confirmationQuestion"></h4>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info delete">Smazat</button>
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Zrušit</button>
+        </div>
     </div>
 
 

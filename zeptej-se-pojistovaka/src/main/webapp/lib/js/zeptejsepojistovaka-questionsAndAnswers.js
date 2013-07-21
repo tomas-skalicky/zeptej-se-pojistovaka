@@ -12,6 +12,9 @@ var EDIT_TOOLTIP = 'Upravit';
 var SUBMIT_EDIT_TITLE = EDIT_TOOLTIP;
 var DELETE_TOOLTIP = 'Smazat';
 var PLACEHOLDER = 'placeholder';
+var DELETE_QUESTION_CONFIRMATION_QUESTION_PREFIX = 'Opravdu chcete smazat tento dotaz na téma "';
+var DELETE_QUESTION_CONFIRMATION_QUESTION_SUFFIX = '" spolu se všemi jeho odpověďmi?';
+var DELETE_ANSWER_CONFIRMATION_QUESTION = 'Opravdu chcete smazat tuto odpověď?';
 
 function handleNoname(authorName) {
 	if (authorName) {
@@ -56,6 +59,11 @@ function initEditAndDeleteQuestionControls(elements) {
 		showEditQuestionForm(e);
 	});
 	elements.find('.controls .delete').click(function(e) {
+		showDeleteQuestionModal(e);
+	});
+
+	var deleteModal = $('#deleteQuestionAnswerModal');
+	deleteModal.find('.modal-footer .delete').click(function(e) {
 		handleDeleteQuestion(e);
 	});
 }
@@ -202,9 +210,9 @@ function getQuestionHtml(questionParams) {
 			+ questionParams['questionThema']
 			+ "</span><span class='controls'><i class='icon-pencil icon-white edit' data-toggle='tooltip' title='"
 			+ EDIT_TOOLTIP
-			+ "'></i><i class='icon-remove icon-white delete' data-toggle='tooltip' title='"
+			+ "'></i><a href='#deleteQuestionAnswerModal' role='button' data-toggle='modal' class='delete'><i class='icon-remove icon-white' data-toggle='tooltip' title='"
 			+ DELETE_TOOLTIP
-			+ "'></i></span></h3>"
+			+ "'></i></a></span></h3>"
 			+ "                <div class='popover-content'>"
 			+ "                    <div class='questionText'>"
 			+ questionParams['questionText']
@@ -330,10 +338,35 @@ function handleEditQuestionCancel(e) {
 	editedQuestionElement.toggle();
 }
 
+function showDeleteQuestionModal(e) {
+	var deleteModal = $('#deleteQuestionAnswerModal');
+	var questionElement = $(e.currentTarget).closest('section.question');
+	var questionThema = questionElement.find('.questionThema').html();
+	deleteModal.find('[name=confirmationQuestion]').html(
+			DELETE_QUESTION_CONFIRMATION_QUESTION_PREFIX + questionThema
+					+ DELETE_QUESTION_CONFIRMATION_QUESTION_SUFFIX);
+
+	var questionId = questionElement.find('[name=questionId]').val();
+	deleteModal.find('[name=questionOrAnswerId]').val(questionId);
+}
+
 function handleDeleteQuestion(e) {
-	var questionForm = $(e.currentTarget).closest('section.question');
-	alert(questionForm.find('.questionText').html());
-	// TODO
+	var deleteModal = $(e.currentTarget).closest('#deleteQuestionAnswerModal');
+	var questionId = deleteModal.find('[name=questionOrAnswerId]').val();
+	persistDeletedQuestion(questionId);
+	hideDeletedQuestion(questionId);
+	deleteModal.modal('hide');
+}
+
+function persistDeletedQuestion(questionId) {
+	// TODO : AJAX
+}
+
+function hideDeletedQuestion(questionId) {
+	var wholeQuestionAnswersBlockToBeDeleted = $(
+			'section.question [name=questionId][value=' + questionId + ']')
+			.closest('article');
+	wholeQuestionAnswersBlockToBeDeleted.remove();
 }
 
 /**
@@ -356,6 +389,11 @@ function initEditAndDeleteAnswerControls(elements) {
 	});
 	elements.find('.controls .delete').click(function(e) {
 		showDeleteAnswerModal(e);
+	});
+
+	var deleteModal = $('#deleteQuestionAnswerModal');
+	deleteModal.find('.modal-footer .delete').click(function(e) {
+		handleDeleteAnswer(e);
 	});
 }
 
@@ -479,9 +517,9 @@ function getAnswerHtml(answerParams) {
 			+ "</div>"
 			+ "                <span class='controls'><i class='icon-pencil icon-white edit' data-toggle='tooltip' title='"
 			+ EDIT_TOOLTIP
-			+ "'></i><i class='icon-remove icon-white delete' data-toggle='tooltip' title='"
+			+ "'></i><a href='#deleteQuestionAnswerModal' role='button' data-toggle='modal' class='delete'><i class='icon-remove icon-white' data-toggle='tooltip' title='"
 			+ DELETE_TOOLTIP
-			+ "'></i></span></div>"
+			+ "'></i></a></span></div>"
 			+ "            <div class='popover-footer grey'>"
 			+ "                <span class='authorName'><a href='"
 			+ answerParams['contactPageUrl']
@@ -561,8 +599,31 @@ function handleEditAnswerCancel(e) {
 	editedAnswerElement.toggle();
 }
 
-function showDeleteAnswerModel(e) {
-	var answerForm = $(e.currentTarget).closest('section.answer');
-	alert(answerForm.find('.answerText').html());
-	// TODO
+function showDeleteAnswerModal(e) {
+	var deleteModal = $('#deleteQuestionAnswerModal');
+	deleteModal.find('[name=confirmationQuestion]').html(
+			DELETE_ANSWER_CONFIRMATION_QUESTION);
+
+	var answerId = $(e.currentTarget).closest('section.answer').find(
+			'[name=answerId]').val();
+	deleteModal.find('[name=questionOrAnswerId]').val(answerId);
+}
+
+function handleDeleteAnswer(e) {
+	var deleteModal = $(e.currentTarget).closest('#deleteQuestionAnswerModal');
+	var answerId = deleteModal.find('[name=questionOrAnswerId]').val();
+	persistDeletedAnswer(answerId);
+	hideDeletedAnswer(answerId);
+	deleteModal.modal('hide');
+}
+
+function persistDeletedAnswer(answerId) {
+	// TODO : AJAX
+}
+
+function hideDeletedAnswer(answerId) {
+	var answerToBeDeleted = $(
+			'section.answer [name=answerId][value=' + answerId + ']').closest(
+			'section.answer');
+	answerToBeDeleted.remove();
 }
