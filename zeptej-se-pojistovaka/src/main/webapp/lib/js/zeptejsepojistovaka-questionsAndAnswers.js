@@ -218,8 +218,8 @@ function getQuestionHtml(questionParams) {
 			+ questionParams['creationTimestamp']
 			+ "' /><span class='time continuouslyUpdated'>"
 			+ getTimeCaption(questionParams['creationTimestamp'])
-			+ "</span></div></div></div></section>"
-			+ "<div class='clear'></div>" + "</article>";
+			+ "</span></div></div></div>" + "<div class='clear'></div>"
+			+ "</section></article>";
 }
 
 function showEditQuestionForm(e) {
