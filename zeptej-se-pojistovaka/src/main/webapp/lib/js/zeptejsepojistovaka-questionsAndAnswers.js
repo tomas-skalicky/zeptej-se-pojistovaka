@@ -10,7 +10,7 @@ var NONAME = 'Anonym';
 var ANSWER_AUTHOR_NAME = 'Marie Skalická';
 var EDIT_TOOLTIP = 'Upravit';
 var SUBMIT_EDIT_TITLE = EDIT_TOOLTIP;
-var DELETE_TOOLTIP = 'Vymazat';
+var DELETE_TOOLTIP = 'Smazat';
 var PLACEHOLDER = 'placeholder';
 
 function handleNoname(authorName) {

@@ -41,8 +41,8 @@
                 <blockquote class="pull-right">
                     <div>
                         Dobrý den, jmenuji se Marie Skalická a pracuji jako pojišťovák již více jak 10 let.
-                        Máš-li otázku ze světa pojištění, ráda ji zodpovím. Nechceš-li otázku vkládat na tento
-                        web, můžeš ji položit třeba <a href="<c:url value="/kontakt" />">telefonicky</a>.
+                        Máte-li otázku ze světa pojištění, ráda ji zodpovím. Nechcete-li otázku vkládat na
+                        tento web, můžete ji položit třeba <a href="<c:url value="/kontakt" />">telefonicky</a>.
                     </div>
                     <small>Marie Skalická</small>
                 </blockquote>
