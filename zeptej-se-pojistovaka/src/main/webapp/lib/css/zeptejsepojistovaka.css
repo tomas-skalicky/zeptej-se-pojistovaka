@@ -57,6 +57,10 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
     font-weight: bold;
 }
 
+.tooltip-inner {
+    padding: 4px 6px;
+}
+
 #header-video-wrapper {
     padding: 10px;
     box-shadow: none;
