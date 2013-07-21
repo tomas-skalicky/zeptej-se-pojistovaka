@@ -277,6 +277,10 @@ function getEditQuestionFormHtml(questionParams) {
 			+ "<div class='clear'></div>" + "</section>";
 }
 
+function focusQuestionForm(questionForm) {
+	questionForm.find('[name=authorName]').focus();
+}
+
 function initEditQuestionFormControls(questionForm) {
 	var submitElement = questionForm.find('.submit');
 	submitElement.click(function(e) {
