@@ -239,7 +239,7 @@ function showEditQuestionForm(e) {
 				'.questionText').html()),
 		'authorName' : editedQuestionElement.find('.authorName').html(),
 		'buttonTitle' : SUBMIT_EDIT_TITLE,
-		'cancelButton' : "<button class='btn btn-info cancel' type='button'>"
+		'cancelButton' : "<button class='btn cancel' type='button'>"
 				+ CANCEL_TITLE + "</button>"
 	};
 	$(getEditQuestionFormHtml(questionParams)).insertAfter(
@@ -540,7 +540,7 @@ function showEditAnswerForm(e) {
 		'answerText' : decodeTextFromHtml(editedAnswerElement.find(
 				'.answerText').html()),
 		'buttonTitle' : SUBMIT_EDIT_TITLE,
-		'cancelButton' : "<button class='btn btn-info cancel' type='button'>"
+		'cancelButton' : "<button class='btn cancel' type='button'>"
 				+ CANCEL_TITLE + "</button>"
 	};
 	$(getAnswerFormHtml(answerParams)).insertAfter(editedAnswerElement);
