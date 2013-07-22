@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
 
 body {
-    padding-top: 60px;
-    padding-bottom: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     background-color: #EBEAE1;
 }
 
@@ -35,14 +35,6 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
 .dark-grey-container {
     background-color: #333333;
     color: white;
-}
-
-.left-header {
-    margin-right: 10px;
-    padding-right: 4px;
-    text-align: right;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 
 .right-header {
@@ -210,6 +202,7 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
 #themas .btn-link {
     padding-left: 2px;
     padding-right: 2px;
+    text-decoration: underline;
 }
 
 #facebook-comments {
@@ -235,17 +228,28 @@ footer .btn:hover {
     width: 100% !important;
 }
 
+#contactModal .who-is {
+    padding-top: 30px;
+}
+
 @media ( max-width : 847px) {
     body {
         background-image: none;
     }
     .container {
-        padding: 0;
+        padding: 40px 0;
         box-shadow: none;
     }
     .header-video-size {
         width: 400px;
         height: 225px;
+    }
+    .left-header {
+        margin-left: 10px;
+        padding-left: 4px;
+        text-align: left;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
     #introduction-wrapper,#action-bar,#contents-wrapper,footer {
         margin-top: 10px;
@@ -304,6 +308,13 @@ footer .btn:hover {
         background-color: #EBEAE1;
         padding: 40px;
         border-radius: 50px;
+    }
+    .left-header {
+        margin-right: 10px;
+        padding-right: 4px;
+        text-align: right;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
     #contents-wrapper {
         padding: 50px 0 60px;

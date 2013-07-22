@@ -1,17 +1,11 @@
 var REQUIRED = 'povinný údaj';
-var AUTHOR_NAME_PLACEHOLDER = ' Tvé jméno... (nepovinné)';
+var AUTHOR_NAME_PLACEHOLDER = ' Tvé jméno... (nepovinný údaj)';
 var QUESTION_THEMA_PLACEHOLDER = ' Téma...';
 var QUESTION_TEXT_PLACEHOLDER = ' Položit otázku...';
-var SUBMIT_NEW_QUESTION_TITLE = 'Položit otázku';
 var ANSWER_TEXT_PLACEHOLDER = ' Odpovědět...';
-var SUBMIT_NEW_ANSWER_TITLE = 'Odpovědět';
-var CANCEL_TITLE = "Zrušit";
 var NONAME = 'Anonym';
 var ANSWER_AUTHOR_NAME = 'Marie Skalická';
-var EDIT_TOOLTIP = 'Upravit';
-var SUBMIT_EDIT_TITLE = EDIT_TOOLTIP;
-var DELETE_TOOLTIP = 'Smazat';
-var PLACEHOLDER = 'placeholder';
+var AUTHOR_CONTACT_LINK = '#contactModal';
 var DELETE_QUESTION_CONFIRMATION_QUESTION_PREFIX = 'Opravdu chcete smazat tento dotaz na téma "';
 var DELETE_QUESTION_CONFIRMATION_QUESTION_SUFFIX = '" spolu se všemi jeho odpověďmi?';
 var DELETE_ANSWER_CONFIRMATION_QUESTION = 'Opravdu chcete smazat tuto odpověď?';
@@ -48,24 +42,13 @@ function initQuestionControls(questionElement) {
 		affectedQuestionElements = $('#existingQuestions section.question');
 	}
 
-	affectedQuestionElements.find('button.answer').click(function(e) {
-		showNewAnswerForm(e);
-	});
+	affectedQuestionElements.find('button.answer').click(showNewAnswerForm);
 	initEditAndDeleteQuestionControls(affectedQuestionElements);
 }
 
 function initEditAndDeleteQuestionControls(elements) {
-	elements.find('.controls .edit').click(function(e) {
-		showEditQuestionForm(e);
-	});
-	elements.find('.controls .delete').click(function(e) {
-		showDeleteQuestionModal(e);
-	});
-
-	var deleteModal = $('#deleteQuestionAnswerModal');
-	deleteModal.find('.modal-footer .delete').click(function(e) {
-		handleDeleteQuestion(e);
-	});
+	elements.find('.controls .edit').click(showEditQuestionForm);
+	elements.find('.controls .delete').click(showDeleteQuestionModal);
 }
 
 function showNewQuestionForm() {
@@ -100,8 +83,7 @@ function getNewQuestionFormHtml() {
 			+ QUESTION_TEXT_PLACEHOLDER
 			+ "'></textarea></div></div>"
 			+ "                        <button class='btn btn-info submit' type='button'>"
-			+ SUBMIT_NEW_QUESTION_TITLE + "</button></div>"
-			+ "<div class='clear'></div>"
+			+ ASK_QUESTION + "</button></div>" + "<div class='clear'></div>"
 			+ "</section></article></div></div></div>";
 }
 
@@ -111,13 +93,11 @@ function toggleNewQuestionComponentsVisibility() {
 }
 
 function initNewQuestionFormControls() {
-	$('.question.new .submit').click(function(e) {
-		handleAddQuestion(e);
-	});
+	$('.question.new .submit').click(handleAddQuestion);
 }
 
-function handleAddQuestion(e) {
-	var questionForm = $(e.currentTarget).closest('section.question.new');
+function handleAddQuestion() {
+	var questionForm = $(this).closest('section.question.new');
 	if (!checkQuestionFormInputs(questionForm)) {
 		return;
 	}
@@ -209,9 +189,9 @@ function getQuestionHtml(questionParams) {
 			+ "                    <span class='questionThema'>"
 			+ questionParams['questionThema']
 			+ "</span><span class='controls'><i class='icon-pencil icon-white edit' data-toggle='tooltip' title='"
-			+ EDIT_TOOLTIP
-			+ "'></i><a href='#deleteQuestionAnswerModal' role='button' data-toggle='modal' class='delete'><i class='icon-remove icon-white' data-toggle='tooltip' title='"
-			+ DELETE_TOOLTIP
+			+ EDIT
+			+ "'></i><a href='#deleteModal' role='button' data-toggle='modal' class='delete'><i class='icon-remove icon-white' data-toggle='tooltip' title='"
+			+ DELETE
 			+ "'></i></a></span></h3>"
 			+ "                <div class='popover-content'>"
 			+ "                    <div class='questionText'>"
@@ -221,7 +201,7 @@ function getQuestionHtml(questionParams) {
 			+ "                    <span class='authorName'>"
 			+ questionParams['authorName']
 			+ "</span> <span class='dot'>·</span> <button class='answer btn btn-link' type='button'>"
-			+ SUBMIT_NEW_ANSWER_TITLE
+			+ ANSWER
 			+ "</button> <span class='dot'>·</span> <input name='creationTimestamp' type='hidden' value='"
 			+ questionParams['creationTimestamp']
 			+ "' /><span class='time continuouslyUpdated'>"
@@ -230,22 +210,23 @@ function getQuestionHtml(questionParams) {
 			+ "</section></article>";
 }
 
-function showEditQuestionForm(e) {
-	var editedQuestionElement = $(e.currentTarget).closest('section.question');
+function showEditQuestionForm() {
+	var editedQuestionElement = $(this).closest('section.question');
 	var questionParams = {
 		'sectionClass' : 'edit',
 		'questionThema' : editedQuestionElement.find('.questionThema').html(),
 		'questionText' : decodeTextFromHtml(editedQuestionElement.find(
 				'.questionText').html()),
 		'authorName' : editedQuestionElement.find('.authorName').html(),
-		'buttonTitle' : SUBMIT_EDIT_TITLE,
-		'cancelButton' : "<button class='btn cancel' type='button'>"
-				+ CANCEL_TITLE + "</button>"
+		'buttonTitle' : EDIT,
+		'cancelButton' : "<button class='btn cancel' type='button'>" + CANCEL
+				+ "</button>"
 	};
 	$(getEditQuestionFormHtml(questionParams)).insertAfter(
 			editedQuestionElement);
 
-	// If the user rolls his modifications back, we just shows this element again.
+	// If the user rolls his modifications back, we just shows this element
+	// again.
 	editedQuestionElement.toggle();
 
 	// Binds the handler function just with the new form, the others are already
@@ -290,18 +271,12 @@ function focusQuestionForm(questionForm) {
 }
 
 function initEditQuestionFormControls(questionForm) {
-	var submitElement = questionForm.find('.submit');
-	submitElement.click(function(e) {
-		handleEditQuestion(e);
-	});
-	var cancelElement = questionForm.find('.cancel');
-	cancelElement.click(function(e) {
-		handleEditQuestionCancel(e);
-	});
+	questionForm.find('.submit').click(handleEditQuestion);
+	questionForm.find('.cancel').click(handleEditQuestionCancel);
 }
 
-function handleEditQuestion(e) {
-	var questionForm = $(e.currentTarget).closest('section.question.edit');
+function handleEditQuestion() {
+	var questionForm = $(this).closest('section.question.edit');
 	if (!checkQuestionFormInputs(questionForm)) {
 		return;
 	}
@@ -331,28 +306,30 @@ function showUpdatedQuestion(questionForm, questionParams) {
 	editedQuestionElement.toggle();
 }
 
-function handleEditQuestionCancel(e) {
-	var questionForm = $(e.currentTarget).closest('section.question.edit');
+function handleEditQuestionCancel() {
+	var questionForm = $(this).closest('section.question.edit');
 	var editedQuestionElement = questionForm.prev();
 	questionForm.remove();
 	editedQuestionElement.toggle();
 }
 
-function showDeleteQuestionModal(e) {
-	var deleteModal = $('#deleteQuestionAnswerModal');
-	var questionElement = $(e.currentTarget).closest('section.question');
+function showDeleteQuestionModal() {
+	var deleteModal = $('#deleteModal');
+	deleteModal.find('.modal-footer .delete').click(handleDeleteQuestion);
+
+	var questionElement = $(this).closest('section.question');
 	var questionThema = questionElement.find('.questionThema').html();
-	deleteModal.find('[name=confirmationQuestion]').html(
+	deleteModal.find('#deleteModalConfirmationQuestion').html(
 			DELETE_QUESTION_CONFIRMATION_QUESTION_PREFIX + questionThema
 					+ DELETE_QUESTION_CONFIRMATION_QUESTION_SUFFIX);
 
 	var questionId = questionElement.find('[name=questionId]').val();
-	deleteModal.find('[name=questionOrAnswerId]').val(questionId);
+	deleteModal.find('[name=itemToBeDeletedId]').val(questionId);
 }
 
-function handleDeleteQuestion(e) {
-	var deleteModal = $(e.currentTarget).closest('#deleteQuestionAnswerModal');
-	var questionId = deleteModal.find('[name=questionOrAnswerId]').val();
+function handleDeleteQuestion() {
+	var deleteModal = $(this).closest('#deleteModal');
+	var questionId = deleteModal.find('[name=itemToBeDeletedId]').val();
 	persistDeletedQuestion(questionId);
 	hideDeletedQuestion(questionId);
 	deleteModal.modal('hide');
@@ -381,24 +358,16 @@ function initAnswerControls(answerElement) {
 	}
 
 	initEditAndDeleteAnswerControls(affectedAnswerElements);
+	initContactControls(affectedAnswerElements);
 }
 
 function initEditAndDeleteAnswerControls(elements) {
-	elements.find('.controls .edit').click(function(e) {
-		showEditAnswerForm(e);
-	});
-	elements.find('.controls .delete').click(function(e) {
-		showDeleteAnswerModal(e);
-	});
-
-	var deleteModal = $('#deleteQuestionAnswerModal');
-	deleteModal.find('.modal-footer .delete').click(function(e) {
-		handleDeleteAnswer(e);
-	});
+	elements.find('.controls .edit').click(showEditAnswerForm);
+	elements.find('.controls .delete').click(showDeleteAnswerModal);
 }
 
-function showNewAnswerForm(e) {
-	var focusedQuestionAnswersBlock = $(e.currentTarget).closest('article');
+function showNewAnswerForm() {
+	var focusedQuestionAnswersBlock = $(this).closest('article');
 	var lastChild = focusedQuestionAnswersBlock.children().last();
 	if (lastChild.hasClass('new')) {
 		// The new answer form is already visible.
@@ -409,7 +378,7 @@ function showNewAnswerForm(e) {
 	var answerParams = {
 		'sectionClass' : 'new',
 		'answerText' : '',
-		'buttonTitle' : SUBMIT_NEW_ANSWER_TITLE,
+		'buttonTitle' : ANSWER,
 		'cancelButton' : ''
 	};
 	focusedQuestionAnswersBlock.append(getAnswerFormHtml(answerParams));
@@ -446,13 +415,11 @@ function focusAnswerForm(answerForm) {
 
 function initNewAnswerFormControls(answerForm) {
 	var submitElement = answerForm.find('.submit');
-	submitElement.click(function(e) {
-		handleAddAnswer(e);
-	});
+	submitElement.click(handleAddAnswer);
 }
 
-function handleAddAnswer(e) {
-	var answerForm = $(e.currentTarget).closest('section.answer.new');
+function handleAddAnswer() {
+	var answerForm = $(this).closest('section.answer.new');
 	if (!checkAnswerFormInputs(answerForm)) {
 		return;
 	}
@@ -489,7 +456,7 @@ function persistNewAnswer(answerForm, answerParams) {
 
 function showNewAnswer(answerForm, answerParams) {
 	var focusedQuestionAnswersBlock = $(answerForm).closest('article');
-	answerParams['contactPageUrl'] = $('#contactPageUrl').val();
+	answerParams['contactLink'] = AUTHOR_CONTACT_LINK;
 	answerParams['authorName'] = ANSWER_AUTHOR_NAME;
 	focusedQuestionAnswersBlock.append(getAnswerHtml(answerParams));
 
@@ -516,14 +483,14 @@ function getAnswerHtml(answerParams) {
 			+ answerParams['answerText']
 			+ "</div>"
 			+ "                <span class='controls'><i class='icon-pencil icon-white edit' data-toggle='tooltip' title='"
-			+ EDIT_TOOLTIP
-			+ "'></i><a href='#deleteQuestionAnswerModal' role='button' data-toggle='modal' class='delete'><i class='icon-remove icon-white' data-toggle='tooltip' title='"
-			+ DELETE_TOOLTIP
+			+ EDIT
+			+ "'></i><a href='#deleteModal' role='button' data-toggle='modal' class='delete'><i class='icon-remove icon-white' data-toggle='tooltip' title='"
+			+ DELETE
 			+ "'></i></a></span></div>"
 			+ "            <div class='popover-footer grey'>"
 			+ "                <span class='authorName'><a href='"
-			+ answerParams['contactPageUrl']
-			+ "'>"
+			+ answerParams['contactLink']
+			+ "' role='button' data-toggle='modal' class='showContact'>"
 			+ answerParams['authorName']
 			+ "</a></span> <span class='dot'>·</span> <input name='creationTimestamp' type='hidden' value='"
 			+ answerParams['creationTimestamp']
@@ -533,19 +500,20 @@ function getAnswerHtml(answerParams) {
 			+ "</section>";
 }
 
-function showEditAnswerForm(e) {
-	var editedAnswerElement = $(e.currentTarget).closest('section.answer');
+function showEditAnswerForm() {
+	var editedAnswerElement = $(this).closest('section.answer');
 	var answerParams = {
 		'sectionClass' : 'edit',
 		'answerText' : decodeTextFromHtml(editedAnswerElement.find(
 				'.answerText').html()),
-		'buttonTitle' : SUBMIT_EDIT_TITLE,
-		'cancelButton' : "<button class='btn cancel' type='button'>"
-				+ CANCEL_TITLE + "</button>"
+		'buttonTitle' : EDIT,
+		'cancelButton' : "<button class='btn cancel' type='button'>" + CANCEL
+				+ "</button>"
 	};
 	$(getAnswerFormHtml(answerParams)).insertAfter(editedAnswerElement);
 
-	// If the user rolls his modifications back, we just shows this element again.
+	// If the user rolls his modifications back, we just shows this element
+	// again.
 	editedAnswerElement.toggle();
 
 	// Binds the handler function just with the new form, the others are already
@@ -557,18 +525,12 @@ function showEditAnswerForm(e) {
 }
 
 function initEditAnswerFormControls(answerForm) {
-	var submitElement = answerForm.find('.submit');
-	submitElement.click(function(e) {
-		handleEditAnswer(e);
-	});
-	var cancelElement = answerForm.find('.cancel');
-	cancelElement.click(function(e) {
-		handleEditAnswerCancel(e);
-	});
+	answerForm.find('.submit').click(handleEditAnswer);
+	answerForm.find('.cancel').click(handleEditAnswerCancel);
 }
 
-function handleEditAnswer(e) {
-	var answerForm = $(e.currentTarget).closest('section.answer.edit');
+function handleEditAnswer() {
+	var answerForm = $(this).closest('section.answer.edit');
 	if (!checkAnswerFormInputs(answerForm)) {
 		return;
 	}
@@ -592,26 +554,28 @@ function showUpdatedAnswer(answerForm, answerParams) {
 	editedAnswerElement.toggle();
 }
 
-function handleEditAnswerCancel(e) {
-	var answerForm = $(e.currentTarget).closest('section.answer.edit');
+function handleEditAnswerCancel() {
+	var answerForm = $(this).closest('section.answer.edit');
 	var editedAnswerElement = answerForm.prev();
 	answerForm.remove();
 	editedAnswerElement.toggle();
 }
 
-function showDeleteAnswerModal(e) {
-	var deleteModal = $('#deleteQuestionAnswerModal');
-	deleteModal.find('[name=confirmationQuestion]').html(
+function showDeleteAnswerModal() {
+	var deleteModal = $('#deleteModal');
+	deleteModal.find('.modal-footer .delete').click(handleDeleteAnswer);
+
+	deleteModal.find('#deleteModalConfirmationQuestion').html(
 			DELETE_ANSWER_CONFIRMATION_QUESTION);
 
-	var answerId = $(e.currentTarget).closest('section.answer').find(
-			'[name=answerId]').val();
-	deleteModal.find('[name=questionOrAnswerId]').val(answerId);
+	var answerId = $(this).closest('section.answer').find('[name=answerId]')
+			.val();
+	deleteModal.find('[name=itemToBeDeletedId]').val(answerId);
 }
 
-function handleDeleteAnswer(e) {
-	var deleteModal = $(e.currentTarget).closest('#deleteQuestionAnswerModal');
-	var answerId = deleteModal.find('[name=questionOrAnswerId]').val();
+function handleDeleteAnswer() {
+	var deleteModal = $(this).closest('#deleteModal');
+	var answerId = deleteModal.find('[name=itemToBeDeletedId]').val();
 	persistDeletedAnswer(answerId);
 	hideDeletedAnswer(answerId);
 	deleteModal.modal('hide');

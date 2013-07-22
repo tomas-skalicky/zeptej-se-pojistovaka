@@ -18,8 +18,6 @@
 </head>
 
 <body>
-    <input id="contactPageUrl" type="hidden" value="<c:url value="/kontakt" />" />
-
     <div class="container">
         <div class="row-fluid">
 
@@ -42,7 +40,8 @@
                     <div>
                         Dobrý den, jmenuji se Marie Skalická a pracuji jako pojišťovák již více jak 10 let.
                         Máte-li otázku ze světa pojištění, ráda ji zodpovím. Nechcete-li otázku vkládat na
-                        tento web, můžete ji položit třeba <a href="<c:url value="/kontakt" />">telefonicky</a>.
+                        tento web, můžete ji položit třeba <a href="#contactModal" role="button"
+                            data-toggle="modal" class="showContact">telefonicky</a>.
                     </div>
                     <small>Marie Skalická</small>
                 </blockquote>
@@ -86,7 +85,7 @@
                                                                 class="controls"><i
                                                                 class="icon-pencil icon-white edit"
                                                                 data-toggle="tooltip" title="Upravit"></i><a
-                                                                href="#deleteQuestionAnswerModal" role="button"
+                                                                href="#deleteModal" role="button"
                                                                 data-toggle="modal" class="delete"><i
                                                                     class="icon-remove icon-white"
                                                                     data-toggle="tooltip" title="Smazat"></i></a></span>
@@ -135,7 +134,8 @@
                                                         </div>
                                                         <div class="popover-footer grey">
                                                             <span class="authorName"><a
-                                                                href="<c:url value="/kontakt" />">Marie
+                                                                href="#contactModal" role="button"
+                                                                data-toggle="modal" class="showContact">Marie
                                                                     Skalická</a></span> <span class="dot">·</span> <input
                                                                 name='creationTimestamp' type='hidden'
                                                                 value='1374346944000' /><span
@@ -159,14 +159,15 @@
                                                             <span class="controls"><i
                                                                 class="icon-pencil icon-white edit"
                                                                 data-toggle="tooltip" title="Upravit"></i><a
-                                                                href="#deleteQuestionAnswerModal" role="button"
+                                                                href="#deleteModal" role="button"
                                                                 data-toggle="modal" class="delete"><i
                                                                     class="icon-remove icon-white"
                                                                     data-toggle="tooltip" title="Smazat"></i></a></span>
                                                         </div>
                                                         <div class="popover-footer grey">
                                                             <span class="authorName"><a
-                                                                href="<c:url value="/kontakt" />">Marie
+                                                                href="#contactModal" role="button"
+                                                                data-toggle="modal" class="showContact">Marie
                                                                     Skalická</a></span> <span class="dot">·</span> <input
                                                                 name='creationTimestamp' type='hidden'
                                                                 value='1374346953000' /><span
@@ -191,7 +192,7 @@
                                                                 class="controls"><i
                                                                 class="icon-pencil icon-white edit"
                                                                 data-toggle="tooltip" title="Upravit"></i><a
-                                                                href="#deleteQuestionAnswerModal" role="button"
+                                                                href="#deleteModal" role="button"
                                                                 data-toggle="modal" class="delete"><i
                                                                     class="icon-remove icon-white"
                                                                     data-toggle="tooltip" title="Smazat"></i></a></span>
@@ -265,7 +266,8 @@
                                                         </div>
                                                         <div class="popover-footer grey">
                                                             <span class="authorName"><a
-                                                                href="<c:url value="/kontakt" />">Marie
+                                                                href="#contactModal" role="button"
+                                                                data-toggle="modal" class="showContact">Marie
                                                                     Skalická</a></span> <span class="dot">·</span> <input
                                                                 name='creationTimestamp' type='hidden'
                                                                 value='1374271855000' /><span
@@ -290,7 +292,7 @@
                                                                 class="controls"><i
                                                                 class="icon-pencil icon-white edit"
                                                                 data-toggle="tooltip" title="Upravit"></i><a
-                                                                href="#deleteQuestionAnswerModal" role="button"
+                                                                href="#deleteModal" role="button"
                                                                 data-toggle="modal" class="delete"><i
                                                                     class="icon-remove icon-white"
                                                                     data-toggle="tooltip" title="Smazat"></i></a></span>
@@ -336,14 +338,15 @@
                                                             <span class="controls"><i
                                                                 class="icon-pencil icon-white edit"
                                                                 data-toggle="tooltip" title="Upravit"></i><a
-                                                                href="#deleteQuestionAnswerModal" role="button"
+                                                                href="#deleteModal" role="button"
                                                                 data-toggle="modal" class="delete"><i
                                                                     class="icon-remove icon-white"
                                                                     data-toggle="tooltip" title="Smazat"></i></a></span>
                                                         </div>
                                                         <div class="popover-footer grey">
                                                             <span class="authorName"><a
-                                                                href="<c:url value="/kontakt" />">Marie
+                                                                href="#contactModal" role="button"
+                                                                data-toggle="modal" class="showContact">Marie
                                                                     Skalická</a></span> <span class="dot">·</span> <input
                                                                 name='creationTimestamp' type='hidden'
                                                                 value='1332413882588' /><span
@@ -368,109 +371,94 @@
                         <div>
                             <div class="row-fluid">
                                 <div class="span12">
-                                    <div class="btn-group">
-                                        <button class="btn btn-link" type="button">
-                                            <i class="icon-home"></i> pojištění Bytové jednotky
-                                        </button>
-                                        <button class="btn btn-link" type="button">
-                                            <i class="icon-remove"></i>
-                                        </button>
+                                    <div class="btn-group thema">
+                                        <a class="btn btn-link" type="button"><input name="themaId"
+                                            type="hidden" value="8" /><i class="icon-home"></i> <span
+                                            class="themaName">pojištění Bytové jednotky</span></a><a
+                                            href="#deleteModal" role="button" data-toggle="modal"
+                                            class="btn btn-link delete"><span data-toggle="tooltip"
+                                            title="Smazat"><i class="icon-remove"></i></span></a>
                                     </div>
-                                    <div class="btn-group">
-                                        <button class="btn btn-link" type="button">
-                                            <i class="icon-home"></i> pojištění Domácnosti
-                                        </button>
-                                        <button class="btn btn-link" type="button">
-                                            <i class="icon-remove"></i>
-                                        </button>
+                                    <div class="btn-group thema">
+                                        <a class="btn btn-link" type="button"><input name="themaId"
+                                            type="hidden" value="9" /><i class="icon-home"></i> <span
+                                            class="themaName">pojištění Domácnosti</span></a><a
+                                            href="#deleteModal" role="button" data-toggle="modal"
+                                            class="btn btn-link delete"><span data-toggle="tooltip"
+                                            title="Smazat"><i class="icon-remove"></i></span></a>
                                     </div>
-                                    <div class="btn-group">
-                                        <button class="btn btn-link" type="button">Důchodové
-                                            pojištění</button>
-                                        <button class="btn btn-link" type="button">
-                                            <i class="icon-remove"></i>
-                                        </button>
+                                    <div class="btn-group thema">
+                                        <a class="btn btn-link" type="button"><input name="themaId"
+                                            type="hidden" value="10" /><span class="themaName">Důchodové
+                                                pojištění</span></a><a href="#deleteModal" role="button"
+                                            data-toggle="modal" class="btn btn-link delete"><span
+                                            data-toggle="tooltip" title="Smazat"><i class="icon-remove"></i></span></a>
                                     </div>
-                                    <div class="btn-group">
-                                        <button class="btn btn-link btn-large" type="button">
-                                            <i class="icon-road"></i> Havarijní pojištění
-                                        </button>
-                                        <button class="btn btn-link btn-large" type="button">
-                                            <i class="icon-remove"></i>
-                                        </button>
+                                    <div class="btn-group thema">
+                                        <a class="btn btn-link btn-large" type="button"><input
+                                            name="themaId" type="hidden" value="11" /><i class="icon-road"></i>
+                                            <span class="themaName">Havarijní pojištění</span></a>
                                     </div>
-                                    <div class="btn-group">
-                                        <button class="btn btn-link" type="button">pojištění Na
-                                            dožití</button>
-                                        <button class="btn btn-link" type="button">
-                                            <i class="icon-remove"></i>
-                                        </button>
+                                    <div class="btn-group thema">
+                                        <a class="btn btn-link" type="button"><input name="themaId"
+                                            type="hidden" value="12" /><span class="themaName">pojištění
+                                                Na dožití</span></a>
                                     </div>
-                                    <div class="btn-group">
-                                        <button class="btn btn-link" type="button">
-                                            <i class="icon-heart"></i> Nemocenské pojištění
-                                        </button>
-                                        <button class="btn btn-link" type="button">
-                                            <i class="icon-remove"></i>
-                                        </button>
+                                    <div class="btn-group thema">
+                                        <a class="btn btn-link" type="button"><input name="themaId"
+                                            type="hidden" value="13" /><i class="icon-heart"></i> <span
+                                            class="themaName">Nemocenské pojištění</span></a>
                                     </div>
-                                    <div class="btn-group">
-                                        <button class="btn btn-link" type="button">pojištění
-                                            Odpovědnosti za škodu</button>
-                                        <button class="btn btn-link" type="button">
-                                            <i class="icon-remove"></i>
-                                        </button>
+                                    <div class="btn-group thema">
+                                        <a class="btn btn-link" type="button"><input name="themaId"
+                                            type="hidden" value="14" /><span class="themaName">pojištění
+                                                Odpovědnosti za škodu</span></a>
                                     </div>
-                                    <div class="btn-group">
-                                        <button class="btn btn-link" type="button">Penzijní
-                                            připojištění</button>
-                                        <button class="btn btn-link" type="button">
-                                            <i class="icon-remove"></i>
-                                        </button>
+                                    <div class="btn-group thema">
+                                        <a class="btn btn-link" type="button"><input name="themaId"
+                                            type="hidden" value="15" /><span class="themaName">Penzijní
+                                                připojištění</span></a>
                                     </div>
-                                    <div class="btn-group">
-                                        <button class="btn btn-link btn-large" type="button">
-                                            <i class="icon-road"></i> Povinné ručení
-                                        </button>
-                                        <button class="btn btn-link btn-large" type="button">
-                                            <i class="icon-remove"></i>
-                                        </button>
+                                    <div class="btn-group thema">
+                                        <a class="btn btn-link btn-large" type="button"><input
+                                            name="themaId" type="hidden" value="16" /><i class="icon-road"></i>
+                                            <span class="themaName">Povinné ručení</span></a>
                                     </div>
-                                    <div class="btn-group">
-                                        <button class="btn btn-link btn-mini" type="button">pojištění
-                                            Proti odcizení</button>
-                                        <button class="btn btn-link btn-mini" type="button">
-                                            <i class="icon-remove"></i>
-                                        </button>
+                                    <div class="btn-group thema">
+                                        <a class="btn btn-link btn-mini" type="button"><input
+                                            name="themaId" type="hidden" value="17" /><span class="themaName">pojištění
+                                                Proti odcizení</span> </a><a href="#deleteModal" role="button"
+                                            data-toggle="modal" class="btn btn-link btn-mini delete"><span
+                                            data-toggle="tooltip" title="Smazat"><i class="icon-remove"></i></span></a>
                                     </div>
-                                    <div class="btn-group">
-                                        <button class="btn btn-link btn-mini" type="button">
-                                            <i class="icon-briefcase"></i> Spoření
-                                        </button>
-                                        <button class="btn btn-link btn-mini" type="button">
-                                            <i class="icon-remove"></i>
-                                        </button>
+                                    <div class="btn-group thema">
+                                        <a class="btn btn-link btn-mini" type="button"><input
+                                            name="themaId" type="hidden" value="18" /><i
+                                            class="icon-briefcase"></i> <span class="themaName">Spoření</span>
+                                        </a><a href="#deleteModal" role="button" data-toggle="modal"
+                                            class="btn btn-link btn-mini delete"><span
+                                            data-toggle="tooltip" title="Smazat"><i class="icon-remove"></i></span></a>
                                     </div>
-                                    <div class="btn-group">
-                                        <button class="btn btn-success" type="button" data-toggle="tooltip"
-                                            title="Blbostka">
-                                            <i class="icon-heart"></i> Úrazové pojištění
-                                        </button>
-                                        <button class="btn btn-success" type="button">
-                                            <i class="icon-remove"></i>
-                                        </button>
+                                    <div class="btn-group thema">
+                                        <a class="btn btn-success" type="button" data-toggle="tooltip"
+                                            title="Blbostka"><input name="themaId" type="hidden"
+                                            value="19" /><i class="icon-heart"></i> <span class="themaName">Úrazové
+                                                pojištění</span></a><a href="#deleteModal" role="button"
+                                            data-toggle="modal" class="btn btn-success delete"><span
+                                            data-toggle="tooltip" title="Smazat"><i class="icon-remove"></i></span></a>
                                     </div>
-                                    <div class="btn-group">
-                                        <button class="btn btn-link btn-small" type="button">
-                                            <i class="icon-fire"></i> Živelné pojištění
-                                        </button>
-                                        <button class="btn btn-link btn-small" type="button">
-                                            <i class="icon-remove"></i>
-                                        </button>
+                                    <div class="btn-group thema">
+                                        <a class="btn btn-link btn-small" type="button"><input
+                                            name="themaId" type="hidden" value="20" /><i class="icon-fire"></i>
+                                            <span class="themaName">Živelné pojištění</span></a><a
+                                            href="#deleteModal" role="button" data-toggle="modal"
+                                            class="btn btn-link delete"><span data-toggle="tooltip"
+                                            title="Smazat"><i class="icon-remove"></i></span></a>
                                     </div>
                                     <div class="row-fluid">
                                         <div class="input-append" id="addThema">
-                                            <input type="text" placeholder="Nový typ pojištění" />
+                                            <input name="themaName" type="text"
+                                                placeholder="Nový typ pojištění" />
                                             <button class="btn" type="button">
                                                 <i class="icon-plus"></i> Přidat
                                             </button>
@@ -498,9 +486,13 @@
         <footer class="row-fluid">
             <div class="span6 offset3 text-center page-footer color-container dark-grey-container">
                 <p>
-                    <button class="btn btn-link btn-large" type="button">Kontakt</button>
-                    |
-                    <button class="btn btn-link btn-large" type="button">Můj životopis</button>
+                    <a href="#dataProtectionModal" role="button" data-toggle="modal">
+                        <button class="btn btn-link showDataProtection" type="button">Ochrana údajů</button>
+                    </a> | <a href="#contactModal" role="button" data-toggle="modal">
+                        <button class="btn btn-link showContact" type="button">Kontakt</button>
+                    </a> | <a href="#cvModal" role="button" data-toggle="modal">
+                        <button class="btn btn-link showCv" type="button">Můj životopis</button>
+                    </a>
                 </p>
                 <p>&copy; 2013 Marie Skalická</p>
             </div>
@@ -509,16 +501,73 @@
 
 
     <!-- Modals -->
-    <div id="deleteQuestionAnswerModal" class="modal hide" tabindex="-1" role="dialog"
-        aria-labelledby="myModalLabel" aria-hidden="true">
-        <input name="questionOrAnswerId" type="hidden" />
+    <div id="deleteModal" class="modal hide" tabindex="-1" role="dialog"
+        aria-labelledby="deleteModalConfirmationQuestion" aria-hidden="true">
+        <input name="itemToBeDeletedId" type="hidden" />
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 name="confirmationQuestion"></h4>
+            <h4 id="deleteModalConfirmationQuestion"></h4>
         </div>
         <div class="modal-footer">
             <button class="btn btn-info delete">Smazat</button>
             <button class="btn" data-dismiss="modal" aria-hidden="true">Zrušit</button>
+        </div>
+    </div>
+    <div id="dataProtectionModal" class="modal hide" tabindex="-1" role="dialog"
+        aria-labelledby="dataProtectionModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="dataProtectionModalLabel">Ochrana údajů</h3>
+        </div>
+        <div class="modal-body">
+            <p>
+                Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia
+                quam venenatis vestibulum.<br /> Sed posuere consectetur est at lobortis. Aenean eu leo quam.
+                Pellentesque ornare sem lacinia quam venenatis vestibulum.
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Zavřít</button>
+        </div>
+    </div>
+    <div id="contactModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
+        aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="contactModalLabel">Kontakt</h3>
+        </div>
+        <div class="modal-body">
+            <h5>Marie Skalická</h5>
+            <p>
+                +420 721 949 024<br /> <a href="#" class="email">mskalickadoma@gmail.com</a>
+            </p>
+            <p>Napište námTODO</p>
+            <h4 class="who-is">Kdo je Marie Skalická?</h4>
+            <p>
+                Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia
+                quam venenatis vestibulum.<br /> Sed posuere consectetur est at lobortis. Aenean eu leo quam.
+                Pellentesque ornare sem lacinia quam venenatis vestibulum.
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Zavřít</button>
+        </div>
+    </div>
+    <div id="cvModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="cvModalLabel"
+        aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="cvModalLabel">Můj životopis</h3>
+        </div>
+        <div class="modal-body">
+            <p>
+                Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia
+                quam venenatis vestibulum.<br /> Sed posuere consectetur est at lobortis. Aenean eu leo quam.
+                Pellentesque ornare sem lacinia quam venenatis vestibulum.
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Zavřít</button>
         </div>
     </div>
 
@@ -528,12 +577,14 @@
     <script src="jquery/jquery.dateFormat-1.0.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
 
+    <script src="lib/js/zeptejsepojistovaka-bootstrap.js"></script>
     <script src="lib/js/zeptejsepojistovaka-String.js"></script>
     <script src="lib/js/zeptejsepojistovaka-utils.js"></script>
     <script src="lib/js/zeptejsepojistovaka-introduction.js"></script>
     <script src="lib/js/zeptejsepojistovaka-themas.js"></script>
     <script src="lib/js/zeptejsepojistovaka-questionsAndAnswers.js"></script>
     <script src="lib/js/zeptejsepojistovaka-time.js"></script>
+    <script src="lib/js/zeptejsepojistovaka-contact.js"></script>
 
     <!-- Facebook JavaScript SDK activation -->
     <div id="fb-root"></div>
