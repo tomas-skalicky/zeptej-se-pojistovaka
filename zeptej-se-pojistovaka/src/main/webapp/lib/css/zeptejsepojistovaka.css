@@ -58,7 +58,8 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
     box-shadow: none;
 }
 
-#introduction-wrapper,#questionsAndAnswers>h3,#themas h4,#facebook-comments h4,footer,footer .btn {
+#introduction-wrapper,#questionsAndAnswers>h3,#filters h4,#facebook-comments h4,.page-footer,.page-footer .btn
+    {
     font-family: 'Gentium Book Basic', Georgia, serif;
 }
 
@@ -77,16 +78,22 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
     clear: both;
 }
 
-#questionsAndAnswers article .popover {
+#questionsAndAnswers article .popover,#contactModal .popover {
     display: block;
     position: relative;
-    z-index: 303;
     box-shadow: none;
 }
 
-#askQuestionBar button,.new button.submit,.edit button.submit,.edit button.cancel {
-    font-weight: bold;
+#questionsAndAnswers article .popover {
+    z-index: 303;
+}
+
+#askQuestionBar button,.new button.submit,.edit button.submit,.edit button.cancel,#filters .deactivate-filter .btn,#contactModal .btn.submit {
     float: right;
+}
+
+.btn-info,#askQuestionBar button,#filters .deactivate-filter .btn {
+    font-weight: bold;
 }
 
 .question>.popover-wrapper {
@@ -101,13 +108,13 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
     position: relative;
 }
 
-#questionsAndAnswers section.new .popover-title,#questionsAndAnswers section.edit .popover-title,#questionsAndAnswers section.new .popover-content,#questionsAndAnswers section.edit .popover-content
+#questionsAndAnswers section.new .popover-title,#questionsAndAnswers section.edit .popover-title,#questionsAndAnswers section.new .popover-content,#questionsAndAnswers section.edit .popover-content,#contactModal .popover-title,#contactModal .popover-content
     {
     padding: 0;
     width: 100%;
 }
 
-#questionsAndAnswers section.new input[type="text"],#questionsAndAnswers section.edit input[type="text"],#questionsAndAnswers section.new textarea,#questionsAndAnswers section.edit textarea
+#questionsAndAnswers section.new input[type="text"],#questionsAndAnswers section.edit input[type="text"],#questionsAndAnswers section.new textarea,#questionsAndAnswers section.edit textarea,#contactModal .popover input[type="text"],#contactModal .popover select,#contactModal .popover textarea
     {
     margin-bottom: 0;
     width: 100%;
@@ -115,21 +122,29 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
     box-shadow: none;
 }
 
-#questionsAndAnswers section.new .popover-title input[type="text"],#questionsAndAnswers section.edit .popover-title input[type="text"]
+#questionsAndAnswers section.new .popover-title input[type="text"],#questionsAndAnswers section.edit .popover-title input[type="text"],#contactModal .popover-title input[type="text"],#contactModal .popover-title select
     {
-    padding: 8px 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-#questionsAndAnswers section.new .popover-content textarea,#questionsAndAnswers section.edit .popover-content textarea
+#questionsAndAnswers section.new .popover-title input[type="text"],#questionsAndAnswers section.edit .popover-title input[type="text"]
+    {
+    padding: 8px 0;
+}
+
+#contactModal .popover-title input[type="text"],#contactModal .popover-title select {
+    padding: 6px 0;
+}
+
+#questionsAndAnswers section.new .popover-content textarea,#questionsAndAnswers section.edit .popover-content textarea,#contactModal .popover-content textarea
     {
     padding: 9px 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 
-#questionsAndAnswers section .submit,#questionsAndAnswers section .cancel {
+#questionsAndAnswers section .submit,#questionsAndAnswers section .cancel,#contactModal .submit {
     margin-top: 3px;
 }
 
@@ -140,13 +155,16 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
     z-index: 301;
 }
 
-#questionsAndAnswers article .figure {
+#questionsAndAnswers article .figure,#contactModal .figure {
     display: inline-block;
     position: relative;
+}
+
+#questionsAndAnswers article .figure {
     z-index: 302;
 }
 
-#questionsAndAnswers article .question img.figure {
+#questionsAndAnswers article .question img.figure,#contactModal .question img.figure {
     float: left;
     padding-top: 10px;
 }
@@ -194,15 +212,54 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
     vertical-align: baseline;
 }
 
-#themas .btn-group,#themas .row-fluid {
+#filters .btn-group,#filters .row-fluid {
     margin-left: 5px;
     margin-top: 3px;
 }
 
-#themas .btn-link {
+#filters .btn-success {
+    background-image: none;
+    border: 0;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 2px 7px;
+    font-weight: bold;
+}
+
+#filters .btn-success:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#filters .btn-success:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#filters .filter .btn-link {
     padding-left: 2px;
     padding-right: 2px;
     text-decoration: underline;
+}
+
+#filters .btn-link.delete {
+    padding-left: 0;
+}
+
+#filters .delete i {
+    opacity: 0.2;
+}
+
+#filters .delete i:hover,#filters .delete i:focus {
+    opacity: 1;
+}
+
+#filters .tooptip {
+    text-shadow: none;
+}
+
+#filters footer {
+    padding-top: 15px;
 }
 
 #facebook-comments {
@@ -228,8 +285,30 @@ footer .btn:hover {
     width: 100% !important;
 }
 
-#contactModal .who-is {
-    padding-top: 30px;
+.modal.no-max-height {
+    position: absolute;
+}
+
+.modal.no-max-height .modal-body {
+    max-height: none;
+}
+
+#contactModal section {
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+#contactModal .popover {
+    max-width: 250px;
+}
+
+#contactModal .who-is .text {
+    float: left;
+}
+
+#contactModal .passport-photo {
+    float: right;
+    width: 150px;
 }
 
 @media ( max-width : 847px) {
@@ -285,7 +364,7 @@ footer .btn:hover {
     #questionsAndAnswers article .answer .popover {
         max-width: 620px;
     }
-    #askQuestionBar,#questionsAndAnswers>div>div,#themas>div,#facebook-comments>div {
+    #askQuestionBar,#questionsAndAnswers>div>div,#filters>div,#filters>footer,#facebook-comments>div {
         padding-left: 15px;
         padding-right: 15px;
     }
@@ -336,9 +415,13 @@ footer .btn:hover {
         padding-left: 25px;
         padding-right: 25px;
     }
-    #themas>div,#facebook-comments>div {
+    #filters>div,#filters>footer,#facebook-comments>div {
         padding-left: 15px;
         padding-right: 25px;
+    }
+    #contactModal .popover {
+        width: 444px;
+        max-width: 444px;
     }
     footer {
         position: relative;
@@ -367,7 +450,7 @@ footer .btn:hover {
         font-size: 16px;
         line-height: 22px;
     }
-    #addThema input {
+    #addFilter input {
         width: 150px;
     }
     #questionsAndAnswers article .question .popover {
@@ -381,7 +464,7 @@ footer .btn:hover {
 }
 
 @media ( max-width : 1059px) {
-    #questionsAndAnswers article .popover.right .arrow {
+    #questionsAndAnswers article .popover.right .arrow,#contactModal .popover.right .arrow {
         top: 35px;
     }
     #questionsAndAnswers article .popover.left .arrow {
@@ -396,7 +479,7 @@ footer .btn:hover {
 }
 
 @media ( min-width : 1060px) {
-    #questionsAndAnswers article .popover.right .arrow {
+    #questionsAndAnswers article .popover.right .arrow,#contactModal .popover.right .arrow {
         top: 50px;
     }
     #questionsAndAnswers article .popover.left .arrow {

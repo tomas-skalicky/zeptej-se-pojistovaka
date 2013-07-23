@@ -364,109 +364,120 @@
                     </section>
                 </div>
 
-                <!-- Themas and Facebook comments -->
+                <!-- Filters and Facebook comments -->
                 <div class="span5">
-                    <aside id="themas">
-                        <h4 class="right-header dark-grey-container">Filtry</h4>
-                        <div>
+                    <aside id="filters">
+                        <header>
+                            <h4 class="right-header dark-grey-container">Filtry</h4>
+                        </header>
+                        <div class="deactivate-filter">
+                            <div class="row-fluid">
+                                <button class="btn btn-link btn-large">Deaktivovat filter</button>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="filter-list">
                             <div class="row-fluid">
                                 <div class="span12">
-                                    <div class="btn-group thema">
-                                        <a class="btn btn-link" type="button"><input name="themaId"
-                                            type="hidden" value="8" /><i class="icon-home"></i> <span
-                                            class="themaName">pojištění Bytové jednotky</span></a><a
+                                    <div class="btn-group filter">
+                                        <a class="btn btn-link filter-label" type="button"><input
+                                            name="filterId" type="hidden" value="8" /><i class="icon-home"></i>
+                                            <span class="filterName">pojištění Bytové jednotky</span></a><a
                                             href="#deleteModal" role="button" data-toggle="modal"
                                             class="btn btn-link delete"><span data-toggle="tooltip"
                                             title="Smazat"><i class="icon-remove"></i></span></a>
                                     </div>
-                                    <div class="btn-group thema">
-                                        <a class="btn btn-link" type="button"><input name="themaId"
-                                            type="hidden" value="9" /><i class="icon-home"></i> <span
-                                            class="themaName">pojištění Domácnosti</span></a><a
+                                    <div class="btn-group filter">
+                                        <a class="btn btn-link filter-label" type="button"><input
+                                            name="filterId" type="hidden" value="9" /><i class="icon-home"></i>
+                                            <span class="filterName">pojištění Domácnosti</span></a><a
                                             href="#deleteModal" role="button" data-toggle="modal"
                                             class="btn btn-link delete"><span data-toggle="tooltip"
                                             title="Smazat"><i class="icon-remove"></i></span></a>
                                     </div>
-                                    <div class="btn-group thema">
-                                        <a class="btn btn-link" type="button"><input name="themaId"
-                                            type="hidden" value="10" /><span class="themaName">Důchodové
-                                                pojištění</span></a><a href="#deleteModal" role="button"
-                                            data-toggle="modal" class="btn btn-link delete"><span
+                                    <div class="btn-group filter">
+                                        <a class="btn btn-link filter-label" type="button"><input
+                                            name="filterId" type="hidden" value="10" /><span
+                                            class="filterName">Důchodové pojištění</span></a><a
+                                            href="#deleteModal" role="button" data-toggle="modal"
+                                            class="btn btn-link delete"><span data-toggle="tooltip"
+                                            title="Smazat"><i class="icon-remove"></i></span></a>
+                                    </div>
+                                    <div class="btn-group filter">
+                                        <a class="btn btn-link btn-large filter-label" type="button"><input
+                                            name="filterId" type="hidden" value="11" /><i class="icon-road"></i>
+                                            <span class="filterName">Havarijní pojištění</span></a>
+                                    </div>
+                                    <div class="btn-group filter">
+                                        <a class="btn btn-link filter-label" type="button"><input
+                                            name="filterId" type="hidden" value="12" /><span
+                                            class="filterName">pojištění Na dožití</span></a>
+                                    </div>
+                                    <div class="btn-group filter">
+                                        <a class="btn btn-link filter-label" type="button"><input
+                                            name="filterId" type="hidden" value="13" /><i class="icon-heart"></i>
+                                            <span class="filterName">Nemocenské pojištění</span></a>
+                                    </div>
+                                    <div class="btn-group filter">
+                                        <a class="btn btn-link filter-label" type="button"><input
+                                            name="filterId" type="hidden" value="14" /><span
+                                            class="filterName">pojištění Odpovědnosti za škodu</span></a>
+                                    </div>
+                                    <div class="btn-group filter">
+                                        <a class="btn btn-link filter-label" type="button"><input
+                                            name="filterId" type="hidden" value="15" /><span
+                                            class="filterName">Penzijní připojištění</span></a>
+                                    </div>
+                                    <div class="btn-group filter">
+                                        <a class="btn btn-link btn-large filter-label" type="button"><input
+                                            name="filterId" type="hidden" value="16" /><i class="icon-road"></i>
+                                            <span class="filterName">Povinné ručení</span></a>
+                                    </div>
+                                    <div class="btn-group filter">
+                                        <a class="btn btn-link btn-mini filter-label" type="button"><input
+                                            name="filterId" type="hidden" value="17" /><span
+                                            class="filterName">pojištění Proti odcizení</span> </a><a
+                                            href="#deleteModal" role="button" data-toggle="modal"
+                                            class="btn btn-link btn-mini delete"><span
                                             data-toggle="tooltip" title="Smazat"><i class="icon-remove"></i></span></a>
                                     </div>
-                                    <div class="btn-group thema">
-                                        <a class="btn btn-link btn-large" type="button"><input
-                                            name="themaId" type="hidden" value="11" /><i class="icon-road"></i>
-                                            <span class="themaName">Havarijní pojištění</span></a>
-                                    </div>
-                                    <div class="btn-group thema">
-                                        <a class="btn btn-link" type="button"><input name="themaId"
-                                            type="hidden" value="12" /><span class="themaName">pojištění
-                                                Na dožití</span></a>
-                                    </div>
-                                    <div class="btn-group thema">
-                                        <a class="btn btn-link" type="button"><input name="themaId"
-                                            type="hidden" value="13" /><i class="icon-heart"></i> <span
-                                            class="themaName">Nemocenské pojištění</span></a>
-                                    </div>
-                                    <div class="btn-group thema">
-                                        <a class="btn btn-link" type="button"><input name="themaId"
-                                            type="hidden" value="14" /><span class="themaName">pojištění
-                                                Odpovědnosti za škodu</span></a>
-                                    </div>
-                                    <div class="btn-group thema">
-                                        <a class="btn btn-link" type="button"><input name="themaId"
-                                            type="hidden" value="15" /><span class="themaName">Penzijní
-                                                připojištění</span></a>
-                                    </div>
-                                    <div class="btn-group thema">
-                                        <a class="btn btn-link btn-large" type="button"><input
-                                            name="themaId" type="hidden" value="16" /><i class="icon-road"></i>
-                                            <span class="themaName">Povinné ručení</span></a>
-                                    </div>
-                                    <div class="btn-group thema">
-                                        <a class="btn btn-link btn-mini" type="button"><input
-                                            name="themaId" type="hidden" value="17" /><span class="themaName">pojištění
-                                                Proti odcizení</span> </a><a href="#deleteModal" role="button"
-                                            data-toggle="modal" class="btn btn-link btn-mini delete"><span
-                                            data-toggle="tooltip" title="Smazat"><i class="icon-remove"></i></span></a>
-                                    </div>
-                                    <div class="btn-group thema">
-                                        <a class="btn btn-link btn-mini" type="button"><input
-                                            name="themaId" type="hidden" value="18" /><i
-                                            class="icon-briefcase"></i> <span class="themaName">Spoření</span>
+                                    <div class="btn-group filter">
+                                        <a class="btn btn-link btn-mini filter-label" type="button"><input
+                                            name="filterId" type="hidden" value="18" /><i
+                                            class="icon-briefcase"></i> <span class="filterName">Spoření</span>
                                         </a><a href="#deleteModal" role="button" data-toggle="modal"
                                             class="btn btn-link btn-mini delete"><span
                                             data-toggle="tooltip" title="Smazat"><i class="icon-remove"></i></span></a>
                                     </div>
-                                    <div class="btn-group thema">
-                                        <a class="btn btn-success" type="button" data-toggle="tooltip"
-                                            title="Blbostka"><input name="themaId" type="hidden"
-                                            value="19" /><i class="icon-heart"></i> <span class="themaName">Úrazové
-                                                pojištění</span></a><a href="#deleteModal" role="button"
-                                            data-toggle="modal" class="btn btn-success delete"><span
+                                    <div class="btn-group filter">
+                                        <a class="btn btn-success filter-label" type="button"
+                                            data-toggle="tooltip" title="Blbostka"><input name="filterId"
+                                            type="hidden" value="19" /><i class="icon-heart"></i> <span
+                                            class="filterName">Úrazové pojištění</span></a><a href="#deleteModal"
+                                            role="button" data-toggle="modal" class="btn btn-success delete"><span
                                             data-toggle="tooltip" title="Smazat"><i class="icon-remove"></i></span></a>
                                     </div>
-                                    <div class="btn-group thema">
-                                        <a class="btn btn-link btn-small" type="button"><input
-                                            name="themaId" type="hidden" value="20" /><i class="icon-fire"></i>
-                                            <span class="themaName">Živelné pojištění</span></a><a
+                                    <div class="btn-group filter">
+                                        <a class="btn btn-link btn-small filter-label" type="button"><input
+                                            name="filterId" type="hidden" value="20" /><i class="icon-fire"></i>
+                                            <span class="filterName">Živelné pojištění</span></a><a
                                             href="#deleteModal" role="button" data-toggle="modal"
                                             class="btn btn-link delete"><span data-toggle="tooltip"
                                             title="Smazat"><i class="icon-remove"></i></span></a>
                                     </div>
-                                    <div class="row-fluid">
-                                        <div class="input-append" id="addThema">
-                                            <input name="themaName" type="text"
-                                                placeholder="Nový typ pojištění" />
-                                            <button class="btn" type="button">
-                                                <i class="icon-plus"></i> Přidat
-                                            </button>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <footer>
+                            <div class="row-fluid">
+                                <div class="input-append" id="addFilter">
+                                    <input name="filterName" type="text" placeholder="Nový filter" />
+                                    <button class="btn" type="button" data-toggle="tooltip" title="Přidat">
+                                        <i class="icon-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </footer>
                     </aside>
 
                     <aside id="facebook-comments">
@@ -513,7 +524,7 @@
             <button class="btn" data-dismiss="modal" aria-hidden="true">Zrušit</button>
         </div>
     </div>
-    <div id="dataProtectionModal" class="modal hide" tabindex="-1" role="dialog"
+    <div id="dataProtectionModal" class="modal hide no-max-height" tabindex="-1" role="dialog"
         aria-labelledby="dataProtectionModalLabel" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -530,31 +541,83 @@
             <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Zavřít</button>
         </div>
     </div>
-    <div id="contactModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
-        aria-hidden="true">
+    <div id="contactModal" class="modal hide no-max-height" tabindex="-1" role="dialog"
+        aria-labelledby="contactModalLabel" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="contactModalLabel">Kontakt</h3>
         </div>
         <div class="modal-body">
-            <h5>Marie Skalická</h5>
-            <p>
-                +420 721 949 024<br /> <a href="#" class="email">mskalickadoma@gmail.com</a>
-            </p>
-            <p>Napište námTODO</p>
-            <h4 class="who-is">Kdo je Marie Skalická?</h4>
-            <p>
-                Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia
-                quam venenatis vestibulum.<br /> Sed posuere consectetur est at lobortis. Aenean eu leo quam.
-                Pellentesque ornare sem lacinia quam venenatis vestibulum.
-            </p>
+            <section class="contacts">
+                <div class="contact-list">
+                    <h4>Marie Skalická</h4>
+                    <p>
+                        +420 721 949 024<br /> <a href="#" class="email">mskalickadoma@gmail.com</a>
+                    </p>
+                    <p>Osobní schůzka je možná po předchozí domluvě.</p>
+                </div>
+            </section>
+            <section class="email-form">
+                <h4>Napiště mi</h4>
+                <div class="row-fluid">
+                    <div class="question">
+                        <img src="images/1233576218_panacek-png_67x100.png" class="figure" alt="" />
+                        <div class='popover-wrapper'>
+                            <div class="popover right">
+                                <div class="arrow"></div>
+                                <div class="popover-title">
+                                    <input name="yourEmailAddress" type="text"
+                                        placeholder=" Váše emailová adresa" /> <select name="questionType"><option
+                                            value="">- Předmět dotazu -</option>
+                                        <option value="technicalProblem">Technický problém</option>
+                                        <option value="other">Ostatní</option></select>
+                                </div>
+                                <div class="popover-content">
+                                    <textarea placeholder=" Váš dotaz"></textarea>
+                                </div>
+                            </div>
+                            <button class='btn btn-info submit' type='button'>Odeslat</button>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="who-is">
+                <h4>Kdo je Marie Skalická?</h4>
+                <div class="row-fluid">
+                    <div class="span8 text">
+                        <p>
+                            Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare
+                            sem lacinia quam venenatis vestibulum.<br /> Sed posuere consectetur est at
+                            lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
+                            vestibulum.
+                        </p>
+                        <p>
+                            Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare
+                            sem lacinia quam venenatis vestibulum.<br /> Sed posuere consectetur est at
+                            lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
+                            vestibulum.
+                        </p>
+                        <p>
+                            Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare
+                            sem lacinia quam venenatis vestibulum.<br /> Sed posuere consectetur est at
+                            lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
+                            vestibulum.
+                        </p>
+                    </div>
+                    <p class="span4 passport-photo">
+                        <img src="images/passportPhoto.png" />
+                    </p>
+                    <div class="clear"></div>
+                </div>
+            </section>
         </div>
         <div class="modal-footer">
             <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Zavřít</button>
         </div>
     </div>
-    <div id="cvModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="cvModalLabel"
-        aria-hidden="true">
+    <div id="cvModal" class="modal hide no-max-height" tabindex="-1" role="dialog"
+        aria-labelledby="cvModalLabel" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="cvModalLabel">Můj životopis</h3>
@@ -581,7 +644,7 @@
     <script src="lib/js/zeptejsepojistovaka-String.js"></script>
     <script src="lib/js/zeptejsepojistovaka-utils.js"></script>
     <script src="lib/js/zeptejsepojistovaka-introduction.js"></script>
-    <script src="lib/js/zeptejsepojistovaka-themas.js"></script>
+    <script src="lib/js/zeptejsepojistovaka-filters.js"></script>
     <script src="lib/js/zeptejsepojistovaka-questionsAndAnswers.js"></script>
     <script src="lib/js/zeptejsepojistovaka-time.js"></script>
     <script src="lib/js/zeptejsepojistovaka-contact.js"></script>

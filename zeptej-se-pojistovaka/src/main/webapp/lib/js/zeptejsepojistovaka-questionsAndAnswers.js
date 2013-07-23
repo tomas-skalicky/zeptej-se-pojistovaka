@@ -1,8 +1,8 @@
 var REQUIRED = 'povinný údaj';
-var AUTHOR_NAME_PLACEHOLDER = ' Tvé jméno... (nepovinný údaj)';
+var AUTHOR_NAME_PLACEHOLDER = ' Vaše jméno... (nepovinný údaj)';
 var QUESTION_THEMA_PLACEHOLDER = ' Téma...';
-var QUESTION_TEXT_PLACEHOLDER = ' Položit otázku...';
-var ANSWER_TEXT_PLACEHOLDER = ' Odpovědět...';
+var QUESTION_TEXT_PLACEHOLDER = ' Váš dotaz...';
+var ANSWER_TEXT_PLACEHOLDER = ' Vaše odpověď...';
 var NONAME = 'Anonym';
 var ANSWER_AUTHOR_NAME = 'Marie Skalická';
 var AUTHOR_CONTACT_LINK = '#contactModal';
@@ -328,7 +328,7 @@ function showDeleteQuestionModal() {
 }
 
 function handleDeleteQuestion() {
-	var deleteModal = $(this).closest('#deleteModal');
+	var deleteModal = $('#deleteModal');
 	var questionId = deleteModal.find('[name=itemToBeDeletedId]').val();
 	persistDeletedQuestion(questionId);
 	hideDeletedQuestion(questionId);
@@ -574,7 +574,7 @@ function showDeleteAnswerModal() {
 }
 
 function handleDeleteAnswer() {
-	var deleteModal = $(this).closest('#deleteModal');
+	var deleteModal = $('#deleteModal');
 	var answerId = deleteModal.find('[name=itemToBeDeletedId]').val();
 	persistDeletedAnswer(answerId);
 	hideDeletedAnswer(answerId);
