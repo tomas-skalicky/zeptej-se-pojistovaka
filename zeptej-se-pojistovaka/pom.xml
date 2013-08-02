@@ -3,31 +3,28 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cz</groupId>
+    <groupId>cz.zeptejsepojistovaka</groupId>
     <artifactId>zeptej-se-pojistovaka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <name>Zeptej se pojistovaka.cz</name>
-    <url>http://ZeptejSePojistovaka.cz</url>
+    <url>http://www.zeptejsepojistovaka.cz</url>
+	
+	
+    <modules>
+        <module>presentation</module>
+    </modules>
 
 
     <properties>
-        <jdk.version>1.6</jdk.version>
+        <jdk.version>1.7</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.2.3.RELEASE</spring.version>
     </properties>
 
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-        </plugins>
-
-
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -55,30 +52,6 @@
             </plugins>
         </pluginManagement>
     </build>
-
-
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jsp-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-        </dependency>
-    </dependencies>
 
 
     <dependencyManagement>
