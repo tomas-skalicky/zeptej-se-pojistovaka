@@ -286,6 +286,11 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus,#questions-and-answers .popo
     padding-right: 2px;
 }
 
+#filters .filter .btn-link {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
 #filters .delete {
     opacity: 0.2;
     text-decoration: none;
