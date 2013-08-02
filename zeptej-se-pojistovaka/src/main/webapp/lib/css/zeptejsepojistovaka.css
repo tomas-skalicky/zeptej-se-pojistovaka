@@ -6,7 +6,8 @@ body {
     background-color: #EBEAE1;
 }
 
-a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
+a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus,#questions-and-answers .popover .controls .glyphicon,#filters .selected-filter.delete:hover,#filters .selected-filter.delete:focus
+    {
     color: #3B5998
 }
 
@@ -49,8 +50,41 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
     font-weight: bold;
 }
 
-.tooltip-inner {
-    padding: 4px 6px;
+.tooltip {
+    font-weight: normal;
+}
+
+.error-tooltip {
+    opacity: 1;
+}
+
+.error-tooltip.top .tooltip-arrow {
+    border-top-color: #D9534F;
+}
+
+.error-tooltip.left .tooltip-arrow {
+    border-left-color: #D9534F;
+}
+
+.error-tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #D9534F;
+}
+
+.error-tooltip.right .tooltip-arrow {
+    border-right-color: #D9534F;
+}
+
+.error-tooltip .tooltip-inner {
+    background-color: #D9534F;
+    min-width: 200px;
+}
+
+.fb-like {
+    float: left;
+}
+
+.modal-backdrop {
+    opacity: 0.6;
 }
 
 #header-video-wrapper {
@@ -58,41 +92,46 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
     box-shadow: none;
 }
 
-#introduction-wrapper,#questionsAndAnswers>h3,#filters h4,#facebook-comments h4,.page-footer,.page-footer .btn
+#introduction-wrapper,#questions-and-answers>h3,#filters h4,#facebook-comments h4,.page-footer,.page-footer .btn
     {
-    font-family: 'Gentium Book Basic', Georgia, serif;
+    /*     font-family: 'Gentium Book Basic', Georgia, serif; */
+    
 }
 
-#introduction-wrapper blockquote {
-    padding-left: 25px;
+#introduction-wrapper blockquote,#introduction-wrapper .pr-links {
+    padding-left: 20px;
 }
 
-#action-bar {
-    height: 25px;
-    padding: 20px;
+#introduction-wrapper .pr-links {
+    float: left;
+    padding-bottom: 15px;
 }
 
-#questionsAndAnswers article {
+#questions-and-answers>h3 {
+    margin-top: 10px;
+}
+
+#questions-and-answers article {
     padding-top: 10px;
     padding-bottom: 15px;
-    clear: both;
 }
 
-#questionsAndAnswers article .popover,#contactModal .popover {
+#questions-and-answers article .popover,#contact-modal .popover {
     display: block;
     position: relative;
     box-shadow: none;
 }
 
-#questionsAndAnswers article .popover {
+#questions-and-answers article .popover {
     z-index: 303;
 }
 
-#askQuestionBar button,.new button.submit,.edit button.submit,.edit button.cancel,#filters .deactivate-filter .btn,#contactModal .btn.submit {
+#ask-question-bar button,.new button.submit,.edit button.submit,.edit button.cancel,#filters .deactivate-filter .btn,#contact-modal .btn.submit
+    {
     float: right;
 }
 
-.btn-info,#askQuestionBar button,#filters .deactivate-filter .btn {
+.btn-info,#ask-question-bar button,#filters .deactivate-filter .btn {
     font-weight: bold;
 }
 
@@ -104,17 +143,17 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
     float: right;
 }
 
-#askQuestion {
+#ask-question {
     position: relative;
 }
 
-#questionsAndAnswers section.new .popover-title,#questionsAndAnswers section.edit .popover-title,#questionsAndAnswers section.new .popover-content,#questionsAndAnswers section.edit .popover-content,#contactModal .popover-title,#contactModal .popover-content
+#questions-and-answers section.new .popover-title,#questions-and-answers section.edit .popover-title,#questions-and-answers section.new .popover-content,#questions-and-answers section.edit .popover-content,#contact-modal .popover-title,#contact-modal .popover-content
     {
     padding: 0;
     width: 100%;
 }
 
-#questionsAndAnswers section.new input[type="text"],#questionsAndAnswers section.edit input[type="text"],#questionsAndAnswers section.new textarea,#questionsAndAnswers section.edit textarea,#contactModal .popover input[type="text"],#contactModal .popover select,#contactModal .popover textarea
+#questions-and-answers section.new input[type="text"],#questions-and-answers section.edit input[type="text"],#questions-and-answers section.new textarea,#questions-and-answers section.edit textarea,#contact-modal .popover input[type="text"],#contact-modal .popover select,#contact-modal .popover textarea
     {
     margin-bottom: 0;
     width: 100%;
@@ -122,136 +161,143 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
     box-shadow: none;
 }
 
-#questionsAndAnswers section.new .popover-title input[type="text"],#questionsAndAnswers section.edit .popover-title input[type="text"],#contactModal .popover-title input[type="text"],#contactModal .popover-title select
+#questions-and-answers section.new .popover-title input[type="text"],#questions-and-answers section.edit .popover-title input[type="text"],#contact-modal .popover-title input[type="text"],#contact-modal .popover-title select
     {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-#questionsAndAnswers section.new .popover-title input[type="text"],#questionsAndAnswers section.edit .popover-title input[type="text"]
+#questions-and-answers section.new .popover-title input[type="text"],#questions-and-answers section.edit .popover-title input[type="text"],#contact-modal .popover-title input[type="text"],#contact-modal .popover-title select
     {
-    padding: 8px 0;
+    padding: 8px 14px;
 }
 
-#contactModal .popover-title input[type="text"],#contactModal .popover-title select {
-    padding: 6px 0;
-}
-
-#questionsAndAnswers section.new .popover-content textarea,#questionsAndAnswers section.edit .popover-content textarea,#contactModal .popover-content textarea
+#questions-and-answers section.new .popover-content textarea,#questions-and-answers section.edit .popover-content textarea,#contact-modal .popover-content textarea
     {
-    padding: 9px 0;
+    padding: 9px 14px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 
-#questionsAndAnswers section .submit,#questionsAndAnswers section .cancel,#contactModal .submit {
+#questions-and-answers section .submit,#questions-and-answers section .cancel,#contact-modal .submit {
     margin-top: 3px;
 }
 
-#questionsAndAnswers article .question,#questionsAndAnswers article .answer {
+#questions-and-answers article .question,#questions-and-answers article .answer {
     padding-top: 1px;
     padding-bottom: 2px;
     position: relative;
     z-index: 301;
 }
 
-#questionsAndAnswers article .figure,#contactModal .figure {
+#questions-and-answers .figure-image,#contact-modal .figure-image {
     display: inline-block;
     position: relative;
 }
 
-#questionsAndAnswers article .figure {
+#questions-and-answers .figure-image {
     z-index: 302;
 }
 
-#questionsAndAnswers article .question img.figure,#contactModal .question img.figure {
+#questions-and-answers .question .figure-image,#contact-modal .question .figure-image {
     float: left;
     padding-top: 10px;
 }
 
-#questionsAndAnswers article .answer img.figure {
+#questions-and-answers .answer .figure-image {
     float: right;
     padding-top: 20px;
 }
 
-#questionsAndAnswers .popover-title,#questionsAndAnswers .popover-contents {
+#questions-and-answers .popover-title,#questions-and-answers .popover-contents {
     position: relative;
 }
 
-#questionsAndAnswers .popover .controls {
+#questions-and-answers .popover-title {
+    font-weight: bold;
+}
+
+#questions-and-answers .popover .controls {
     position: absolute;
-    top: 0;
-    right: 3px;
+    top: 2px;
+    right: 1px;
 }
 
-#questionsAndAnswers .popover .controls i {
-    background-color: #D9D8CD;
-    border-radius: 2px;
-    margin: 0 0 0 1px;
-    vertical-align: top;
+#questions-and-answers .popover .controls .glyphicon {
+    opacity: 0.2;
+    margin-right: 2px;
 }
 
-#questionsAndAnswers .popover .controls i:hover,#questionsAndAnswers .popover .controls i:focus {
-    background-color: transparent;
-    background-image: url("../../bootstrap/img/glyphicons-halflings.png");
-    border-radius: 0;
+#questions-and-answers .popover .controls .glyphicon:hover,#questions-and-answers .popover .controls .glyphicon:focus
+    {
+    opacity: 1;
     cursor: pointer;
 }
 
-#questionsAndAnswers .popover-footer {
+#questions-and-answers .popover .controls .delete:hover,#questions-and-answers .popover .controls .delete:focus
+    {
+    text-decoration: none;
+}
+
+#questions-and-answers .popover-footer {
     padding: 0 14px;
 }
 
-#questionsAndAnswers .popover-footer,#questionsAndAnswers .popover-footer button {
+#questions-and-answers .popover-footer,#questions-and-answers .popover-footer button {
     font-size: 11px;
 }
 
-#questionsAndAnswers .popover-footer .btn {
+#questions-and-answers .popover-footer .btn {
     border: 0;
     padding: 0;
     vertical-align: baseline;
 }
 
-#filters .btn-group,#filters .row-fluid {
+#questions-and-answers .loadNextWrapper {
+    margin-top: 20px;
+    padding: 0;
+}
+
+#questions-and-answers .loadNextWrapper .btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#filters .btn-group,#filters .row {
     margin-left: 5px;
     margin-top: 3px;
 }
 
-#filters .btn-success {
-    background-image: none;
+#filters .selected-filter {
     border: 0;
-    margin-top: 2px;
-    margin-bottom: 2px;
     padding: 2px 7px;
+    margin-top: 3px;
+    margin-bottom: 3px;
     font-weight: bold;
 }
 
-#filters .btn-success:first-child {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+#filters .selected-filter:first-child {
+    border-radius: 4px;
 }
 
-#filters .btn-success:last-child {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-#filters .filter .btn-link {
+#filters .filter .btn-link,#filters .selected-filter.delete {
     padding-left: 2px;
     padding-right: 2px;
-    text-decoration: underline;
+}
+
+#filters .delete {
+    opacity: 0.2;
+    text-decoration: none;
+}
+
+#filters .delete:hover,#filters .delete:focus {
+    opacity: 1;
 }
 
 #filters .btn-link.delete {
     padding-left: 0;
-}
-
-#filters .delete i {
-    opacity: 0.2;
-}
-
-#filters .delete i:hover,#filters .delete i:focus {
-    opacity: 1;
+    text-decoration: none;
 }
 
 #filters .tooptip {
@@ -266,18 +312,23 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus {
     padding-top: 40px;
 }
 
-footer .span6 {
+#add-filter>*:first-child .form-control {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.page-footer {
     padding-top: 7px;
     padding-bottom: 1px;
 }
 
-footer .btn {
+.page-footer .btn {
     color: #D9D8CD;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75);
     text-decoration: underline;
 }
 
-footer .btn:hover {
+.page-footer .btn:hover {
     color: white;
 }
 
@@ -285,43 +336,79 @@ footer .btn:hover {
     width: 100% !important;
 }
 
-.modal.no-max-height {
-    position: absolute;
-}
-
-.modal.no-max-height .modal-body {
-    max-height: none;
-}
-
-#contactModal section {
+#contact-modal section {
     padding-top: 5px;
     padding-bottom: 20px;
 }
 
-#contactModal .popover {
+#contact-modal section:last-child {
+    padding-bottom: 0;
+}
+
+#contact-modal .popover {
     max-width: 250px;
 }
 
-#contactModal .who-is .text {
+#contact-modal .who-is .text {
     float: left;
 }
 
-#contactModal .passport-photo {
+#contact-modal .passport-photo {
     float: right;
     width: 150px;
 }
 
-@media ( max-width : 847px) {
+@media ( max-width : 400px) {
+    #header-video-wrapper {
+        height: 170px;
+    }
+    .header-video-size {
+        height: 170px;
+    }
+}
+
+@media ( min-width : 401px) and ( max-width : 500px) {
+    #header-video-wrapper {
+        height: 200px;
+    }
+    .header-video-size {
+        width: 355px;
+        height: 200px;
+    }
+}
+
+@media ( min-width : 501px) and ( max-width : 600px) {
+    #header-video-wrapper {
+        height: 256px;
+    }
+    .header-video-size {
+        width: 455px;
+        height: 256px;
+    }
+}
+
+@media ( min-width : 601px) and ( max-width : 767px) {
+    #header-video-wrapper {
+        height: 313px;
+    }
+    .header-video-size {
+        width: 555px;
+        height: 313px;
+    }
+}
+
+@media ( max-width : 767px) {
     body {
         background-image: none;
     }
-    .container {
-        padding: 40px 0;
-        box-shadow: none;
+    #header-video-wrapper {
+        text-align: center;
+        background-color: #EBEAE1;
+        padding: 0;
     }
-    .header-video-size {
-        width: 400px;
-        height: 225px;
+    .container {
+        padding: 10px 0;
+        box-shadow: none;
     }
     .left-header {
         margin-left: 10px;
@@ -329,13 +416,6 @@ footer .btn:hover {
         text-align: left;
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
-    }
-    #introduction-wrapper,#action-bar,#contents-wrapper,footer {
-        margin-top: 10px;
-    }
-    #introduction-wrapper {
-        float: left;
-        margin-top: 10px;
     }
     #introduction-wrapper blockquote div {
         font-size: 16px;
@@ -347,35 +427,33 @@ footer .btn:hover {
         border-bottom-right-radius: 12px;
     }
     .question.edit .submit {
-        margin-right: 69px;
+        margin-right: 65px;
     }
     .answer.edit .submit {
-        margin-right: 79px;
+        margin-right: 75px;
     }
     .question.edit .cancel,.answer.edit .cancel {
-        margin-right: -146px;
+        margin-right: -142px;
     }
-    #questionsAndAnswers article .popover.left,.answer.new .submit {
+    #questions-and-answers .popover.left,.answer.new .submit {
         margin-right: 10px;
     }
-    #questionsAndAnswers article .question .popover {
-        max-width: 680px;
-    }
-    #questionsAndAnswers article .answer .popover {
+    #questions-and-answers .question .popover {
         max-width: 620px;
     }
-    #askQuestionBar,#questionsAndAnswers>div>div,#filters>div,#filters>footer,#facebook-comments>div {
+    #questions-and-answers .answer .popover {
+        max-width: 570px;
+    }
+    #ask-question-bar,#questions-and-answers>div>div,#filters>div,#filters>footer,#facebook-comments>div {
         padding-left: 15px;
         padding-right: 15px;
     }
-    footer .color-container {
-        border-radius: 12px;
-    }
 }
 
-@media ( min-width : 848px) {
+@media ( min-width : 768px) {
     body {
-        background-image: url("../../images/honda-accord-insurance-broke-crash-safety-accident.jpg");
+        background-color: #FCFCFC;
+        /*                 background-image: url("../../images/honda-accord-insurance-broke-crash-safety-accident.jpg"); */
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: top center;
@@ -396,30 +474,27 @@ footer .btn:hover {
         border-bottom-right-radius: 10px;
     }
     #contents-wrapper {
-        padding: 50px 0 60px;
-        border-bottom-left-radius: 40px;
-        border-bottom-right-radius: 40px;
         position: relative;
         z-index: 101;
     }
     .question.edit .submit,.answer.edit .submit {
-        margin-right: 69px;
+        margin-right: 65px;
     }
     .question.edit .cancel,.answer.edit .cancel {
-        margin-right: -146px;
+        margin-right: -142px;
     }
-    #questionsAndAnswers {
+    #questions-and-answers {
         border-right: 1px solid #D9D8CD;
     }
-    #askQuestionBar,#questionsAndAnswers>div>div {
-        padding-left: 25px;
-        padding-right: 25px;
+    #ask-question-bar,#questions-and-answers>div>div {
+        padding-left: 10px;
+        padding-right: 10px;
     }
     #filters>div,#filters>footer,#facebook-comments>div {
-        padding-left: 15px;
-        padding-right: 25px;
+        padding-left: 10px;
+        padding-right: 15px;
     }
-    #contactModal .popover {
+    #contact-modal .popover {
         width: 444px;
         max-width: 444px;
     }
@@ -427,7 +502,81 @@ footer .btn:hover {
         position: relative;
         z-index: 100;
     }
-    footer .color-container {
+}
+
+@media ( min-width : 768px) and (max-width: 991px) {
+    #header-video-wrapper {
+        height: 374px;
+    }
+    .header-video-size {
+        width: 628px;
+        height: 354px;
+    }
+    #contents-wrapper {
+        margin-top: 14px;
+        padding: 30px 0 60px;
+    }
+    #introduction-wrapper blockquote div {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    #questions-and-answers .question .popover {
+        width: 289px;
+        max-width: 289px;
+    }
+    #questions-and-answers .answer .popover {
+        width: 239px;
+        max-width: 239px;
+    }
+}
+
+@media ( max-width : 991px) {
+    #introduction-wrapper,#contents-wrapper,footer {
+        margin-top: 20px;
+    }
+    #introduction-wrapper {
+        float: left;
+    }
+    #contents-wrapper {
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+    #questions-and-answers .popover.right .arrow,#contact-modal .popover.right .arrow {
+        top: 35px;
+    }
+    #questions-and-answers .popover.left .arrow {
+        top: 27px;
+    }
+    #questions-and-answers .question .figure-image {
+        width: 45px;
+    }
+    #questions-and-answers .answer .figure-image {
+        width: 40px;
+    }
+    .page-footer.color-container {
+        border-radius: 12px;
+        box-shadow: none;
+    }
+}
+
+@media ( min-width : 992px) {
+    #contents-wrapper {
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+    #questions-and-answers .popover.right .arrow,#contact-modal .popover.right .arrow {
+        top: 50px;
+    }
+    #questions-and-answers .popover.left .arrow {
+        top: 32px;
+    }
+    #questions-and-answers .question .figure-image {
+        width: 67px;
+    }
+    #questions-and-answers .answer .figure-image {
+        width: 60px;
+    }
+    .page-footer.color-container {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
         border-bottom-left-radius: 40px;
@@ -435,110 +584,54 @@ footer .btn:hover {
     }
 }
 
-@media ( min-width : 848px) and (max-width: 1059px) {
+@media ( min-width : 992px) and (max-width: 1199px) {
+    #header-video-wrapper,#introduction-wrapper {
+        height: 284px;
+    }
     .header-video-size {
-        width: 400px;
-        height: 225px;
+        width: 469px;
+        height: 264px;
     }
-    #action-bar,#contents-wrapper {
-        margin-top: 14px;
-    }
-    #introduction-wrapper {
-        height: 245px;
+    #contents-wrapper {
+        margin-top: 25px;
+        padding: 30px 0 50px;
     }
     #introduction-wrapper blockquote div {
-        font-size: 16px;
-        line-height: 22px;
+        font-size: 15px;
+        line-height: 25px;
     }
-    #addFilter input {
-        width: 150px;
+    #questions-and-answers .question .popover {
+        width: 391px;
+        max-width: 391px;
     }
-    #questionsAndAnswers article .question .popover {
-        width: 303px;
-        max-width: 303px;
-    }
-    #questionsAndAnswers article .answer .popover {
-        width: 253px;
-        max-width: 253px;
+    #questions-and-answers .answer .popover {
+        width: 322px;
+        max-width: 322px;
     }
 }
 
-@media ( max-width : 1059px) {
-    #questionsAndAnswers article .popover.right .arrow,#contactModal .popover.right .arrow {
-        top: 35px;
-    }
-    #questionsAndAnswers article .popover.left .arrow {
-        top: 27px;
-    }
-    #questionsAndAnswers article .question img.figure {
-        width: 45px;
-    }
-    #questionsAndAnswers article .answer img.figure {
-        width: 40px;
-    }
-}
-
-@media ( min-width : 1060px) {
-    #questionsAndAnswers article .popover.right .arrow,#contactModal .popover.right .arrow {
-        top: 50px;
-    }
-    #questionsAndAnswers article .popover.left .arrow {
-        top: 32px;
-    }
-    #questionsAndAnswers article .question img.figure {
-        width: 67px;
-    }
-    #questionsAndAnswers article .answer img.figure {
-        width: 60px;
-    }
-}
-
-@media ( min-width : 1060px) and (max-width: 1279px) {
-    .header-video-size {
-        width: 512px;
-        height: 288px;
-    }
-    #action-bar,#contents-wrapper {
-        margin-top: 17px;
-    }
-    #introduction-wrapper {
-        height: 308px;
-    }
-    #introduction-wrapper blockquote div {
-        font-size: 19px;
-        line-height: 30px;
-    }
-    #questionsAndAnswers article .question .popover {
-        width: 408px;
-        max-width: 408px;
-    }
-    #questionsAndAnswers article .answer .popover {
-        width: 339px;
-        max-width: 339px;
-    }
-}
-
-@media ( min-width : 1280px) {
-    .header-video-size {
-        width: 640px;
+@media ( min-width : 1200px) {
+    #header-video-wrapper,#introduction-wrapper {
         height: 360px;
     }
-    #action-bar,#contents-wrapper {
-        margin-top: 20px;
+    .header-video-size {
+        width: 603px;
+        height: 340px;
     }
-    #introduction-wrapper {
-        height: 380px;
+    #contents-wrapper {
+        margin-top: 30px;
+        padding: 40px 0 60px;
     }
     #introduction-wrapper blockquote div {
         font-size: 20px;
-        line-height: 40px;
+        line-height: 37px;
     }
-    #questionsAndAnswers article .question .popover {
-        width: 537px;
-        max-width: 537px;
+    #questions-and-answers .question .popover {
+        width: 525px;
+        max-width: 525px;
     }
-    #questionsAndAnswers article .answer .popover {
-        width: 468px;
-        max-width: 468px;
+    #questions-and-answers .answer .popover {
+        width: 456px;
+        max-width: 456px;
     }
 }

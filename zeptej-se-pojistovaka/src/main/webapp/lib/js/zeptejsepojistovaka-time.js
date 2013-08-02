@@ -59,13 +59,13 @@ function runTimeUpdater() {
 	var now = new Date();
 	var nowInMillisec = now.getTime();
 
-	$('.time.continuouslyUpdated').each(
+	$('.time.continuously-updated').each(
 			function() {
 				var currentElement = $(this);
 				var creationTimestamp = currentElement.prev().val();
 				var elapsedTimeInSec = Math
 						.floor((nowInMillisec - creationTimestamp) / 1000);
-				currentElement.html(getTimeCaption(creationTimestamp,
+				currentElement.text(getTimeCaption(creationTimestamp,
 						elapsedTimeInSec, now));
 			});
 }
