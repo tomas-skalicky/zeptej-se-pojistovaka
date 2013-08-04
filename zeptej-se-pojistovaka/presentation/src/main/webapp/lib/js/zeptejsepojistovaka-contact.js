@@ -7,6 +7,8 @@ var MESSAGE_TEXT_PLACEHOLDER = MESSAGE_TEXT + THREE_DOTS;
 var MESSAGE_TEXT_TOO_SHORT = 'Text vzkazu: příliš krátký';
 var MESSAGE_TEXT_REQUIRED = 'Text vzkazu: povinný';
 
+var MIN_MESSAGE_TEXT_LENGTH = 10;
+
 // http://stackoverflow.com/questions/10896749/what-does-function-function-window-jquery-do
 !function($) {
 	$(function() {
@@ -108,7 +110,7 @@ function checkMessageAuthorNameInput(authorNameElement) {
 		// Author's name is optional.
 		return true;
 	}
-	if (authorName.trim().length < 3) {
+	if (authorName.trim().length < MIN_AUTHOR_NAME_LENGTH) {
 		setUpTooltipElementsToError(AUTHOR_NAME_TOO_SHORT, tooltipElements);
 		return false;
 	}
@@ -146,7 +148,7 @@ function checkMessageTextInput(textElement) {
 		setUpTooltipElementsToError(MESSAGE_TEXT_REQUIRED, tooltipElements);
 		return false;
 	}
-	if (text.trim().length < 10) {
+	if (text.trim().length < MIN_MESSAGE_TEXT_LENGTH) {
 		setUpTooltipElementsToError(MESSAGE_TEXT_TOO_SHORT, tooltipElements);
 		return false;
 	}

@@ -75,7 +75,8 @@ public class WebAppInitializer implements WebApplicationInitializer {
     }
 
     private void addHttpMethodFilter(ServletContext container) {
-        FilterRegistration filterRegi = container.addFilter("HttpMethodFilter", HiddenHttpMethodFilter.class);
+        FilterRegistration filterRegi = container.addFilter("hiddenHttpMethodFilter",
+                HiddenHttpMethodFilter.class);
         filterRegi.addMappingForUrlPatterns(null, false, "/*");
     }
 
@@ -87,8 +88,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
     }
 
     private void addEncodingFilter(ServletContext container) {
-        FilterRegistration filterRegi = container.addFilter("CharacterEncodingFilter",
-                CharacterEncodingFilter.class);
+        FilterRegistration filterRegi = container.addFilter("encodingFilter", CharacterEncodingFilter.class);
         filterRegi.setInitParameter("encoding", CharacterEncoding.getDefault().getName());
         filterRegi.setInitParameter("forceEncoding", "true");
         filterRegi.addMappingForUrlPatterns(null, false, "/*");

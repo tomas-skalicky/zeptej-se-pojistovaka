@@ -30,6 +30,11 @@ var DELETE_QUESTION_CONFIRMATION_QUESTION_PREFIX = 'Opravdu chcete smazat tento 
 var DELETE_QUESTION_CONFIRMATION_QUESTION_SUFFIX = '" spolu se všemi jeho odpověďmi?';
 var DELETE_ANSWER_CONFIRMATION_QUESTION = 'Opravdu chcete smazat tuto odpověď?';
 
+var MIN_AUTHOR_NAME_LENGTH = 3;
+var MIN_QUESTION_THEMA_LENGTH = 4;
+var MIN_QUESTION_TEXT_LENGTH = 4;
+var MIN_ANSWER_TEXT_LENGTH = MIN_QUESTION_TEXT_LENGTH;
+
 function handleNoname(authorName) {
 	if (authorName) {
 		return authorName;
@@ -213,7 +218,7 @@ function checkQuestionAuthorNameInput(authorNameElement) {
 		// Author's name is optional.
 		return true;
 	}
-	if (authorName.trim().length < 3) {
+	if (authorName.trim().length < MIN_AUTHOR_NAME_LENGTH) {
 		setUpTooltipElementsToError(AUTHOR_NAME_TOO_SHORT, tooltipElements);
 		return false;
 	}
@@ -233,7 +238,7 @@ function checkQuestionThemaInput(themaElement) {
 		setUpTooltipElementsToError(QUESTION_THEMA_REQUIRED, tooltipElements);
 		return false;
 	}
-	if (thema.trim().length < 4) {
+	if (thema.trim().length < MIN_QUESTION_THEMA_LENGTH) {
 		setUpTooltipElementsToError(QUESTION_THEMA_TOO_SHORT, tooltipElements);
 		return false;
 	}
@@ -253,7 +258,7 @@ function checkQuestionTextInput(textElement) {
 		setUpTooltipElementsToError(QUESTION_TEXT_REQUIRED, tooltipElements);
 		return false;
 	}
-	if (text.trim().length < 4) {
+	if (text.trim().length < MIN_QUESTION_TEXT_LENGTH) {
 		setUpTooltipElementsToError(QUESTION_TEXT_TOO_SHORT, tooltipElements);
 		return false;
 	}
@@ -596,7 +601,7 @@ function checkAnswerTextInput(textElement) {
 		setUpTooltipElementsToError(ANSWER_TEXT_REQUIRED, tooltipElements);
 		return false;
 	}
-	if (text.trim().length < 4) {
+	if (text.trim().length < MIN_ANSWER_TEXT_LENGTH) {
 		setUpTooltipElementsToError(ANSWER_TEXT_TOO_SHORT, tooltipElements);
 		return false;
 	}
