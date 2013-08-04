@@ -7,6 +7,8 @@ var NEW_FILTER_NAME_TOO_SHORT = 'Název nového filtru: příliš krátký';
 var DELETE_THEMA_CONFIRMATION_QUESTION_PREFIX = 'Opravdu chcete smazat téma "';
 var DELETE_THEMA_CONFIRMATION_QUESTION_SUFFIX = '"? Existence dotazů a odpovědí není touto operací ovlivněna.';
 
+var MIN_FILTER_NAME_LENGTH = 2;
+
 // http://stackoverflow.com/questions/10896749/what-does-function-function-window-jquery-do
 !function($) {
 	$(function() {
@@ -73,7 +75,7 @@ function checkFilterNameInput(filterNameElement) {
 		setUpTooltipElementsToError(NEW_FILTER_NAME_REQUIRED, tooltipElements);
 		return false;
 	}
-	if (filterName.trim().length < 2) {
+	if (filterName.trim().length < MIN_FILTER_NAME_LENGTH) {
 		setUpTooltipElementsToError(NEW_FILTER_NAME_TOO_SHORT, tooltipElements);
 		return false;
 	}
