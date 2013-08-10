@@ -30,4 +30,10 @@ public class Thread {
     @Getter
     @Setter
     private Question question;
+
+    @NotNull
+    @NonNull
+    @Getter
+    @Setter
+    private Question thema;
 }

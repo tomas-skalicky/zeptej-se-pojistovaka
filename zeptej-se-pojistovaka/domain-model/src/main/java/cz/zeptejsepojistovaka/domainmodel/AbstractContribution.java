@@ -39,8 +39,12 @@ public abstract class AbstractContribution {
     private int text;
 
     @Past
-    private Date creationDateTime;
+    @Getter
+    @Setter
+    private Date creationTimestamp;
 
     @Past
-    private Date lastUpdateDateTime;
+    @Getter
+    @Setter
+    private Date lastUpdateTimestamp;
 }

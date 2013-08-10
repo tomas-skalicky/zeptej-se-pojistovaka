@@ -13,7 +13,8 @@
     <div id="existing-questions">
         <div class="row">
             <div class="col-12">
-                <article>
+                <article class='thread'>
+                    <input name='threadId' type='hidden' value='4' /> <input name='threadTags' type='hidden' value='' />
                     <section class="question">
                         <input name="question-id" type="hidden" value="20" /> <img src="images/1233576218_panacek-png_67x100.png"
                             class="figure-image" alt="" />
@@ -88,7 +89,8 @@
                     </section>
                 </article>
 
-                <article>
+                <article class='thread'>
+                    <input name='threadId' type='hidden' value='3' /> <input name='threadTags' type='hidden' value='' />
                     <section class="question">
                         <input name="question-id" type="hidden" value="15" /> <img src="images/1233576218_panacek-png_67x100.png"
                             class="figure-image" alt="" />
@@ -120,7 +122,8 @@
                     </section>
                 </article>
 
-                <article>
+                <article class='thread'>
+                    <input name='threadId' type='hidden' value='2' /> <input name='threadTags' type='hidden' value='' />
                     <section class="question">
                         <input name="question-id" type="hidden" value="10" /> <img src="images/1233576218_panacek-png_67x100.png"
                             class="figure-image" alt="" />
@@ -164,7 +167,8 @@
                     </section>
                 </article>
 
-                <article>
+                <article class='thread'>
+                    <input name='threadId' type='hidden' value='1' /> <input name='threadTags' type='hidden' value='' />
                     <section class="question">
                         <input name="question-id" type="hidden" value="5" /> <img src="images/1233576218_panacek-png_67x100.png"
                             class="figure-image" alt="" />

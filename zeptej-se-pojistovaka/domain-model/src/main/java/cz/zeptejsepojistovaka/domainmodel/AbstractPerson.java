@@ -8,7 +8,7 @@ import lombok.Setter;
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
-public abstract class AbstractPerson {
+public abstract class AbstractPerson implements Person {
 
     public static final int MIN_NAME_LENGTH = 3;
 
