@@ -52,7 +52,7 @@ public class DispatcherConfig extends WebMvcConfigurerAdapter {
     @Bean
     public CookieLocaleResolver localeResolver() {
         CookieLocaleResolver localeResolver = new CookieLocaleResolver();
-        localeResolver.setDefaultLocale(Locale.forLanguageTag("cs_CZ"));
+        localeResolver.setDefaultLocale(new Locale("cs_cz"));
         return localeResolver;
     }
 

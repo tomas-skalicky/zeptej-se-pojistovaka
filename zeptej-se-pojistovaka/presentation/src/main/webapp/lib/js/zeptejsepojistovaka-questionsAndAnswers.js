@@ -58,7 +58,7 @@ function initControls() {
 	initAskQuestionBarControls();
 	initQuestionControls();
 	initAnswerControls();
-	initLoadNextControls();
+	initLoadMoreControls();
 }
 
 function initAskQuestionBarControls() {
@@ -762,11 +762,12 @@ function hideDeletedAnswer(answerId) {
 	answerToBeDeleted.remove();
 }
 
-function initLoadNextControls() {
-	$('#questions-and-answers .loadNextWrapper .btn').click(loadNext);
+function initLoadMoreControls() {
+	$('#questions-and-answers .load-more-wrapper .btn').click(
+			loadMoreQuestionsAndAnswers);
 	// TODO :
 }
 
-function loadNext() {
+function loadMoreQuestionsAndAnswers() {
 	// TODO :
 }

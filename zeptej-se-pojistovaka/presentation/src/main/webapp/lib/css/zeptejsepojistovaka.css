@@ -253,12 +253,12 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus,#questions-and-answers .popo
     vertical-align: baseline;
 }
 
-#questions-and-answers .loadNextWrapper {
+#questions-and-answers .load-more-wrapper {
     margin-top: 20px;
     padding: 0;
 }
 
-#questions-and-answers .loadNextWrapper .btn {
+#questions-and-answers .load-more-wrapper .btn {
     display: block;
     margin-left: auto;
     margin-right: auto;
