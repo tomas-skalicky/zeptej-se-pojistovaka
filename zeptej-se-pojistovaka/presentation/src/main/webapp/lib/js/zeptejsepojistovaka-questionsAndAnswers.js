@@ -816,7 +816,8 @@ function hideDeletedAnswer(answerId) {
 var canLoadMore;
 
 function initLoadMoreControls() {
-	$('#questions-and-answers .load-more-wrapper .btn').click(loadMoreThreads);
+	$('#questions-and-answers .load-more-wrapper .loading-button').click(
+			loadMoreThreads);
 
 	canLoadMore = true;
 	$(window).scroll(loadMoreThreadsIfBottom);
@@ -898,6 +899,8 @@ function loadMoreThreadsIfBottom() {
 }
 
 function loadMoreThreads() {
+	toggleLoadingMoreComponentsVisibility();
+
 	var LOADED_THREAD_COUNT = 10;
 	var lastLoadedQuestionElement = $('#questions-and-answers .thread:last-child');
 	var lastLoadedQuestionCreationTimestamp = lastLoadedQuestionElement.find(
@@ -908,6 +911,8 @@ function loadMoreThreads() {
 			lastLoadedQuestionCreationTimestamp);
 
 	lastLoadedQuestionElement.parent().append(getThreadsHtml(loadedThreads));
+
+	toggleLoadingMoreComponentsVisibility();
 }
 
 function getThreadsHtml(threads) {
@@ -916,4 +921,10 @@ function getThreadsHtml(threads) {
 		html += getThreadHtml(threads[threadNum]);
 	}
 	return html;
+}
+
+function toggleLoadingMoreComponentsVisibility() {
+	var wrapperElement = $('#questions-and-answers .load-more-wrapper');
+	wrapperElement.find('.loading-button').toggleClass('hide');
+	wrapperElement.find('.loading-image').toggleClass('hide');
 }

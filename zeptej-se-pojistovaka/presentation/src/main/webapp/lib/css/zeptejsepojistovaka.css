@@ -258,10 +258,14 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus,#questions-and-answers .popo
     padding: 0;
 }
 
-#questions-and-answers .load-more-wrapper .btn {
+#questions-and-answers .loading-button,#questions-and-answers .loading-image {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+#questions-and-answers .loading-image {
+    width: 30px;
 }
 
 #filters .btn-group,#filters .row {
