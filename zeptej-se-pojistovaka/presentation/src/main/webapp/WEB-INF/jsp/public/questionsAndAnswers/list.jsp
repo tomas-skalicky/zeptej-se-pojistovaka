@@ -227,5 +227,5 @@
         </div>
     </div>
 
-    <%@ include file="pagination.jsp"%>
+    <%@ include file="load-more.jsp"%>
 </section>

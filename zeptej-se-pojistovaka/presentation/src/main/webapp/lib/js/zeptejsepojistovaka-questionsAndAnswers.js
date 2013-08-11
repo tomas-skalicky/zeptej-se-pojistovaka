@@ -887,7 +887,7 @@ function loadThreads() {
 }
 
 function loadMoreThreadsIfBottom() {
-	var LOAD_MORE_X_PIXELS_BEFORE_BOTTOM = 50;
+	var LOAD_MORE_X_PIXELS_BEFORE_BOTTOM = 5;
 	if ($(window).height() >= $(document).height() - $(window).scrollTop()
 			- LOAD_MORE_X_PIXELS_BEFORE_BOTTOM
 			&& canLoadMore) {
