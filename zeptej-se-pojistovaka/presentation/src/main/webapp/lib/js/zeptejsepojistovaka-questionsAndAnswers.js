@@ -770,8 +770,7 @@ function persistUpdatedAnswer(answerForm, answerParams) {
 
 function showUpdatedAnswer(answerForm, answerParams) {
 	var editedAnswerElement = answerForm.prev();
-	editedAnswerElement.find('.answer-text').html(
-			answerParams['answer']['text']);
+	editedAnswerElement.find('.answer-text').html(answerParams['text']);
 
 	answerForm.remove();
 	editedAnswerElement.toggle();
