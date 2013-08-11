@@ -54,21 +54,21 @@ function handleSendMessage() {
 function checkMessageFormInputs(messageForm) {
 	var everythingOk = true;
 	var authorEmailOk = checkMessageAuthorEmailInput(messageForm
-			.find('[name=author-email]'));
+			.find('[name=authorEmail]'));
 	if (!authorEmailOk) {
 		everythingOk = false;
 	}
 	var authorNameOk = checkMessageAuthorNameInput(messageForm
-			.find('[name=author-name]'));
+			.find('[name=authorName]'));
 	if (!authorNameOk) {
 		everythingOk = false;
 	}
 	var themaOk = checkMessageThemaInput(messageForm
-			.find('[name=message-thema]'));
+			.find('[name=messageThema]'));
 	if (!themaOk) {
 		everythingOk = false;
 	}
-	var textOk = checkMessageTextInput(messageForm.find('[name=message-text]'));
+	var textOk = checkMessageTextInput(messageForm.find('[name=messageText]'));
 	if (!textOk) {
 		everythingOk = false;
 	}
@@ -157,12 +157,12 @@ function checkMessageTextInput(textElement) {
 
 function normalizeMessage(messageForm) {
 	return {
-		'authorEmail' : messageForm.find('[name=author-email]').val().trim(),
-		'authorName' : handleNoname(messageForm.find('[name=author-name]')
-				.val().trim()),
-		'messageThema' : messageForm.find('[name=message-thema]').val().trim(),
-		'messageText' : encodeTextToHtml(messageForm
-				.find('[name=message-text]').val())
+		'authorEmail' : messageForm.find('[name=authorEmail]').val().trim(),
+		'authorName' : handleNoname(messageForm.find('[name=authorName]').val()
+				.trim()),
+		'messageThema' : messageForm.find('[name=messageThema]').val().trim(),
+		'messageText' : encodeTextToHtml(messageForm.find('[name=messageText]')
+				.val())
 	};
 }
 

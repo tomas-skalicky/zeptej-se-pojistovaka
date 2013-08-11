@@ -31,7 +31,7 @@ function decodeTextFromHtml(text) {
 	return text.replace(/<br>/g, NEW_LINE);
 }
 
-function getHiddenInfoHtml(name, value) {
+function getHiddenInputHtml(name, value) {
 	return "<input name='" + name + "' type='hidden' value='" + value + "' />";
 }
 

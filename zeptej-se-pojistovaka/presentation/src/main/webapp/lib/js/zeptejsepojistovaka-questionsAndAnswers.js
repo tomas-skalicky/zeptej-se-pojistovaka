@@ -73,7 +73,7 @@ function initQuestionControls(questionElement) {
 	if (questionElement) {
 		affectedQuestionElements = questionElement;
 	} else {
-		affectedQuestionElements = $('#existing-questions section.question');
+		affectedQuestionElements = $('#existing-questions .question');
 	}
 
 	affectedQuestionElements.find('button.answer').click(showNewAnswerForm);
@@ -96,7 +96,7 @@ function showNewQuestionForm() {
 }
 
 function focusNewQuestionForm(questionForm) {
-	questionForm.find('.question.new [name=author-email]').focus();
+	questionForm.find('.question.new [name=authorEmail]').focus();
 }
 
 function getNewQuestionFormHtml() {
@@ -112,23 +112,23 @@ function getNewQuestionFormHtml() {
 			+ "                            <h3 class='popover-title'>"
 			+ "                                <span data-toggle='tooltip' title='"
 			+ AUTHOR_EMAIL
-			+ "' data-placement='right'><input type='text' name='author-email' placeholder='"
+			+ "' data-placement='right'><input type='text' name='authorEmail' placeholder='"
 			+ NONREQUIRED_AUTHOR_EMAIL_PLACEHOLDER
 			+ "' /></span>"
 			+ "                                <span data-toggle='tooltip' title='"
 			+ AUTHOR_NAME
-			+ "' data-placement='right'><input type='text' name='author-name' placeholder='"
+			+ "' data-placement='right'><input type='text' name='authorName' placeholder='"
 			+ AUTHOR_NAME_PLACEHOLDER
 			+ "' /></span>"
 			+ "                                <span data-toggle='tooltip' title='"
 			+ QUESTION_THEMA
-			+ "' data-placement='right'><input type='text' name='question-thema' placeholder='"
+			+ "' data-placement='right'><input type='text' name='questionThema' placeholder='"
 			+ QUESTION_THEMA_PLACEHOLDER
 			+ "' /></span></h3>"
 			+ "                            <div class='popover-content'>"
 			+ "                                <span data-toggle='tooltip' title='"
 			+ QUESTION_TEXT
-			+ "' data-placement='right'><textarea rows='3' name='question-text' placeholder='"
+			+ "' data-placement='right'><textarea rows='3' name='questionText' placeholder='"
 			+ QUESTION_TEXT_PLACEHOLDER
 			+ "'></textarea></span></div></div>"
 			+ "                        <button class='btn btn-info submit' type='button'>"
@@ -148,7 +148,7 @@ function initNewQuestionFormControls() {
 }
 
 function handleAddQuestion() {
-	var questionForm = $(this).closest('section.question.new');
+	var questionForm = $(this).closest('.question.new');
 	if (!checkQuestionFormInputs(questionForm)) {
 		return;
 	}
@@ -158,27 +158,28 @@ function handleAddQuestion() {
 }
 
 /**
- * @returns Boolean ... {@code true} if the given question form contains valid information; otherwise {@code false}.
+ * @returns Boolean ... {@code true} if the given question form contains valid
+ *          information; otherwise {@code false}.
  */
 function checkQuestionFormInputs(questionForm) {
 	var everythingOk = true;
 	var authorEmailOk = checkQuestionAuthorEmailInput(questionForm
-			.find('[name=author-email]'));
+			.find('[name=authorEmail]'));
 	if (!authorEmailOk) {
 		everythingOk = false;
 	}
 	var authorNameOk = checkQuestionAuthorNameInput(questionForm
-			.find('[name=author-name]'));
+			.find('[name=authorName]'));
 	if (!authorNameOk) {
 		everythingOk = false;
 	}
 	var themaOk = checkQuestionThemaInput(questionForm
-			.find('[name=question-thema]'));
+			.find('[name=questionThema]'));
 	if (!themaOk) {
 		everythingOk = false;
 	}
 	var textOk = checkQuestionTextInput(questionForm
-			.find('[name=question-text]'));
+			.find('[name=questionText]'));
 	if (!textOk) {
 		everythingOk = false;
 	}
@@ -186,7 +187,8 @@ function checkQuestionFormInputs(questionForm) {
 }
 
 /**
- * @returns Boolean ... {@code true} if the given email address of question author is valid; otherwise {@code false}.
+ * @returns Boolean ... {@code true} if the given email address of question
+ *          author is valid; otherwise {@code false}.
  */
 function checkQuestionAuthorEmailInput(authorEmailElement) {
 	var tooltipElements = getTooltipElements(authorEmailElement);
@@ -206,7 +208,8 @@ function checkQuestionAuthorEmailInput(authorEmailElement) {
 }
 
 /**
- * @returns Boolean ... {@code true} if the given name of question author is valid; otherwise {@code false}.
+ * @returns Boolean ... {@code true} if the given name of question author is
+ *          valid; otherwise {@code false}.
  */
 function checkQuestionAuthorNameInput(authorNameElement) {
 	var tooltipElements = getTooltipElements(authorNameElement);
@@ -226,7 +229,8 @@ function checkQuestionAuthorNameInput(authorNameElement) {
 }
 
 /**
- * @returns Boolean ... {@code true} if the given question thema is valid; otherwise {@code false}.
+ * @returns Boolean ... {@code true} if the given question thema is valid;
+ *          otherwise {@code false}.
  */
 function checkQuestionThemaInput(themaElement) {
 	var tooltipElements = getTooltipElements(themaElement);
@@ -246,7 +250,8 @@ function checkQuestionThemaInput(themaElement) {
 }
 
 /**
- * @returns Boolean ... {@code true} if the given question text is valid; otherwise {@code false}.
+ * @returns Boolean ... {@code true} if the given question text is valid;
+ *          otherwise {@code false}.
  */
 function checkQuestionTextInput(textElement) {
 	var tooltipElements = getTooltipElements(textElement);
@@ -267,48 +272,77 @@ function checkQuestionTextInput(textElement) {
 
 function normalizeQuestion(questionForm) {
 	return {
-		'authorEmail' : questionForm.find('[name=author-email]').val().trim(),
-		'authorName' : handleNoname(questionForm.find('[name=author-name]')
-				.val().trim()),
-		'questionThema' : questionForm.find('[name=question-thema]').val()
-				.trim(),
-		'questionText' : encodeTextToHtml(questionForm.find(
-				'[name=question-text]').val())
+		'id' : '',
+		'tags' : '',
+		'question' : {
+			'id' : '',
+			'author' : {
+				'id' : '',
+				'name' : handleNoname(questionForm.find('[name=authorName]')
+						.val().trim()),
+				'email' : questionForm.find('[name=authorEmail]').val().trim()
+			},
+			'thema' : questionForm.find('[name=questionThema]').val().trim(),
+			'text' : encodeTextToHtml(questionForm.find('[name=questionText]')
+					.val()),
+			'creationTimestamp' : '',
+			'lastUpdateTimestamp' : '',
+			'answers' : []
+		}
 	};
 }
 
 function persistNewQuestion(questionForm, questionParams) {
 	// TODO : AJAX
 	// This will be later replaced by value returned by a database.
-	questionParams['questionId'] = Math.floor((Math.random() * 100000) + 100);
-	questionParams['creationTimestamp'] = getNowInMillisec();
+	questionParams['question']['id'] = Math
+			.floor((Math.random() * 100000) + 100);
+	questionParams['question']['creationTimestamp'] = getNowInMillisec();
 	return questionParams;
 }
 
 function showNewQuestion(questionForm, questionParams) {
 	var allQuestionsBlock = $('#existing-questions .col-12');
-	allQuestionsBlock.prepend(getQuestionHtml(questionParams));
+	allQuestionsBlock.prepend(getThreadHtml(questionParams));
 
 	toggleNewQuestionComponentsVisibility();
 
 	// Binds the handler function just with the new question, the others are
 	// already bound.
-	var newQuestionElement = allQuestionsBlock.find('section.question').first();
+	var newQuestionElement = allQuestionsBlock.find('.question').first();
 	initQuestionControls(newQuestionElement);
 
 	enableBootstrapTooltips(newQuestionElement);
 }
 
+function getThreadHtml(threadParams) {
+	var question = threadParams['question'];
+
+	var threadHtml = "<article class='thread'>"
+			+ getHiddenInputHtml('threadId', threadParams['id'])
+			+ getHiddenInputHtml('threadTags', threadParams['tags'])
+			+ getQuestionHtml(question);
+
+	var answers = question["answers"];
+	for ( var answerNum = 0; answerNum < answers.length; answerNum++) {
+		threadHtml += getAnswerHtml(answers[answerNum]);
+	}
+
+	threadHtml += "</article>";
+	return threadHtml;
+}
+
 function getQuestionHtml(questionParams) {
-	return "<article>" + "    <section class='question'>"
-			+ getHiddenInfoHtml('question-id', questionParams['questionId'])
+	var creationTimestamp = questionParams['creationTimestamp'];
+	return "<section class='question'>"
+			+ getHiddenInputHtml('questionId', questionParams['id'])
 			+ "        <img src='images/1233576218_panacek-png_67x100.png' class='figure-image' alt='' />"
 			+ "        <div class='popover-wrapper'>"
 			+ "            <div class='popover right'>"
 			+ "                <div class='arrow'></div>"
 			+ "                <h3 class='popover-title'>"
 			+ "                    <span class='question-thema'>"
-			+ questionParams['questionThema']
+			+ questionParams['thema']
 			+ "</span><span class='controls'><span class='glyphicon glyphicon-pencil edit' data-toggle='tooltip' title='"
 			+ EDIT
 			+ "'></span><a href='#delete-modal' role='button' data-toggle='modal' class='delete'><span class='glyphicon glyphicon-remove' data-toggle='tooltip' title='"
@@ -316,37 +350,23 @@ function getQuestionHtml(questionParams) {
 			+ "'></span></a></span></h3>"
 			+ "                <div class='popover-content'>"
 			+ "                    <div class='question-text'>"
-			+ questionParams['questionText']
+			+ questionParams['text']
 			+ "</div></div>"
 			+ "                <div class='popover-footer grey'>"
 			+ "                    <span class='author-name'>"
-			+ questionParams['authorName']
+			+ questionParams['author']['name']
 			+ "</span> <span class='dot'>·</span> <button class='answer btn btn-link' type='button'>"
-			+ ANSWER
-			+ "</button> <span class='dot'>·</span> <input name='creation-timestamp' type='hidden' value='"
-			+ questionParams['creationTimestamp']
-			+ "' /><span class='time continuously-updated'>"
-			+ getTimeCaption(questionParams['creationTimestamp'])
-			+ "</span></div></div></div>" + "<div class='clear'></div>"
-			+ "</section></article>";
+			+ ANSWER + "</button> <span class='dot'>·</span> "
+			+ getHiddenInputHtml('creationTimestamp', creationTimestamp)
+			+ "<span class='time continuously-updated'>"
+			+ getTimeCaption(creationTimestamp) + "</span></div></div></div>"
+			+ "<div class='clear'></div>" + "</section>";
 }
 
 function showEditQuestionForm() {
-	var editedQuestionElement = $(this).closest('section.question');
-	var authorName = editedQuestionElement.find('.author-name').text();
-	var questionParams = {
-		'sectionClass' : 'edit',
-		'questionThema' : editedQuestionElement.find('.question-thema').text(),
-		'questionText' : decodeTextFromHtml(editedQuestionElement.find(
-				'.question-text').html()),
-		'authorEmail' : '',
-		'authorName' : getAuthorNameForEdit(authorName),
-		'buttonTitle' : EDIT,
-		'cancelButton' : "<button class='btn cancel' type='button'>" + CANCEL
-				+ "</button>"
-	};
-	$(getEditQuestionFormHtml(questionParams)).insertAfter(
-			editedQuestionElement);
+	var editedQuestionElement = $(this).closest('.question');
+	$(getEditQuestionFormHtml(getEditQuestionFormParams(editedQuestionElement)))
+			.insertAfter(editedQuestionElement);
 
 	// If the user rolls his modifications back, we just shows this element
 	// again.
@@ -361,9 +381,28 @@ function showEditQuestionForm() {
 	focusQuestionForm(newForm);
 }
 
+function getEditQuestionFormParams(editedQuestionElement) {
+	return {
+		'sectionClass' : 'edit',
+		'question' : {
+			'author' : {
+				'name' : getAuthorNameForEdit(editedQuestionElement.find(
+						'.author-name').text()),
+				'email' : ''
+			},
+			'thema' : editedQuestionElement.find('.question-thema').text(),
+			'text' : decodeTextFromHtml(editedQuestionElement.find(
+					'.question-text').html())
+		},
+		'buttonTitle' : EDIT,
+		'cancelButton' : "<button class='btn cancel' type='button'>" + CANCEL
+				+ "</button>"
+	};
+}
+
 /**
- * Returns an empty string if the given {@code authorName} is undefined or it equals "Anonym". Otherwise, returns the
- * input.
+ * Returns an empty string if the given {@code authorName} is undefined or it
+ * equals "Anonym". Otherwise, returns the input.
  */
 function getAuthorNameForEdit(authorName) {
 	if (isNoname(authorName)) {
@@ -374,6 +413,8 @@ function getAuthorNameForEdit(authorName) {
 }
 
 function getEditQuestionFormHtml(questionParams) {
+	var question = questionParams['question'];
+	var author = question['author'];
 	return "<section class='question "
 			+ questionParams['sectionClass']
 			+ "'>"
@@ -384,30 +425,30 @@ function getEditQuestionFormHtml(questionParams) {
 			+ "                <h3 class='popover-title'>"
 			+ "                    <span data-toggle='tooltip' title='"
 			+ AUTHOR_EMAIL
-			+ "' data-placement='right'><input type='text' name='author-email' placeholder='"
+			+ "' data-placement='right'><input type='text' name='authorEmail' placeholder='"
 			+ NONREQUIRED_AUTHOR_EMAIL_PLACEHOLDER
 			+ "' value='"
-			+ questionParams['authorEmail']
+			+ author['email']
 			+ "' /></span>"
 			+ "                    <span data-toggle='tooltip' title='"
 			+ AUTHOR_NAME
-			+ "' data-placement='right'><input type='text' name='author-name' placeholder='"
+			+ "' data-placement='right'><input type='text' name='authorName' placeholder='"
 			+ AUTHOR_NAME_PLACEHOLDER
 			+ "' value='"
-			+ questionParams['authorName']
+			+ author['name']
 			+ "' /></span>"
 			+ "                    <span data-toggle='tooltip' title='"
 			+ QUESTION_THEMA
-			+ "' data-placement='right'><input type='text' name='question-thema' placeholder='"
+			+ "' data-placement='right'><input type='text' name='questionThema' placeholder='"
 			+ QUESTION_THEMA_PLACEHOLDER
 			+ "' value='"
-			+ questionParams['questionThema']
+			+ question['thema']
 			+ "' /></span></h3>"
 			+ "                <div class='popover-content'>"
 			+ "                    <span data-toggle='tooltip' title='"
 			+ QUESTION_TEXT
-			+ "' data-placement='right'><textarea rows='3' name='question-text' placeholder='"
-			+ QUESTION_TEXT_PLACEHOLDER + "'>" + questionParams['questionText']
+			+ "' data-placement='right'><textarea rows='3' name='questionText' placeholder='"
+			+ QUESTION_TEXT_PLACEHOLDER + "'>" + question['text']
 			+ "</textarea></span></div></div>"
 			+ "            <button class='btn btn-info submit' type='button'>"
 			+ questionParams['buttonTitle'] + "</button>"
@@ -416,7 +457,7 @@ function getEditQuestionFormHtml(questionParams) {
 }
 
 function focusQuestionForm(questionForm) {
-	questionForm.find('[name=author-email]').focus();
+	questionForm.find('[name=authorEmail]').focus();
 }
 
 function initEditQuestionFormControls(questionForm) {
@@ -425,7 +466,7 @@ function initEditQuestionFormControls(questionForm) {
 }
 
 function handleEditQuestion() {
-	var questionForm = $(this).closest('section.question.edit');
+	var questionForm = $(this).closest('.question.edit');
 	if (!checkQuestionFormInputs(questionForm)) {
 		return;
 	}
@@ -437,27 +478,26 @@ function handleEditQuestion() {
 function persistUpdatedQuestion(questionForm, questionParams) {
 	// TODO : AJAX
 	// var editedQuestionElement = questionForm.prev();
-	// var questionId = editedQuestionElement.find('[name=question-id]').val();
+	// var questionId = editedQuestionElement.find('[name=questionId]').val();
 	return questionParams;
 }
 
-function showUpdatedQuestion(questionForm, questionParams) {
+function showUpdatedQuestion(questionForm, threadParams) {
+	var question = threadParams['question'];
+	var author = question['author'];
+
 	var editedQuestionElement = questionForm.prev();
-	editedQuestionElement.find('.author-email').text(
-			questionParams['authorEmail']);
-	editedQuestionElement.find('.author-name').text(
-			questionParams['authorName']);
-	editedQuestionElement.find('.question-thema').text(
-			questionParams['questionThema']);
-	editedQuestionElement.find('.question-text').html(
-			questionParams['questionText']);
+	editedQuestionElement.find('.author-email').text(author['email']);
+	editedQuestionElement.find('.author-name').text(author['name']);
+	editedQuestionElement.find('.question-thema').text(question['thema']);
+	editedQuestionElement.find('.question-text').html(question['text']);
 
 	questionForm.remove();
 	editedQuestionElement.toggle();
 }
 
 function handleEditQuestionCancel() {
-	var questionForm = $(this).closest('section.question.edit');
+	var questionForm = $(this).closest('.question.edit');
 	var editedQuestionElement = questionForm.prev();
 	questionForm.remove();
 	editedQuestionElement.toggle();
@@ -467,19 +507,19 @@ function showDeleteQuestionModal() {
 	var deleteModal = $('#delete-modal');
 	deleteModal.find('.modal-footer .delete').click(handleDeleteQuestion);
 
-	var questionElement = $(this).closest('section.question');
+	var questionElement = $(this).closest('.question');
 	var questionThema = questionElement.find('.question-thema').text();
 	deleteModal.find('.confirmation-question').text(
 			DELETE_QUESTION_CONFIRMATION_QUESTION_PREFIX + questionThema
 					+ DELETE_QUESTION_CONFIRMATION_QUESTION_SUFFIX);
 
-	var questionId = questionElement.find('[name=question-id]').val();
-	deleteModal.find('[name=item-to-be-deleted-id]').val(questionId);
+	var questionId = questionElement.find('[name=questionId]').val();
+	deleteModal.find('[name=itemToBeDeletedId]').val(questionId);
 }
 
 function handleDeleteQuestion() {
 	var deleteModal = $('#delete-modal');
-	var questionId = deleteModal.find('[name=item-to-be-deleted-id]').val();
+	var questionId = deleteModal.find('[name=itemToBeDeletedId]').val();
 	persistDeletedQuestion(questionId);
 	hideDeletedQuestion(questionId);
 	deleteModal.modal('hide');
@@ -491,8 +531,8 @@ function persistDeletedQuestion(questionId) {
 
 function hideDeletedQuestion(questionId) {
 	var wholeQuestionAnswersBlockToBeDeleted = $(
-			'section.question [name=question-id][value=' + questionId + ']')
-			.closest('article');
+			'.question [name=questionId][value=' + questionId + ']').closest(
+			'.thread');
 	wholeQuestionAnswersBlockToBeDeleted.remove();
 }
 
@@ -504,7 +544,7 @@ function initAnswerControls(answerElement) {
 	if (answerElement) {
 		affectedAnswerElements = answerElement;
 	} else {
-		affectedAnswerElements = $('#existing-questions section.answer');
+		affectedAnswerElements = $('#existing-questions .answer');
 	}
 
 	initEditAndDeleteAnswerControls(affectedAnswerElements);
@@ -525,21 +565,27 @@ function showNewAnswerForm() {
 		return;
 	}
 
-	var answerParams = {
-		'sectionClass' : 'new',
-		'answerText' : '',
-		'buttonTitle' : ANSWER,
-		'cancelButton' : ''
-	};
-	focusedQuestionAnswersBlock.append(getAnswerFormHtml(answerParams));
+	focusedQuestionAnswersBlock
+			.append(getAnswerFormHtml(getNewAnswerFormParams()));
 
 	// Binds the handler function just with the new form, the others are already
 	// bound.
-	var newForm = focusedQuestionAnswersBlock.find('section.answer').last();
+	var newForm = focusedQuestionAnswersBlock.find('.answer').last();
 	initNewAnswerFormControls(newForm);
 
 	enableBootstrapTooltips(newForm);
 	focusAnswerForm(newForm);
+}
+
+function getNewAnswerFormParams() {
+	return {
+		'sectionClass' : 'new',
+		'answer' : {
+			'text' : ''
+		},
+		'buttonTitle' : ANSWER,
+		'cancelButton' : ''
+	};
 }
 
 function getAnswerFormHtml(answerParams) {
@@ -553,8 +599,8 @@ function getAnswerFormHtml(answerParams) {
 			+ "            <div class='popover-content'>"
 			+ "                <span data-toggle='tooltip' title='"
 			+ ANSWER_TEXT
-			+ "' data-placement='right'><textarea rows='3' name='answer-text' placeholder='"
-			+ ANSWER_TEXT_PLACEHOLDER + "'>" + answerParams['answerText']
+			+ "' data-placement='right'><textarea rows='3' name='answerText' placeholder='"
+			+ ANSWER_TEXT_PLACEHOLDER + "'>" + answerParams['answer']['text']
 			+ "</textarea></span></div></div>"
 			+ "        <button class='btn btn-info submit' type='button'>"
 			+ answerParams['buttonTitle'] + "</button>"
@@ -563,7 +609,7 @@ function getAnswerFormHtml(answerParams) {
 }
 
 function focusAnswerForm(answerForm) {
-	answerForm.find('[name=answer-text]').focus();
+	answerForm.find('[name=answerText]').focus();
 }
 
 function initNewAnswerFormControls(answerForm) {
@@ -572,7 +618,7 @@ function initNewAnswerFormControls(answerForm) {
 }
 
 function handleAddAnswer() {
-	var answerForm = $(this).closest('section.answer.new');
+	var answerForm = $(this).closest('.answer.new');
 	if (!checkAnswerFormInputs(answerForm)) {
 		return;
 	}
@@ -582,14 +628,16 @@ function handleAddAnswer() {
 }
 
 /**
- * @returns Boolean ... {@code true} if the given answer form contains valid information; otherwise {@code false}.
+ * @returns Boolean ... {@code true} if the given answer form contains valid
+ *          information; otherwise {@code false}.
  */
 function checkAnswerFormInputs(answerForm) {
-	return checkAnswerTextInput(answerForm.find('[name=answer-text]'));
+	return checkAnswerTextInput(answerForm.find('[name=answerText]'));
 }
 
 /**
- * @returns Boolean ... {@code true} if the given answer text is valid; otherwise {@code false}.
+ * @returns Boolean ... {@code true} if the given answer text is valid;
+ *          otherwise {@code false}.
  */
 function checkAnswerTextInput(textElement) {
 	var tooltipElements = getTooltipElements(textElement);
@@ -610,15 +658,15 @@ function checkAnswerTextInput(textElement) {
 
 function normalizeAnswer(answerForm) {
 	return {
-		'answerText' : encodeTextToHtml(answerForm.find('[name=answer-text]')
-				.val())
+		'author' : {},
+		'text' : encodeTextToHtml(answerForm.find('[name=answerText]').val())
 	};
 }
 
 function persistNewAnswer(answerForm, answerParams) {
 	// TODO : AJAX
 	// This will be later replaced by value returned by a database.
-	answerParams['answerId'] = Math.floor((Math.random() * 100000) + 100);
+	answerParams['id'] = Math.floor((Math.random() * 100000) + 100);
 	answerParams['creationTimestamp'] = getNowInMillisec();
 	return answerParams;
 }
@@ -626,60 +674,52 @@ function persistNewAnswer(answerForm, answerParams) {
 function showNewAnswer(answerForm, answerParams) {
 	var focusedQuestionAnswersBlock = $(answerForm).closest('article');
 	answerParams['contactLink'] = AUTHOR_CONTACT_LINK;
-	answerParams['authorName'] = ANSWER_AUTHOR_NAME;
+	answerParams['author']['name'] = ANSWER_AUTHOR_NAME;
 	focusedQuestionAnswersBlock.append(getAnswerHtml(answerParams));
 
 	answerForm.remove();
 
 	// Binds the handler function just with the new answer, the others are
 	// already bound.
-	var newAnswerElement = focusedQuestionAnswersBlock.find('section.answer')
-			.last();
+	var newAnswerElement = focusedQuestionAnswersBlock.find('.answer').last();
 	initAnswerControls(newAnswerElement);
 
 	enableBootstrapTooltips(newAnswerElement);
 }
 
 function getAnswerHtml(answerParams) {
+	console.log(answerParams);
+	var creationTimestamp = answerParams['creationTimestamp'];
 	return "<section class='answer'>"
-			+ getHiddenInfoHtml('answer-id', answerParams['answerId'])
+			+ getHiddenInputHtml('answerId', answerParams['id'])
 			+ "    <img src='images/panacek-uvod.jpg' class='figure-image' alt='' />"
 			+ "    <div class='popover-wrapper'>"
 			+ "        <div class='popover left'>"
 			+ "            <div class='arrow'></div>"
 			+ "            <div class='popover-content'>"
 			+ "                <div class='answer-text'>"
-			+ answerParams['answerText']
+			+ answerParams['text']
 			+ "</div>"
 			+ "                <span class='controls'><span class='glyphicon glyphicon-pencil edit' data-toggle='tooltip' title='"
 			+ EDIT
 			+ "'></span><a href='#delete-modal' role='button' data-toggle='modal' class='delete'><span class='glyphicon glyphicon-remove' data-toggle='tooltip' title='"
-			+ DELETE
-			+ "'></span></a></span></div>"
+			+ DELETE + "'></span></a></span></div>"
 			+ "            <div class='popover-footer grey'>"
 			+ "                <span class='author-name'><a href='"
 			+ answerParams['contactLink']
 			+ "' role='button' data-toggle='modal' class='show-contact'>"
-			+ answerParams['authorName']
-			+ "</a></span> <span class='dot'>·</span> <input name='creation-timestamp' type='hidden' value='"
-			+ answerParams['creationTimestamp']
-			+ "' /><span class='time continuously-updated'>"
-			+ getTimeCaption(answerParams['creationTimestamp'])
-			+ "</span></div></div></div>" + "<div class='clear'></div>"
-			+ "</section>";
+			+ answerParams['author']['name']
+			+ "</a></span> <span class='dot'>·</span> "
+			+ getHiddenInputHtml('creationTimestamp', creationTimestamp)
+			+ "<span class='time continuously-updated'>"
+			+ getTimeCaption(creationTimestamp) + "</span></div></div></div>"
+			+ "<div class='clear'></div>" + "</section>";
 }
 
 function showEditAnswerForm() {
-	var editedAnswerElement = $(this).closest('section.answer');
-	var answerParams = {
-		'sectionClass' : 'edit',
-		'answerText' : decodeTextFromHtml(editedAnswerElement.find(
-				'.answer-text').html()),
-		'buttonTitle' : EDIT,
-		'cancelButton' : "<button class='btn cancel' type='button'>" + CANCEL
-				+ "</button>"
-	};
-	$(getAnswerFormHtml(answerParams)).insertAfter(editedAnswerElement);
+	var editedAnswerElement = $(this).closest('.answer');
+	$(getAnswerFormHtml(getEditAnswerFormParams(editedAnswerElement)))
+			.insertAfter(editedAnswerElement);
 
 	// If the user rolls his modifications back, we just shows this element
 	// again.
@@ -694,13 +734,26 @@ function showEditAnswerForm() {
 	focusAnswerForm(newForm);
 }
 
+function getEditAnswerFormParams(editedAnswerElement) {
+	return {
+		'sectionClass' : 'edit',
+		'answer' : {
+			'text' : decodeTextFromHtml(editedAnswerElement
+					.find('.answer-text').html())
+		},
+		'buttonTitle' : EDIT,
+		'cancelButton' : "<button class='btn cancel' type='button'>" + CANCEL
+				+ "</button>"
+	};
+}
+
 function initEditAnswerFormControls(answerForm) {
 	answerForm.find('.submit').click(handleEditAnswer);
 	answerForm.find('.cancel').click(handleEditAnswerCancel);
 }
 
 function handleEditAnswer() {
-	var answerForm = $(this).closest('section.answer.edit');
+	var answerForm = $(this).closest('.answer.edit');
 	if (!checkAnswerFormInputs(answerForm)) {
 		return;
 	}
@@ -712,20 +765,21 @@ function handleEditAnswer() {
 function persistUpdatedAnswer(answerForm, answerParams) {
 	// TODO : AJAX
 	// var editedAnswerElement = answerForm.prev();
-	// var answerId = editedAnswerElement.find('[name=answer-id]').val();
+	// var answerId = editedAnswerElement.find('[name=answerId]').val();
 	return answerParams;
 }
 
 function showUpdatedAnswer(answerForm, answerParams) {
 	var editedAnswerElement = answerForm.prev();
-	editedAnswerElement.find('.answer-text').html(answerParams['answerText']);
+	editedAnswerElement.find('.answer-text').html(
+			answerParams['answer']['text']);
 
 	answerForm.remove();
 	editedAnswerElement.toggle();
 }
 
 function handleEditAnswerCancel() {
-	var answerForm = $(this).closest('section.answer.edit');
+	var answerForm = $(this).closest('.answer.edit');
 	var editedAnswerElement = answerForm.prev();
 	answerForm.remove();
 	editedAnswerElement.toggle();
@@ -738,14 +792,13 @@ function showDeleteAnswerModal() {
 	deleteModal.find('.confirmation-question').text(
 			DELETE_ANSWER_CONFIRMATION_QUESTION);
 
-	var answerId = $(this).closest('section.answer').find('[name=answer-id]')
-			.val();
-	deleteModal.find('[name=item-to-be-deleted-id]').val(answerId);
+	var answerId = $(this).closest('.answer').find('[name=answerId]').val();
+	deleteModal.find('[name=itemToBeDeletedId]').val(answerId);
 }
 
 function handleDeleteAnswer() {
 	var deleteModal = $('#delete-modal');
-	var answerId = deleteModal.find('[name=item-to-be-deleted-id]').val();
+	var answerId = deleteModal.find('[name=itemToBeDeletedId]').val();
 	persistDeletedAnswer(answerId);
 	hideDeletedAnswer(answerId);
 	deleteModal.modal('hide');
@@ -756,9 +809,8 @@ function persistDeletedAnswer(answerId) {
 }
 
 function hideDeletedAnswer(answerId) {
-	var answerToBeDeleted = $(
-			'section.answer [name=answer-id][value=' + answerId + ']').closest(
-			'section.answer');
+	var answerToBeDeleted = $('.answer [name=answerId][value=' + answerId + ']')
+			.closest('.answer');
 	answerToBeDeleted.remove();
 }
 

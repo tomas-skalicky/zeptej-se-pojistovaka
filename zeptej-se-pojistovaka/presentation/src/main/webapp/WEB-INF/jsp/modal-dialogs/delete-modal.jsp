@@ -4,7 +4,7 @@
 <div id="delete-modal" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <input name="item-to-be-deleted-id" type="hidden" />
+            <input name="itemToBeDeletedId" type="hidden" />
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title confirmation-question"></h4>

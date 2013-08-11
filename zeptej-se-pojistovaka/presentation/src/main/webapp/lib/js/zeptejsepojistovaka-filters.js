@@ -28,7 +28,7 @@ function initFilterControls() {
  */
 function initAddFilterControls() {
 	$('#add-filter button').click(handleAddFilter);
-	$('#add-filter [name=filter-name]').keypress(function(e) {
+	$('#add-filter [name=filterName]').keypress(function(e) {
 		if (e.which == ENTER_KEY_CODE) {
 			handleAddFilter();
 		}
@@ -40,7 +40,7 @@ function initAddFilterControls() {
  * name of the new filter.
  */
 function handleAddFilter() {
-	var newFilterNameElement = $('#add-filter [name=filter-name]');
+	var newFilterNameElement = $('#add-filter [name=filterName]');
 	if (!checkFilterNameInput(newFilterNameElement)) {
 		return;
 	}
@@ -96,9 +96,8 @@ function getFilterHtml(filterName, filterParams) {
 	return "<div class='btn-group filter'>"
 			+ "<a class='btn "
 			+ filterParams['buttonAdditionalClasses']
-			+ " filter-label' type='button'><input name='filter-id' type='hidden' value='"
-			+ filterParams['filterId']
-			+ "' />"
+			+ " filter-label' type='button'>"
+			+ getHiddenInputHtml('filterId', filterParams['filterId'])
 			+ getFilterIconHtml(filterParams['icon'])
 			+ SPACE
 			+ "<span class='filter-name'>"
@@ -143,13 +142,13 @@ function showDeleteFilterModal() {
 			DELETE_THEMA_CONFIRMATION_QUESTION_PREFIX + filterName
 					+ DELETE_THEMA_CONFIRMATION_QUESTION_SUFFIX);
 
-	var filterId = filterElement.find('[name=filter-id]').val();
-	deleteModal.find('[name=item-to-be-deleted-id]').val(filterId);
+	var filterId = filterElement.find('[name=filterId]').val();
+	deleteModal.find('[name=itemToBeDeletedId]').val(filterId);
 }
 
 function handleDeleteFilter() {
 	var deleteModal = $('#delete-modal');
-	var filterId = deleteModal.find('[name=item-to-be-deleted-id]').val();
+	var filterId = deleteModal.find('[name=itemToBeDeletedId]').val();
 	persistDeletedFilter(filterId);
 	hideDeletedFilter(filterId);
 	deleteModal.modal('hide');
@@ -163,7 +162,7 @@ function persistDeletedFilter(filterId) {
 
 function hideDeletedFilter(filterId) {
 	var filterToBeDeleted = $(
-			'#filters .filter [name=filter-id][value=' + filterId + ']')
+			'#filters .filter [name=filterId][value=' + filterId + ']')
 			.closest('.filter');
 	filterToBeDeleted.remove();
 }

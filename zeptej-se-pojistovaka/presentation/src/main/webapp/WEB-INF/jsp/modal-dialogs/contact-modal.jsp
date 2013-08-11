@@ -29,19 +29,19 @@
                                         <div class="arrow"></div>
                                         <div class="popover-title">
                                             <span data-toggle="tooltip" title="Váš e-mail" data-placement='right'
-                                                data-trigger='click hover focus manual'><input name="author-email" type="text"
+                                                data-trigger='click hover focus manual'><input name="authorEmail" type="text"
                                                 placeholder="Váš e-mail..." /></span><span data-toggle="tooltip" title="Vaše jméno"
                                                 data-placement='right' data-trigger='click hover focus manual'><input
-                                                name="author-name" type="text" placeholder="Vaše jméno... (nepovinné)" /></span><span
+                                                name="authorName" type="text" placeholder="Vaše jméno... (nepovinné)" /></span><span
                                                 data-toggle="tooltip" title="Předmět vzkazu" data-placement='right'
-                                                data-trigger='click hover focus manual'><select name="message-thema"><option
+                                                data-trigger='click hover focus manual'><select name="messageThema"><option
                                                         value=""></option>
                                                     <option value="technical-problem">Technický problém</option>
                                                     <option value="other">Ostatní</option></select></span>
                                         </div>
                                         <div class="popover-content">
                                             <span data-toggle="tooltip" title="Text vzkazu" data-placement="right"
-                                                data-trigger='click hover focus manual'><textarea name="message-text"
+                                                data-trigger='click hover focus manual'><textarea name="messageText"
                                                     placeholder="Text vzkazu..."></textarea></span>
                                         </div>
                                     </div>

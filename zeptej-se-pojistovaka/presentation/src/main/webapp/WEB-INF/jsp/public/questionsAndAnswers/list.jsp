@@ -16,7 +16,7 @@
                 <article class='thread'>
                     <input name='threadId' type='hidden' value='4' /> <input name='threadTags' type='hidden' value='' />
                     <section class="question">
-                        <input name="question-id" type="hidden" value="20" /> <img src="images/1233576218_panacek-png_67x100.png"
+                        <input name="questionId" type="hidden" value="20" /> <img src="images/1233576218_panacek-png_67x100.png"
                             class="figure-image" alt="" />
                         <div class="popover-wrapper">
                             <div class="popover right">
@@ -38,7 +38,7 @@
                                 <div class="popover-footer grey">
                                     <span class="author-name">Anonym</span> <span class="dot">·</span>
                                     <button class="answer btn btn-link" type="button">Odpovědět</button>
-                                    <span class="dot">·</span> <input name='creation-timestamp' type='hidden' value='1374346915000' /><span
+                                    <span class="dot">·</span> <input name='creationTimestamp' type='hidden' value='1374346915000' /><span
                                         class="time continuously-updated"></span>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                         <div class="clear"></div>
                     </section>
                     <section class="answer">
-                        <input name="answer-id" type="hidden" value="21" /> <img src="images/panacek-uvod.jpg" class="figure-image" alt="" />
+                        <input name="answerId" type="hidden" value="21" /> <img src="images/panacek-uvod.jpg" class="figure-image" alt="" />
                         <div class="popover-wrapper">
                             <div class="popover left">
                                 <div class="arrow"></div>
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="popover-footer grey">
                                     <span class="author-name"><a href="#contact-modal" data-toggle="modal" class="show-contact">Marie
-                                            Skalická</a></span> <span class="dot">·</span> <input name='creation-timestamp' type='hidden'
+                                            Skalická</a></span> <span class="dot">·</span> <input name='creationTimestamp' type='hidden'
                                         value='1374346944000' /><span class="time continuously-updated"></span>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@
                         <div class="clear"></div>
                     </section>
                     <section class="answer">
-                        <input name="answer-id" type="hidden" value="22" /> <img src="images/panacek-uvod.jpg" class="figure-image" alt="" />
+                        <input name="answerId" type="hidden" value="22" /> <img src="images/panacek-uvod.jpg" class="figure-image" alt="" />
                         <div class="popover-wrapper">
                             <div class="popover left">
                                 <div class="arrow"></div>
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="popover-footer grey">
                                     <span class="author-name"><a href="#contact-modal" data-toggle="modal" class="show-contact">Marie
-                                            Skalická</a></span> <span class="dot">·</span> <input name='creation-timestamp' type='hidden'
+                                            Skalická</a></span> <span class="dot">·</span> <input name='creationTimestamp' type='hidden'
                                         value='1374346953000' /><span class="time continuously-updated"></span>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
                 <article class='thread'>
                     <input name='threadId' type='hidden' value='3' /> <input name='threadTags' type='hidden' value='' />
                     <section class="question">
-                        <input name="question-id" type="hidden" value="15" /> <img src="images/1233576218_panacek-png_67x100.png"
+                        <input name="questionId" type="hidden" value="15" /> <img src="images/1233576218_panacek-png_67x100.png"
                             class="figure-image" alt="" />
                         <div class="popover-wrapper">
                             <div class="popover right">
@@ -113,7 +113,7 @@
                                 <div class="popover-footer grey">
                                     <span class="author-name">Tom</span> <span class="dot">·</span>
                                     <button class="answer btn btn-link" type="button">Odpovědět</button>
-                                    <span class="dot">·</span> <input name='creation-timestamp' type='hidden' value='1374296515000' /><span
+                                    <span class="dot">·</span> <input name='creationTimestamp' type='hidden' value='1374296515000' /><span
                                         class="time continuously-updated"></span>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@
                 <article class='thread'>
                     <input name='threadId' type='hidden' value='2' /> <input name='threadTags' type='hidden' value='' />
                     <section class="question">
-                        <input name="question-id" type="hidden" value="10" /> <img src="images/1233576218_panacek-png_67x100.png"
+                        <input name="questionId" type="hidden" value="10" /> <img src="images/1233576218_panacek-png_67x100.png"
                             class="figure-image" alt="" />
                         <div class="popover-wrapper">
                             <div class="popover right">
@@ -140,7 +140,7 @@
                                 <div class="popover-footer grey">
                                     <span class="author-name">Anonym</span> <span class="dot">·</span>
                                     <button class="answer btn btn-link" type="button">Odpovědět</button>
-                                    <span class="dot">·</span> <input name='creation-timestamp' type='hidden' value='1374271315000' /><span
+                                    <span class="dot">·</span> <input name='creationTimestamp' type='hidden' value='1374271315000' /><span
                                         class="time continuously-updated"></span>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@
                         <div class="clear"></div>
                     </section>
                     <section class="answer">
-                        <input name="answer-id" type="hidden" value="11" /> <img src="images/panacek-uvod.jpg" class="figure-image" alt="" />
+                        <input name="answerId" type="hidden" value="11" /> <img src="images/panacek-uvod.jpg" class="figure-image" alt="" />
                         <div class="popover-wrapper">
                             <div class="popover left">
                                 <div class="arrow"></div>
@@ -158,7 +158,7 @@
                                 </div>
                                 <div class="popover-footer grey">
                                     <span class="author-name"><a href="#contact-modal" data-toggle="modal" class="show-contact">Marie
-                                            Skalická</a></span> <span class="dot">·</span> <input name='creation-timestamp' type='hidden'
+                                            Skalická</a></span> <span class="dot">·</span> <input name='creationTimestamp' type='hidden'
                                         value='1374271855000' /><span class="time continuously-updated"></span>
                                 </div>
                             </div>
@@ -170,7 +170,7 @@
                 <article class='thread'>
                     <input name='threadId' type='hidden' value='1' /> <input name='threadTags' type='hidden' value='' />
                     <section class="question">
-                        <input name="question-id" type="hidden" value="5" /> <img src="images/1233576218_panacek-png_67x100.png"
+                        <input name="questionId" type="hidden" value="5" /> <img src="images/1233576218_panacek-png_67x100.png"
                             class="figure-image" alt="" />
                         <div class="popover-wrapper">
                             <div class="popover right">
@@ -191,7 +191,7 @@
                                 <div class="popover-footer grey">
                                     <span class="author-name">Julie</span> <span class="dot">·</span>
                                     <button class="answer btn btn-link" type="button">Odpovědět</button>
-                                    <span class="dot">·</span> <input name='creation-timestamp' type='hidden' value='1374235855000' /><span
+                                    <span class="dot">·</span> <input name='creationTimestamp' type='hidden' value='1374235855000' /><span
                                         class="time continuously-updated"></span>
                                 </div>
                             </div>
@@ -199,7 +199,7 @@
                         <div class="clear"></div>
                     </section>
                     <section class="answer">
-                        <input name="answer-id" type="hidden" value="6" /> <img src="images/panacek-uvod.jpg" class="figure-image" alt="" />
+                        <input name="answerId" type="hidden" value="6" /> <img src="images/panacek-uvod.jpg" class="figure-image" alt="" />
                         <div class="popover-wrapper">
                             <div class="popover left">
                                 <div class="arrow"></div>
@@ -215,7 +215,7 @@
                                 </div>
                                 <div class="popover-footer grey">
                                     <span class="author-name"><a href="#contact-modal" data-toggle="modal" class="show-contact">Marie
-                                            Skalická</a></span> <span class="dot">·</span> <input name='creation-timestamp' type='hidden'
+                                            Skalická</a></span> <span class="dot">·</span> <input name='creationTimestamp' type='hidden'
                                         value='1332413882588' /><span class="time continuously-updated"></span>
                                 </div>
                             </div>
