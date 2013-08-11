@@ -688,7 +688,6 @@ function showNewAnswer(answerForm, answerParams) {
 }
 
 function getAnswerHtml(answerParams) {
-	console.log(answerParams);
 	var creationTimestamp = answerParams['creationTimestamp'];
 	return "<section class='answer'>"
 			+ getHiddenInputHtml('answerId', answerParams['id'])
