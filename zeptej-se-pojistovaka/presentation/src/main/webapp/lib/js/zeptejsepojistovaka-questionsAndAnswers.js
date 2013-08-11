@@ -814,12 +814,107 @@ function hideDeletedAnswer(answerId) {
 	answerToBeDeleted.remove();
 }
 
+var canLoadMore;
+
 function initLoadMoreControls() {
-	$('#questions-and-answers .load-more-wrapper .btn').click(
-			loadMoreQuestionsAndAnswers);
-	// TODO :
+	$('#questions-and-answers .load-more-wrapper .btn').click(loadMoreThreads);
+
+	canLoadMore = true;
+	$(window).scroll(loadMoreThreadsIfBottom);
 }
 
-function loadMoreQuestionsAndAnswers() {
-	// TODO :
+// TODO : DUMMY data
+function loadThreads() {
+	return [ {
+		'id' : 44,
+		'tags' : [],
+		'question' : {
+			'id' : 55555,
+			'author' : {
+				'id' : 1111,
+				'name' : 'Tom Skalicky',
+				'email' : 'tomsky@seznam.cz'
+			},
+			'thema' : 'Havarijní pojištění',
+			'text' : 'The text of question',
+			'creationTimestamp' : 1374235854000,
+			'lastUpdateTimestamp' : 1374235854001,
+			'answers' : [ {
+				'id' : 55555,
+				'author' : {
+					'id' : 3,
+					'name' : 'Marie',
+				},
+				'text' : 'Answer!!!',
+				'creationTimestamp' : 1374235854002,
+				'lastUpdateTimestamp' : 1374235854003
+			}, {
+				'id' : 55556,
+				'author' : {
+					'id' : 3,
+					'name' : 'Marie',
+				},
+				'text' : 'Answer 2!!!',
+				'creationTimestamp' : 1374235854003,
+				'lastUpdateTimestamp' : ''
+			} ]
+		}
+	}, {
+		'id' : 43,
+		'tags' : [],
+		'question' : {
+			'id' : 55556,
+			'author' : {
+				'id' : 112,
+				'name' : 'Tomaaas Skalicky',
+				'email' : 'tomsky@seznam.cz'
+			},
+			'thema' : 'Úrazové pojištění',
+			'text' : 'The text of question 2',
+			'creationTimestamp' : 1374235000000,
+			'lastUpdateTimestamp' : 1374235000001,
+			'answers' : [ {
+				'id' : 55556,
+				'author' : {
+					'id' : 3,
+					'name' : 'Marie',
+				},
+				'text' : 'Answer 1!!!',
+				'creationTimestamp' : 1374235854003,
+				'lastUpdateTimestamp' : ''
+			} ]
+		}
+	} ];
+}
+
+function loadMoreThreadsIfBottom() {
+	var LOAD_MORE_X_PIXELS_BEFORE_BOTTOM = 50;
+	if ($(window).height() >= $(document).height() - $(window).scrollTop()
+			- LOAD_MORE_X_PIXELS_BEFORE_BOTTOM
+			&& canLoadMore) {
+		canLoadMore = false;
+		loadMoreThreads();
+		canLoadMore = true;
+	}
+}
+
+function loadMoreThreads() {
+	var LOADED_THREAD_COUNT = 10;
+	var lastLoadedQuestionElement = $('#questions-and-answers .thread:last-child');
+	var lastLoadedQuestionCreationTimestamp = lastLoadedQuestionElement.find(
+			'.question [name=creationTimestamp]').val();
+
+	// TODO : AJAX
+	var loadedThreads = loadThreads(LOADED_THREAD_COUNT,
+			lastLoadedQuestionCreationTimestamp);
+
+	lastLoadedQuestionElement.parent().append(getThreadsHtml(loadedThreads));
+}
+
+function getThreadsHtml(threads) {
+	var html = "";
+	for ( var threadNum = 0; threadNum < threads.length; threadNum++) {
+		html += getThreadHtml(threads[threadNum]);
+	}
+	return html;
 }
