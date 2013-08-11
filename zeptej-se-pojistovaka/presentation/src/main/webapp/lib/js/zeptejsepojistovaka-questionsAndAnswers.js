@@ -909,9 +909,16 @@ function loadMoreThreads() {
 	var loadedThreads = loadThreads(LOADED_THREAD_COUNT,
 			lastLoadedQuestionCreationTimestamp);
 
-	lastLoadedQuestionElement.parent().append(getThreadsHtml(loadedThreads));
+	$(getThreadsHtml(loadedThreads)).insertAfter(lastLoadedQuestionElement);
+	enableControlsOfFollowingSiblingThreads(lastLoadedQuestionElement);
 
 	toggleLoadingMoreComponentsVisibility();
+}
+
+function toggleLoadingMoreComponentsVisibility() {
+	var wrapperElement = $('#questions-and-answers .load-more-wrapper');
+	wrapperElement.find('.loading-button').toggleClass('hide');
+	wrapperElement.find('.loading-image').toggleClass('hide');
 }
 
 function getThreadsHtml(threads) {
@@ -922,8 +929,22 @@ function getThreadsHtml(threads) {
 	return html;
 }
 
-function toggleLoadingMoreComponentsVisibility() {
-	var wrapperElement = $('#questions-and-answers .load-more-wrapper');
-	wrapperElement.find('.loading-button').toggleClass('hide');
-	wrapperElement.find('.loading-image').toggleClass('hide');
+function enableControlsOfFollowingSiblingThreads(excludedSiblingElement) {
+	var sibling = excludedSiblingElement.next();
+	while (isSibling(sibling)) {
+		initQuestionControls(sibling.find('.question'));
+		sibling.find('.answer').each(function() {
+			initAnswerControls($(this));
+		});
+		enableBootstrapTooltips(sibling);
+
+		sibling = sibling.next();
+	}
+}
+
+/**
+ * @see http://stackoverflow.com/questions/5685685/how-to-judge-an-elements-previous-or-next-element-exist-with-jquery
+ */
+function isSibling(jQueryObject) {
+	return (jQueryObject.length > 0);
 }
