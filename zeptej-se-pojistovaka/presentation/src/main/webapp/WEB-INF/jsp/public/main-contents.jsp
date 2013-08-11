@@ -7,7 +7,7 @@
         <%@ include file="questionsAndAnswers/list.jsp"%>
 
         <div class="col-12 col-sm-5">
-            <%@ include file="filters/list.jsp"%>
+            <%@ include file="tags/list.jsp"%>
             <%@ include file="facebook-comments.jsp"%>
         </div>
     </div>

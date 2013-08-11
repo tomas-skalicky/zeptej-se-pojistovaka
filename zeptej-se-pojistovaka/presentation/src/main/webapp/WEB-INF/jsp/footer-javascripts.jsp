@@ -13,7 +13,7 @@
 <script src="lib/js/zeptejsepojistovaka-utils.js"></script>
 <script src="lib/js/zeptejsepojistovaka-tooltip.js"></script>
 <script src="lib/js/zeptejsepojistovaka-introduction.js"></script>
-<script src="lib/js/zeptejsepojistovaka-filters.js"></script>
+<script src="lib/js/zeptejsepojistovaka-tags.js"></script>
 <script src="lib/js/zeptejsepojistovaka-questionsAndAnswers.js"></script>
 <script src="lib/js/zeptejsepojistovaka-time.js"></script>
 <script src="lib/js/zeptejsepojistovaka-contact.js"></script>

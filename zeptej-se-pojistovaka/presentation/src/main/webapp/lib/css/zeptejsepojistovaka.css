@@ -6,7 +6,7 @@ body {
     background-color: #EBEAE1;
 }
 
-a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus,#questions-and-answers .popover .controls .glyphicon,#filters .selected-filter.delete:hover,#filters .selected-filter.delete:focus
+a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus,#questions-and-answers .popover .controls .glyphicon,#tags .selected-tag.delete:hover,#tags .selected-tag.delete:focus
     {
     color: #3B5998
 }
@@ -92,7 +92,7 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus,#questions-and-answers .popo
     box-shadow: none;
 }
 
-#introduction-wrapper,#questions-and-answers>h3,#filters h4,#facebook-comments h4,.page-footer,.page-footer .btn
+#introduction-wrapper,#questions-and-answers>h3,#tags h4,#facebook-comments h4,.page-footer,.page-footer .btn
     {
     /*     font-family: 'Gentium Book Basic', Georgia, serif; */
     
@@ -126,12 +126,12 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus,#questions-and-answers .popo
     z-index: 303;
 }
 
-#ask-question-bar button,.new button.submit,.edit button.submit,.edit button.cancel,#filters .deactivate-filter .btn,#contact-modal .btn.submit
+#ask-question-bar button,.new button.submit,.edit button.submit,.edit button.cancel,#tags .deactivate-tag .btn,#contact-modal .btn.submit
     {
     float: right;
 }
 
-.btn-info,#ask-question-bar button,#filters .deactivate-filter .btn {
+.btn-info,#ask-question-bar button,#tags .deactivate-tag .btn {
     font-weight: bold;
 }
 
@@ -268,12 +268,12 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus,#questions-and-answers .popo
     width: 30px;
 }
 
-#filters .btn-group,#filters .row {
+#tags .btn-group,#tags .row {
     margin-left: 5px;
     margin-top: 3px;
 }
 
-#filters .selected-filter {
+#tags .selected-tag {
     border: 0;
     padding: 2px 7px;
     margin-top: 3px;
@@ -281,39 +281,39 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus,#questions-and-answers .popo
     font-weight: bold;
 }
 
-#filters .selected-filter:first-child {
+#tags .selected-tag:first-child {
     border-radius: 4px;
 }
 
-#filters .filter .btn-link,#filters .selected-filter.delete {
+#tags .tag .btn-link,#tags .selected-tag.delete {
     padding-left: 2px;
     padding-right: 2px;
 }
 
-#filters .filter .btn-link {
+#tags .tag .btn-link {
     padding-top: 3px;
     padding-bottom: 3px;
 }
 
-#filters .delete {
+#tags .delete {
     opacity: 0.2;
     text-decoration: none;
 }
 
-#filters .delete:hover,#filters .delete:focus {
+#tags .delete:hover,#tags .delete:focus {
     opacity: 1;
 }
 
-#filters .btn-link.delete {
+#tags .btn-link.delete {
     padding-left: 0;
     text-decoration: none;
 }
 
-#filters .tooptip {
+#tags .tooptip {
     text-shadow: none;
 }
 
-#filters footer {
+#tags footer {
     padding-top: 15px;
 }
 
@@ -321,7 +321,7 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus,#questions-and-answers .popo
     padding-top: 40px;
 }
 
-#add-filter>*:first-child .form-control {
+#add-tag>*:first-child .form-control {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
 }
@@ -453,7 +453,7 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus,#questions-and-answers .popo
     #questions-and-answers .answer .popover {
         max-width: 570px;
     }
-    #ask-question-bar,#questions-and-answers>div>div,#filters>div,#filters>footer,#facebook-comments>div {
+    #ask-question-bar,#questions-and-answers>div>div,#tags>div,#tags>footer,#facebook-comments>div {
         padding-left: 15px;
         padding-right: 15px;
     }
@@ -499,7 +499,7 @@ a,a:hover,.btn-link,.btn-link:hover,.btn-link:focus,#questions-and-answers .popo
         padding-left: 10px;
         padding-right: 10px;
     }
-    #filters>div,#filters>footer,#facebook-comments>div {
+    #tags>div,#tags>footer,#facebook-comments>div {
         padding-left: 10px;
         padding-right: 15px;
     }
