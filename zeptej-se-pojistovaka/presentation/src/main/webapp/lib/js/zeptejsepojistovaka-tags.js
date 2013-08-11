@@ -36,8 +36,8 @@ function initAddTagControls() {
 }
 
 /**
- * Adds the new tag behind the last one and clears an input element holding
- * name of the new tag.
+ * Adds the new tag behind the last one and clears an input element holding name
+ * of the new tag.
  */
 function handleAddTag() {
 	var newTagNameElement = $('#add-tag [name=tagName]');
@@ -161,8 +161,7 @@ function persistDeletedTag(tagId) {
 }
 
 function hideDeletedTag(tagId) {
-	var tagToBeDeleted = $(
-			'#tags .tag [name=tagId][value=' + tagId + ']')
+	var tagToBeDeleted = $('#tags .tag [name=tagId][value=' + tagId + ']')
 			.closest('.tag');
 	tagToBeDeleted.remove();
 }
@@ -176,7 +175,7 @@ function initTagActivationControls(tagElements) {
 	if (tagElements) {
 		elements = tagElements;
 	} else {
-		elements = $('#tags .tag .btn-link').tag('.tag-label');
+		elements = $('#tags .tag .btn-link').filter('.tag-label');
 	}
 	elements.click(activateTag);
 }
@@ -214,8 +213,7 @@ function initTagDeactivationControls(tagElements) {
 	if (tagElements) {
 		elements = tagElements;
 	} else {
-		elements = $('#tags .tag .tag-label').tag(
-				'.selected-tag');
+		elements = $('#tags .tag .tag-label').filter('.selected-tag');
 	}
 	elements.click(deactivateTag);
 }
@@ -233,22 +231,21 @@ function deactivateAllTags() {
 }
 
 function hideDeactivateTagButton() {
-	var activatedTagCount = $('#tags .tag .tag-label').tag(
-			'.selected-tag').length;
+	var activatedTagCount = $('#tags .tag .tag-label').filter('.selected-tag').length;
 	if (activatedTagCount === 0) {
 		$('#tags .deactivate-tag').hide();
 	}
 }
 
 function showAllTagsDeactivation() {
-	var allActivatedTagElements = $('#tags .tag .tag-label')
-			.tag('.selected-tag');
+	var allActivatedTagElements = $('#tags .tag .tag-label').filter(
+			'.selected-tag');
 	showTagDeactivation(allActivatedTagElements);
 }
 
 function showTagDeactivation(tagElementsToBeDeactivated) {
-	showTagActivationOrDeactivation(tagElementsToBeDeactivated,
-			new Array('btn-success', 'selected-tag'), new Array('btn-link'));
+	showTagActivationOrDeactivation(tagElementsToBeDeactivated, new Array(
+			'btn-success', 'selected-tag'), new Array('btn-link'));
 	initTagActivationControls(tagElementsToBeDeactivated);
 }
 
