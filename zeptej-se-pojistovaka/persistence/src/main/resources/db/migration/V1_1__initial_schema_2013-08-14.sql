@@ -6,9 +6,7 @@ USE zeptej_se_pojistovaka;
  * The users table covers AbstractUser, VerifiedUser, AbstractUnverifiedUser,
  * UnverifiedContributionAuthor and UnverifiedMessageAuthor java classes.
  * 
- * Do not change username, password, enabled and authority since they are the
- * parts of the Spring Security's default database schema.
- * NOTE: Username is actually a generated user ID.
+ * IMPORTANT: see http://static.springsource.org/spring-security/site/docs/current/reference/appendix-schema.html
  *
  * The email is UNIQUE, hence it is necessary to use "null" as the default
  * value, not the empty string.
@@ -16,11 +14,11 @@ USE zeptej_se_pojistovaka;
 DROP TABLE IF EXISTS `tag_thread_references`;
 DROP TABLE IF EXISTS `contributions`;
 DROP TABLE IF EXISTS `messages`;
-DROP TABLE IF EXISTS `authorities`;
+DROP TABLE IF EXISTS `rights`;
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-    `username` INT(11) PRIMARY KEY AUTO_INCREMENT,
-    `password` VARCHAR(50),
+    `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
+    `password_hash` VARCHAR(50),
     `enabled` BOOLEAN NOT NULL,
     `name` VARCHAR(50),
     `email` VARCHAR(100) UNIQUE,
@@ -28,13 +26,13 @@ CREATE TABLE `users` (
     CONSTRAINT `email_validator` CHECK (`email` LIKE '_%@_%._%')
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `authorities` (
-	`username` INT(11) NOT NULL,
-	`authority` VARCHAR(50) NOT NULL,
-	PRIMARY KEY (`username`, `authority`),
-	CONSTRAINT `FK_authorities_users`
-		FOREIGN KEY (`username`)
-		REFERENCES `users`(`username`)
+CREATE TABLE `rights` (
+	`user_id` INT(11) NOT NULL,
+	`right_id` TINYINT(4) NOT NULL,
+	PRIMARY KEY (`user_id`, `right_id`),
+	CONSTRAINT `FK_rights_users`
+		FOREIGN KEY (`user_id`)
+		REFERENCES `users`(`id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -59,7 +57,7 @@ CREATE TABLE `contributions` (
     `question_id` INT(11),
     CONSTRAINT `FK_contributions_users`
         FOREIGN KEY (`author_id`)
-        REFERENCES `users`(`username`)
+        REFERENCES `users`(`id`)
         ON UPDATE CASCADE
         ON DELETE CASCADE,
     CONSTRAINT `FK_answers_questions`
@@ -120,7 +118,7 @@ CREATE TABLE `messages` (
     `text` TEXT,
     CONSTRAINT `FK_messages_users`
         FOREIGN KEY (`author_id`)
-        REFERENCES `users`(`username`)
+        REFERENCES `users`(`id`)
         ON UPDATE CASCADE
         ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
