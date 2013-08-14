@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.NotBlank;
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
-public class UnverifiedMessageAuthor extends AbstractUnverifiedPerson implements MessageAuthor {
+public class UnverifiedMessageAuthor extends AbstractUnverifiedUser implements MessageAuthor {
 
     @NotBlank
     @Email

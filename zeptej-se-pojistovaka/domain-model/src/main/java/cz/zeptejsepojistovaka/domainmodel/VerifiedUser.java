@@ -17,10 +17,10 @@ import cz.zeptejsepojistovaka.domainmodel.right.AbstractRight;
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
-public class VerifiedPerson extends AbstractPerson implements ContributionAuthor, MessageAuthor {
+public class VerifiedUser extends AbstractUser implements ContributionAuthor, MessageAuthor {
 
     @NotBlank
-    @Size(min = AbstractPerson.MIN_NAME_LENGTH)
+    @Size(min = AbstractUser.MIN_NAME_LENGTH)
     @NonNull
     @Getter
     @Setter

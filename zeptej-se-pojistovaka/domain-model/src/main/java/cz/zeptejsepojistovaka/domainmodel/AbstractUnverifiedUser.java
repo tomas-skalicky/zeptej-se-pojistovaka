@@ -1,6 +1,6 @@
 package cz.zeptejsepojistovaka.domainmodel;
 
-import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,12 +8,10 @@ import lombok.Setter;
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
-public abstract class AbstractPerson implements Person {
+public abstract class AbstractUnverifiedUser extends AbstractUser {
 
-    public static final int MIN_NAME_LENGTH = 3;
-
-    @Min(1)
+    @Size(min = AbstractUser.MIN_NAME_LENGTH)
     @Getter
     @Setter
-    private int id;
+    private String name;
 }
