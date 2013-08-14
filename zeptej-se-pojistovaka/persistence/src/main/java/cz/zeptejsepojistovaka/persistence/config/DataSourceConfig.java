@@ -1,4 +1,4 @@
-package cz.zeptejsepojistovaka.presentation.config;
+package cz.zeptejsepojistovaka.persistence.config;
 
 import org.springframework.context.annotation.Configuration;
 
