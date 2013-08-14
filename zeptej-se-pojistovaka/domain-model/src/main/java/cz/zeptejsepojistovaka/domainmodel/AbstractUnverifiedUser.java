@@ -10,6 +10,8 @@ import lombok.Setter;
  */
 public abstract class AbstractUnverifiedUser extends AbstractUser {
 
+    private static final long serialVersionUID = -1617101233945284202L;
+
     @Size(min = AbstractUser.MIN_NAME_LENGTH)
     @Getter
     @Setter

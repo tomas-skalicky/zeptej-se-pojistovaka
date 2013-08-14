@@ -1,8 +1,11 @@
 package cz.zeptejsepojistovaka.domainmodel;
 
+import java.io.Serializable;
 import java.util.List;
 
-import javax.validation.constraints.Min;
+import javax.persistence.Embeddable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
@@ -12,23 +15,23 @@ import lombok.Setter;
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
-public class Thread {
+@Embeddable
+public class Thread implements Serializable {
 
-    @Min(1)
-    @Getter
-    @Setter
-    private int id;
+    private static final long serialVersionUID = -4754136234136946020L;
 
     @NotNull
     @NonNull
     @Getter
     @Setter
+    @ManyToMany
     private List<Tag> tags;
 
     @NotNull
     @NonNull
     @Getter
     @Setter
+    @OneToOne
     private Question question;
 
     @NotNull

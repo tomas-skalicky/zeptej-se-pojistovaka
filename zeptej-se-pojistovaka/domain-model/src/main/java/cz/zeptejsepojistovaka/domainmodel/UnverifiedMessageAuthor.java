@@ -12,6 +12,8 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 public class UnverifiedMessageAuthor extends AbstractUnverifiedUser implements MessageAuthor {
 
+    private static final long serialVersionUID = -6819011743293259868L;
+
     @NotBlank
     @Email
     @NonNull

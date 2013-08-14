@@ -10,6 +10,8 @@ import org.hibernate.validator.constraints.Email;
  */
 public class UnverifiedContributionAuthor extends AbstractUnverifiedUser implements ContributionAuthor {
 
+    private static final long serialVersionUID = 5722350189695963109L;
+
     @Email
     @Getter
     @Setter

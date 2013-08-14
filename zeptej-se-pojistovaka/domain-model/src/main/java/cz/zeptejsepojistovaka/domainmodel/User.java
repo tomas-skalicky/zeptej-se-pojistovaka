@@ -1,9 +1,11 @@
 package cz.zeptejsepojistovaka.domainmodel;
 
+import java.io.Serializable;
+
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
-public interface User {
+public interface User extends Serializable {
 
     int getId();
 

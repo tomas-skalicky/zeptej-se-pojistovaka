@@ -3,12 +3,15 @@ package cz.zeptejsepojistovaka.domainmodel;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum Sex {
 
     MALE(1), FEMALE(2);
@@ -18,8 +21,4 @@ public enum Sex {
     @NonNull
     @Getter
     private final int id;
-
-    private Sex(int id) {
-        this.id = id;
-    }
 }

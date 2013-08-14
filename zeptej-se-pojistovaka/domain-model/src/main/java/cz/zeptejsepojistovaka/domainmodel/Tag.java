@@ -1,7 +1,16 @@
 package cz.zeptejsepojistovaka.domainmodel;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -15,13 +24,21 @@ import org.hibernate.validator.constraints.NotBlank;
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
-public class Tag {
+@Entity
+@Table(name = Tag.TABLE_NAME)
+public class Tag implements Serializable {
+
+    private static final long serialVersionUID = -1647584659983351288L;
 
     public static final int MIN_NAME_LENGTH = 2;
+    public static final String TABLE_NAME = "tags";
+    public static final String ID_COLUMN_NAME = "id";
 
     @Min(1)
     @Getter
     @Setter
+    @Id
+    @GeneratedValue
     private int id;
 
     @NotBlank
@@ -35,11 +52,14 @@ public class Tag {
     @NonNull
     @Getter
     @Setter
-    private List<Thread> threads;
+    @ManyToMany
+    private Set<Thread> threads;
 
     @NotNull
     @NonNull
     @Getter
     @Setter
-    private List<String> patterns;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = ID_COLUMN_NAME, table = TABLE_NAME)
+    private Set<String> patterns;
 }
