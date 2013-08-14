@@ -14,7 +14,6 @@ USE zeptej_se_pojistovaka;
  * value, not the empty string.
  */
 DROP TABLE IF EXISTS `tag_thread_references`;
-DROP TABLE IF EXISTS `threads`;
 DROP TABLE IF EXISTS `contributions`;
 DROP TABLE IF EXISTS `messages`;
 DROP TABLE IF EXISTS `authorities`;
@@ -70,16 +69,6 @@ CREATE TABLE `contributions` (
         ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `threads` (
-    `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
-    `question_id` INT(11) NOT NULL UNIQUE,
-    CONSTRAINT `FK_threads_questions`
-        FOREIGN KEY (`question_id`)
-        REFERENCES `contributions`(`id`)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
 
 /**
@@ -103,7 +92,7 @@ CREATE TABLE `tag_thread_references` (
         ON DELETE CASCADE,
     CONSTRAINT `FK_tag_thread_references_threads`
         FOREIGN KEY (`thread_id`)
-        REFERENCES `threads`(`id`)
+        REFERENCES `contributions`(`id`)
         ON UPDATE CASCADE
         ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
