@@ -13,6 +13,7 @@
 
 
     <modules>
+        <module>persistence</module>
         <module>presentation</module>
         <module>commons</module>
         <module>business-logic</module>
