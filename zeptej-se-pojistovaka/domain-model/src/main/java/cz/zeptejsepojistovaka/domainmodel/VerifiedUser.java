@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -25,7 +24,6 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
 @Entity
-@Table(name = AbstractUser.TABLE_NAME)
 public class VerifiedUser extends AbstractUser implements ContributionAuthor, MessageAuthor, UserDetails {
 
     private static final long serialVersionUID = 4376233966414060002L;
