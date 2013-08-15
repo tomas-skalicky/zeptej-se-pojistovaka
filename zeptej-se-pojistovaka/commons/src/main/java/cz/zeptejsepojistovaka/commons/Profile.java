@@ -3,10 +3,30 @@ package cz.zeptejsepojistovaka.commons;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
 import org.apache.commons.lang3.StringUtils;
 
+import cz.zeptejsepojistovaka.commons.annotation.Dev;
+import cz.zeptejsepojistovaka.commons.annotation.Production;
+import cz.zeptejsepojistovaka.commons.annotation.Test;
+
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum Profile {
-    DEV, TEST, PRODUCTION;
+
+    DEV(Dev.PROFILE_NAME) {
+    },
+    TEST(Test.PROFILE_NAME) {
+    },
+    PRODUCTION(Production.PROFILE_NAME) {
+    };
+
+    @NonNull
+    @Getter
+    private final String name;
 
     public static final Map<String, Profile> LOWER_CASED_NAME_TO_TYPE = initializeLowerCasedNameToType();
 
@@ -15,14 +35,14 @@ public enum Profile {
         Map<String, Profile> resultMap = new HashMap<String, Profile>(2 * values().length);
 
         for (Profile type : values()) {
-            resultMap.put(StringUtils.lowerCase(type.name()), type);
+            resultMap.put(StringUtils.lowerCase(type.name), type);
         }
         return resultMap;
     }
 
     /**
-     * @param name
-     *            Name of profile. Need not to be lower cased.
+     * Gets a {@link Profile} type which corresponds to the given {@code name}. Lower/upper case is not
+     * decisive.
      */
     public static Profile getType(String name) {
         String lowerCasedName = StringUtils.lowerCase(name);
