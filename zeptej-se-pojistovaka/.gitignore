@@ -11,6 +11,9 @@ target/
 #####
 .metadata/
 Servers/
+.project
 **/.project
+.classpath
 **/.classpath
+.settings/
 **/.settings/
