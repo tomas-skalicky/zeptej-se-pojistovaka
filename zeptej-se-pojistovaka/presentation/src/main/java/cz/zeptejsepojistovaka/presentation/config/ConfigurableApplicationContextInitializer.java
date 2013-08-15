@@ -15,6 +15,8 @@ public class ConfigurableApplicationContextInitializer implements
 
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
+        // In Eclipse: you can add -Dprofile="DEV" to
+        // Run Configurations.../<particular_server>/Arguments/VM arguments.
         String profileName = System.getProperty(PROFILE_PROPERTY_NAME);
 
         Profile profileToBeActivated = null;

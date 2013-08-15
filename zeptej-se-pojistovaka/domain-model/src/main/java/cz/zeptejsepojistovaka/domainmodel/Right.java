@@ -25,7 +25,7 @@ public class Right implements GrantedAuthority {
     public static final String TABLE_NAME = "rights";
 
     public Right(int userId, RightType rightType) {
-        this.id = new RightKey(userId, rightType);
+        setId(new RightKey(userId, rightType));
     }
 
     public Right(int userId, int rightTypeId) {
