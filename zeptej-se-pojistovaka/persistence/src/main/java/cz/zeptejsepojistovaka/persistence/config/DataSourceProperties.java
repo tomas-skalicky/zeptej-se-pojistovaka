@@ -1,26 +1,71 @@
 package cz.zeptejsepojistovaka.persistence.config;
 
-public interface DataSourceProperties {
+import java.io.IOException;
+import java.util.Properties;
 
-    public static final String DATABASE_DRIVER_PROPERTY_NAME = "db.driver";
-    public static final String DATABASE_URL_PROPERTY_NAME = "db.url";
-    public static final String DATABASE_USERNAME_PROPERTY_NAME = "db.username";
-    public static final String DATABASE_PASSWORD_PROPERTY_NAME = "db.password";
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 
-    public static final String HIBERNATE_DIALECT_PROPERTY_NAME = "hibernate.dialect";
-    public static final String HIBERNATE_SHOW_SQL_PROPERTY_NAME = "hibernate.show_sql";
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
+import org.springframework.stereotype.Component;
+
+@Component(value = DataSourceProperties.COMPONENT_NAME)
+public class DataSourceProperties {
+
+    private static final String DATABASE_DRIVER_CLASS_PROPERTY_NAME = "database.driverClass";
+    private static final String DATABASE_CONNECTION_URL_PROPERTY_NAME = "database.connectionUrl";
+    private static final String DATABASE_USERNAME_PROPERTY_NAME = "database.username";
+    private static final String DATABASE_PASSWORD_PROPERTY_NAME = "database.password";
+
+    static final String HIBERNATE_DIALECT_PROPERTY_NAME = "hibernate.dialect";
+    static final String HIBERNATE_SHOW_SQL_PROPERTY_NAME = "hibernate.show_sql";
 
     public static final String COMPONENT_NAME = "dataSourceProperties";
 
-    String getDbDriver();
+    private static final String PROPERTY_FILE_CLASSPATH = "environment/dataSource.properties";
 
-    String getDbUrl();
+    @NonNull
+    @Getter
+    @Setter(AccessLevel.PRIVATE)
+    private String databaseDriverClass;
+    @NonNull
+    @Getter
+    @Setter(AccessLevel.PRIVATE)
+    private String databaseConnectionUrl;
+    @NonNull
+    @Getter
+    @Setter(AccessLevel.PRIVATE)
+    private String databaseUsername;
+    @NonNull
+    @Getter
+    @Setter(AccessLevel.PRIVATE)
+    private String databasePassword;
+    @NonNull
+    @Getter
+    @Setter(AccessLevel.PRIVATE)
+    private String hibernateDialect;
+    @NonNull
+    @Getter
+    @Setter(AccessLevel.PRIVATE)
+    private boolean hibernateShowSql;
 
-    String getDbUsername();
+    public DataSourceProperties() throws IOException {
+        loadPropertyValuesFromFile(PROPERTY_FILE_CLASSPATH);
+    }
 
-    String getDbPassword();
+    private void loadPropertyValuesFromFile(String propertyFileClassPath) throws IOException {
+        Resource propertyFile = new ClassPathResource(propertyFileClassPath);
+        Properties loadedProperties = PropertiesLoaderUtils.loadProperties(propertyFile);
 
-    String getHibernateDialect();
-
-    boolean isHibernateShowSql();
+        setDatabaseDriverClass(loadedProperties.getProperty(DATABASE_DRIVER_CLASS_PROPERTY_NAME));
+        setDatabaseConnectionUrl(loadedProperties.getProperty(DATABASE_CONNECTION_URL_PROPERTY_NAME));
+        setDatabaseUsername(loadedProperties.getProperty(DATABASE_USERNAME_PROPERTY_NAME));
+        setDatabasePassword(loadedProperties.getProperty(DATABASE_PASSWORD_PROPERTY_NAME));
+        setHibernateDialect(loadedProperties.getProperty(HIBERNATE_DIALECT_PROPERTY_NAME));
+        setHibernateShowSql(Boolean.valueOf(loadedProperties.getProperty(HIBERNATE_SHOW_SQL_PROPERTY_NAME)));
+    }
 }

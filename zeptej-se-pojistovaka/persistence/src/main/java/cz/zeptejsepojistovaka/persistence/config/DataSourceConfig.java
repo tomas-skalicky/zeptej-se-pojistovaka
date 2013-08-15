@@ -31,10 +31,10 @@ public class DataSourceConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
-        dataSource.setDriverClassName(this.dataSourceProperties.getDbDriver());
-        dataSource.setUrl(this.dataSourceProperties.getDbUrl());
-        dataSource.setUsername(this.dataSourceProperties.getDbUsername());
-        dataSource.setPassword(this.dataSourceProperties.getDbPassword());
+        dataSource.setDriverClassName(this.dataSourceProperties.getDatabaseDriverClass());
+        dataSource.setUrl(this.dataSourceProperties.getDatabaseConnectionUrl());
+        dataSource.setUsername(this.dataSourceProperties.getDatabaseUsername());
+        dataSource.setPassword(this.dataSourceProperties.getDatabasePassword());
 
         return dataSource;
     }
