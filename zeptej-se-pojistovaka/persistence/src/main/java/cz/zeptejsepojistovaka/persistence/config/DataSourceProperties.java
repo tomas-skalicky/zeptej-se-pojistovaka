@@ -23,6 +23,7 @@ public class DataSourceProperties {
 
     static final String HIBERNATE_DIALECT_PROPERTY_NAME = "hibernate.dialect";
     static final String HIBERNATE_SHOW_SQL_PROPERTY_NAME = "hibernate.show_sql";
+    static final String HIBERNATE_HBM2DLL_AUTO_PROPERTY_NAME = "hibernate.hbm2ddl.auto";
 
     public static final String COMPONENT_NAME = "dataSourceProperties";
 
@@ -52,6 +53,10 @@ public class DataSourceProperties {
     @Getter
     @Setter(AccessLevel.PRIVATE)
     private boolean hibernateShowSql;
+    @NonNull
+    @Getter
+    @Setter(AccessLevel.PRIVATE)
+    private String hibernateHbm2dllAuto;
 
     public DataSourceProperties() throws IOException {
         loadPropertyValuesFromFile(PROPERTY_FILE_CLASSPATH);
@@ -67,5 +72,6 @@ public class DataSourceProperties {
         setDatabasePassword(loadedProperties.getProperty(DATABASE_PASSWORD_PROPERTY_NAME));
         setHibernateDialect(loadedProperties.getProperty(HIBERNATE_DIALECT_PROPERTY_NAME));
         setHibernateShowSql(Boolean.valueOf(loadedProperties.getProperty(HIBERNATE_SHOW_SQL_PROPERTY_NAME)));
+        setHibernateHbm2dllAuto(loadedProperties.getProperty(HIBERNATE_HBM2DLL_AUTO_PROPERTY_NAME));
     }
 }

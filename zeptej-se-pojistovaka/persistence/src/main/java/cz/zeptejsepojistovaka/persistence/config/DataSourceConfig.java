@@ -57,6 +57,8 @@ public class DataSourceConfig {
                 this.dataSourceProperties.getHibernateDialect());
         properties.put(DataSourceProperties.HIBERNATE_SHOW_SQL_PROPERTY_NAME,
                 this.dataSourceProperties.isHibernateShowSql());
+        properties.put(DataSourceProperties.HIBERNATE_HBM2DLL_AUTO_PROPERTY_NAME,
+                this.dataSourceProperties.getHibernateHbm2dllAuto());
         return properties;
     }
 

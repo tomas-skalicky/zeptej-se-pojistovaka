@@ -316,6 +316,8 @@
                 <db.password>password</db.password>
                 <hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
                 <hibernate.showSql>true</hibernate.showSql>
+                <!-- For test purposes -->
+                <hibernate.hbm2ddl.auto>udpate</hibernate.hbm2ddl.auto>
             </properties>
         </profile>
         <!-- Text environment -->
