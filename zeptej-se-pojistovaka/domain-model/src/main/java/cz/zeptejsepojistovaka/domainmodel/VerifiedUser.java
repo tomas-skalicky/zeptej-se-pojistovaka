@@ -65,7 +65,7 @@ public class VerifiedUser extends AbstractUser implements ContributionAuthor, Me
     @Getter
     @Setter
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = AbstractUser.ID_COLUMN_NAME, table = AbstractContribution.TABLE_NAME)
+    @JoinColumn(name = AbstractUser.ID_COLUMN_NAME, table = AbstractUser.TABLE_NAME)
     private Set<Right> rights;
 
     @Getter
