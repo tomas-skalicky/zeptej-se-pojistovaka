@@ -1,14 +1,18 @@
 package cz.zeptejsepojistovaka.domainmodel;
 
-import javax.persistence.EmbeddedId;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
+import lombok.ToString;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -16,36 +20,37 @@ import org.springframework.security.core.GrantedAuthority;
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
 @NoArgsConstructor
+@ToString
 @Entity
 @Table(name = Right.TABLE_NAME)
+@IdClass(value = RightKey.class)
 public class Right implements GrantedAuthority {
 
     private static final long serialVersionUID = -6965401950684956798L;
 
     public static final String TABLE_NAME = "rights";
-
-    public Right(int userId, RightType rightType) {
-        setId(new RightKey(userId, rightType));
-    }
-
-    public Right(int userId, int rightTypeId) {
-        this(userId, RightType.getType(rightTypeId));
-    }
+    public static final String USER_ID_COLUMN_NAME = "user_id";
+    public static final String RIGHT_TYPE_ID_COLUMN_NAME = "right_type_id";
 
     @NotNull
+    @Min(1)
     @NonNull
     @Getter
     @Setter
-    @EmbeddedId
-    private RightKey id;
+    @Id
+    @Column(name = USER_ID_COLUMN_NAME)
+    private int userId;
+    @NotNull
+    @Min(1)
+    @NonNull
+    @Getter
+    @Setter
+    @Id
+    @Column(name = RIGHT_TYPE_ID_COLUMN_NAME)
+    private RightType rightType;
 
     @Override
     public String getAuthority() {
-        return String.valueOf(this.id.getRightType().getId());
-    }
-
-    @Override
-    public String toString() {
-        return this.id.toString();
+        return String.valueOf(this.rightType.getId());
     }
 }
