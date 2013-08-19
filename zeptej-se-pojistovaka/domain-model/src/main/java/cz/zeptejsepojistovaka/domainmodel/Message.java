@@ -17,6 +17,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
@@ -58,5 +59,6 @@ public class Message implements Serializable {
     @NonNull
     @Getter
     @Setter
+    @Type(type = "TEXT")
     private String text;
 }
