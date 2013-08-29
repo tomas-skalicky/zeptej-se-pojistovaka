@@ -34,7 +34,6 @@ public class Message implements Serializable {
     public static final int MIN_TEXT_LENGTH = 10;
     public static final String TABLE_NAME = "messages";
     public static final String AUTHOR_COLUMN_NAME = "author_id";
-    public static final String TEXT_TYPE = "text";
 
     @Min(1)
     @Getter
@@ -63,6 +62,6 @@ public class Message implements Serializable {
     @NonNull
     @Getter
     @Setter
-    @Type(type = TEXT_TYPE)
+    @Type(type = HibernateConstants.TEXT_TYPE)
     private String text;
 }

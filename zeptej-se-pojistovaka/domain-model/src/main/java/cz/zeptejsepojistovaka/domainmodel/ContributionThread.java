@@ -16,7 +16,7 @@ import lombok.Setter;
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
 @Embeddable
-public class Thread implements Serializable {
+public class ContributionThread implements Serializable {
 
     private static final long serialVersionUID = -4754136234136946020L;
 

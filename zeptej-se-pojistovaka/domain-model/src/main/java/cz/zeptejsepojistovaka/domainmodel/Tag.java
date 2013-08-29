@@ -53,7 +53,7 @@ public class Tag implements Serializable {
     @Getter
     @Setter
     @ManyToMany
-    private Set<Thread> threads;
+    private Set<ContributionThread> threads;
 
     @NotNull
     @NonNull

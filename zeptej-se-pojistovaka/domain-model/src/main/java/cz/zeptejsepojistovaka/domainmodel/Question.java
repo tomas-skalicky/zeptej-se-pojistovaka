@@ -32,5 +32,5 @@ public class Question extends AbstractContribution {
     @Getter
     @Setter
     @Embedded
-    private Thread thread;
+    private ContributionThread thread;
 }

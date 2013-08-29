@@ -42,6 +42,7 @@ public class Right implements GrantedAuthority {
     @Id
     @Column(name = USER_ID_COLUMN_NAME)
     private int userId;
+
     @NotNull
     @Min(1)
     @NonNull
