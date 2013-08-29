@@ -2,6 +2,8 @@ package cz.zeptejsepojistovaka.domainmodel;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
@@ -46,6 +48,7 @@ public class Right implements GrantedAuthority {
     @Getter
     @Setter
     @Id
+    @Enumerated(EnumType.STRING)
     @Column(name = RIGHT_TYPE_ID_COLUMN_NAME)
     private RightType rightType;
 

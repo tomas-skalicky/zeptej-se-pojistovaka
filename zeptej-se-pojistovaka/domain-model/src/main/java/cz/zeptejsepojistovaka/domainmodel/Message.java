@@ -3,6 +3,8 @@ package cz.zeptejsepojistovaka.domainmodel;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -45,6 +47,7 @@ public class Message implements Serializable {
     @NonNull
     @Getter
     @Setter
+    @Enumerated(EnumType.STRING)
     private MessageType type;
 
     @NotNull
