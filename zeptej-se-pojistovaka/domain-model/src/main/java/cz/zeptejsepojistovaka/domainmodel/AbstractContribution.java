@@ -22,6 +22,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
@@ -61,8 +62,10 @@ public abstract class AbstractContribution implements Serializable {
     @NonNull
     @Getter
     @Setter
-    private int text;
+    @Type(type = HibernateConstants.TEXT_TYPE)
+    private String text;
 
+    @NotNull
     @Past
     @Getter
     @Setter

@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -25,8 +24,7 @@ public class Question extends AbstractContribution {
     @NonNull
     @Getter
     @Setter
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = Answer.QUESTION_COLUMN_NAME, table = AbstractContribution.TABLE_NAME)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
     private List<Answer> answers;
 
     @Getter
