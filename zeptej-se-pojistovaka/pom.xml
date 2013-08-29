@@ -317,7 +317,7 @@
                 <hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
                 <hibernate.showSql>true</hibernate.showSql>
                 <!-- For test purposes -->
-                <hibernate.hbm2ddl.auto>udpate</hibernate.hbm2ddl.auto>
+                <hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
             </properties>
         </profile>
         <!-- Text environment -->
