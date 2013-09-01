@@ -3,6 +3,7 @@ package cz.zeptejsepojistovaka.domainmodel;
 import java.util.Collection;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -67,7 +68,7 @@ public class VerifiedUser extends AbstractUser implements ContributionAuthor, Me
     @NonNull
     @Getter
     @Setter
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = Right.USER_ID_COLUMN_NAME, referencedColumnName = AbstractUser.ID_COLUMN_NAME)
     private Set<Right> rights;
 

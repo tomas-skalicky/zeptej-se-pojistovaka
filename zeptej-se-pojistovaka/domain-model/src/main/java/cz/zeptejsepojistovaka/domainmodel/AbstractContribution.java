@@ -1,8 +1,9 @@
 package cz.zeptejsepojistovaka.domainmodel;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -53,7 +54,7 @@ public abstract class AbstractContribution implements Serializable {
     @NonNull
     @Getter
     @Setter
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = AbstractUser.class)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = AbstractUser.class, cascade = CascadeType.ALL)
     @JoinColumn(name = AUTHOR_COLUMN_NAME, referencedColumnName = AbstractUser.ID_COLUMN_NAME)
     private ContributionAuthor author;
 
@@ -70,11 +71,11 @@ public abstract class AbstractContribution implements Serializable {
     @Getter
     @Setter
     @Column(name = CREATION_TIMESTAMP_COLUMN_NAME)
-    private Date creationTimestamp;
+    private Timestamp creationTimestamp;
 
     @Past
     @Getter
     @Setter
     @Column(name = LAST_UPDATE_TIMESTAMP_COLUMN_NAME)
-    private Date lastUpdateTimestamp;
+    private Timestamp lastUpdateTimestamp;
 }

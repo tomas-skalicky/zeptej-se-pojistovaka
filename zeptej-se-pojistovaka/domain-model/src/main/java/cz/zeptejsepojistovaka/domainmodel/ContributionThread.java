@@ -3,7 +3,9 @@ package cz.zeptejsepojistovaka.domainmodel;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
@@ -31,12 +33,12 @@ public class ContributionThread implements Serializable {
     @NonNull
     @Getter
     @Setter
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Question question;
 
     @NotNull
     @NonNull
     @Getter
     @Setter
-    private Question thema;
+    private String thema;
 }

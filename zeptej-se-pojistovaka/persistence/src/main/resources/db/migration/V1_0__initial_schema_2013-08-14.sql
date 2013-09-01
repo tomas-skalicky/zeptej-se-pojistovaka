@@ -8,6 +8,7 @@ USE zeptej_se_pojistovaka;
  * 
  * IMPORTANT: see http://static.springsource.org/spring-security/site/docs/current/reference/appendix-schema.html
  *
+ * DTYPE: Discriminator-Type column created by Hibernate
  * The email is UNIQUE, hence it is necessary to use "null" as the default
  * value, not the empty string.
  */
@@ -17,19 +18,20 @@ DROP TABLE IF EXISTS `messages`;
 DROP TABLE IF EXISTS `rights`;
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
+    `DTYPE` VARCHAR(31) NOT NULL,
     `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
     `password_hash` VARCHAR(50),
-    `enabled` BOOLEAN NOT NULL,
+    `enabled` BOOLEAN,
     `name` VARCHAR(50),
-    `email` VARCHAR(100) UNIQUE,
+    `email` VARCHAR(100),
     `sex` BOOLEAN,
     CONSTRAINT `email_validator` CHECK (`email` LIKE '_%@_%._%')
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `rights` (
 	`user_id` INT(11) NOT NULL,
-	`right_id` TINYINT(4) NOT NULL,
-	PRIMARY KEY (`user_id`, `right_id`),
+	`right_type_id` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`user_id`, `right_type_id`),
 	CONSTRAINT `FK_rights_users`
 		FOREIGN KEY (`user_id`)
 		REFERENCES `users` (`id`)
@@ -45,9 +47,11 @@ CREATE TABLE `rights` (
  * The contributions table covers AbstractContribution, Question and Answer
  * java classes.
  * 
+ * DTYPE: Discriminator-Type column created by Hibernate
  * DATETIME vs. TIMESTAMP ... see http://stackoverflow.com/questions/409286/datetime-vs-timestamp
  */
 CREATE TABLE `contributions` (
+    `DTYPE` VARCHAR(31) NOT NULL,
     `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
     `author_id` INT(11) NOT NULL,
     `text` TEXT,
