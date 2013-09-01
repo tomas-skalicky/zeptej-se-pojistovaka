@@ -32,7 +32,7 @@ CREATE TABLE `rights` (
 	PRIMARY KEY (`user_id`, `right_id`),
 	CONSTRAINT `FK_rights_users`
 		FOREIGN KEY (`user_id`)
-		REFERENCES `users`(`id`)
+		REFERENCES `users` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -57,12 +57,12 @@ CREATE TABLE `contributions` (
     `question_id` INT(11),
     CONSTRAINT `FK_contributions_users`
         FOREIGN KEY (`author_id`)
-        REFERENCES `users`(`id`)
+        REFERENCES `users` (`id`)
         ON UPDATE CASCADE
         ON DELETE CASCADE,
     CONSTRAINT `FK_answers_questions`
         FOREIGN KEY (`question_id`)
-        REFERENCES `contributions`(`id`)
+        REFERENCES `contributions` (`id`)
         ON UPDATE CASCADE
         ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -85,12 +85,12 @@ CREATE TABLE `tag_thread_references` (
     PRIMARY KEY (`tag_id`, `thread_id`),
     CONSTRAINT `FK_tag_thread_references_tags`
         FOREIGN KEY (`tag_id`)
-        REFERENCES `tags`(`id`)
+        REFERENCES `tags` (`id`)
         ON UPDATE CASCADE
         ON DELETE CASCADE,
     CONSTRAINT `FK_tag_thread_references_threads`
         FOREIGN KEY (`thread_id`)
-        REFERENCES `contributions`(`id`)
+        REFERENCES `contributions` (`id`)
         ON UPDATE CASCADE
         ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -101,7 +101,7 @@ CREATE TABLE `tag_patterns` (
     PRIMARY KEY (`tag_id`, `pattern`),
     CONSTRAINT `FK_tag_patterns_tags`
         FOREIGN KEY (`tag_id`)
-        REFERENCES `tags`(`id`)
+        REFERENCES `tags` (`id`)
         ON UPDATE CASCADE
         ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -118,7 +118,7 @@ CREATE TABLE `messages` (
     `text` TEXT,
     CONSTRAINT `FK_messages_users`
         FOREIGN KEY (`author_id`)
-        REFERENCES `users`(`id`)
+        REFERENCES `users` (`id`)
         ON UPDATE CASCADE
         ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
