@@ -1,5 +1,6 @@
 package cz.zeptejsepojistovaka.domainmodel;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -24,7 +25,7 @@ public class Answer extends AbstractContribution {
     @NonNull
     @Getter
     @Setter
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = QUESTION_COLUMN_NAME, referencedColumnName = AbstractContribution.ID_COLUMN_NAME)
     private Question question;
 }
