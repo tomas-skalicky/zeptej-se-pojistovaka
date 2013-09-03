@@ -3,6 +3,7 @@ package cz.zeptejsepojistovaka.domainmodel;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -52,14 +53,14 @@ public class Tag implements Serializable {
     @NonNull
     @Getter
     @Setter
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "tags")
     private Set<ContributionThread> threads;
 
     @NotNull
     @NonNull
     @Getter
     @Setter
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = ID_COLUMN_NAME, table = TABLE_NAME)
-    private Set<String> patterns;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = TagPattern.TAG_ID_COLUMN_NAME, referencedColumnName = ID_COLUMN_NAME)
+    private Set<TagPattern> patterns;
 }

@@ -6,8 +6,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -22,6 +20,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
@@ -31,6 +30,7 @@ public class VerifiedUser extends AbstractUser implements ContributionAuthor, Me
 
     private static final long serialVersionUID = 4376233966414060002L;
 
+    public static final String IS_MALE_COLUMN_NAME = "is_male";
     public static final String PASSWORD_HASH_COLUMN_NAME = "password_hash";
 
     /**
@@ -50,12 +50,16 @@ public class VerifiedUser extends AbstractUser implements ContributionAuthor, Me
     @Setter
     private String email;
 
+    @NonNull
+    @Getter
+    private transient Sex sex;
+
     @NotBlank
     @NonNull
     @Getter
     @Setter
-    @Enumerated(EnumType.STRING)
-    private Sex sex;
+    @Column(name = IS_MALE_COLUMN_NAME)
+    private boolean isMale;
 
     @NotBlank
     @NonNull
@@ -104,5 +108,11 @@ public class VerifiedUser extends AbstractUser implements ContributionAuthor, Me
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
+    }
+
+    @Transactional
+    public void setSex(Sex sex) {
+        this.sex = sex;
+        this.isMale = (this.sex == Sex.MALE);
     }
 }

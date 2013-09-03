@@ -13,6 +13,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -78,4 +79,11 @@ public abstract class AbstractContribution implements Serializable {
     @Setter
     @Column(name = LAST_UPDATE_TIMESTAMP_COLUMN_NAME)
     private Timestamp lastUpdateTimestamp;
+
+    @NotNull
+    @NonNull
+    @Getter
+    @Setter
+    @OneToOne(fetch = FetchType.EAGER)
+    private ContributionThread thread;
 }

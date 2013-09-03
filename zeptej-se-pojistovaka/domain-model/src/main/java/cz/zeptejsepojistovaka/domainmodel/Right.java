@@ -32,7 +32,7 @@ public class Right implements GrantedAuthority {
 
     public static final String TABLE_NAME = "rights";
     public static final String USER_ID_COLUMN_NAME = "user_id";
-    public static final String RIGHT_TYPE_ID_COLUMN_NAME = "right_type_id";
+    public static final String RIGHT_TYPE_COLUMN_NAME = "right_type";
 
     @NotNull
     @Min(1)
@@ -50,7 +50,7 @@ public class Right implements GrantedAuthority {
     @Setter
     @Id
     @Enumerated(EnumType.STRING)
-    @Column(name = RIGHT_TYPE_ID_COLUMN_NAME)
+    @Column(name = RIGHT_TYPE_COLUMN_NAME)
     private RightType rightType;
 
     @Override

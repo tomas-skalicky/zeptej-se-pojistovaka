@@ -2,7 +2,6 @@ package cz.zeptejsepojistovaka.domainmodel;
 
 import java.util.List;
 
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -26,9 +25,4 @@ public class Question extends AbstractContribution {
     @Setter
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
     private List<Answer> answers;
-
-    @Getter
-    @Setter
-    @Embedded
-    private ContributionThread thread;
 }
