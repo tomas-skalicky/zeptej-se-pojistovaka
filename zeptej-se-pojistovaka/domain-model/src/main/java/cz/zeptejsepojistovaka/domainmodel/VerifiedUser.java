@@ -20,7 +20,6 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
@@ -110,7 +109,6 @@ public class VerifiedUser extends AbstractUser implements ContributionAuthor, Me
         return true;
     }
 
-    @Transactional
     public void setSex(Sex sex) {
         this.sex = sex;
         this.isMale = (this.sex == Sex.MALE);
