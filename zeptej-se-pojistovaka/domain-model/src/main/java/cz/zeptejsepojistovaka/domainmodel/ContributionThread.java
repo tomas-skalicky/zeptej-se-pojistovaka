@@ -1,9 +1,11 @@
 package cz.zeptejsepojistovaka.domainmodel;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -32,6 +34,7 @@ public class ContributionThread implements Serializable {
 
     public static final String TABLE_NAME = "threads";
     public static final String ID_COLUMN_NAME = "id";
+    public static final String LAST_CHANGE_TIME_COLUMN_NAME = "last_change_time";
 
     public static final String TAG_THREAD_JOIN_TABLE_NAME = "tag_thread_references";
     public static final String TAG_ID_COLUMN_NAME = "tag_id";
@@ -65,4 +68,15 @@ public class ContributionThread implements Serializable {
     @Getter
     @Setter
     private String thema;
+
+    /**
+     * The last change time in the whole thread, question and answers included. In other words, if anyone adds
+     * (resp. edits) an answer, this timestamp will be set to its creation (resp. update) time.
+     */
+    @NotNull
+    @NonNull
+    @Getter
+    @Setter
+    @Column(name = LAST_CHANGE_TIME_COLUMN_NAME)
+    private Timestamp lastChangeTime;
 }
