@@ -1,5 +1,3 @@
-USE zeptej_se_pojistovaka;
-
 /**
  * Users and Authorities (= Rights).
  * 

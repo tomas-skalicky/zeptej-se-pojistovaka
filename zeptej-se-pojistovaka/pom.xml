@@ -199,6 +199,12 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
                 <artifactId>spring-tx</artifactId>
                 <version>${spring.version}</version>
             </dependency>
@@ -317,13 +323,21 @@
                 <hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
                 <hibernate.showSql>true</hibernate.showSql>
                 <!-- For test purposes -->
-                <hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
+                <hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
             </properties>
         </profile>
         <!-- Text environment -->
         <profile>
             <id>test</id>
             <properties>
+                <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
+                <db.connectionUrl>jdbc:mysql://localhost:3306/zeptej_se_pojistovaka_test</db.connectionUrl>
+                <db.username>root</db.username>
+                <db.password>password</db.password>
+                <hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
+                <hibernate.showSql>true</hibernate.showSql>
+                <!-- For test purposes -->
+                <hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
             </properties>
         </profile>
         <!-- Production environment -->

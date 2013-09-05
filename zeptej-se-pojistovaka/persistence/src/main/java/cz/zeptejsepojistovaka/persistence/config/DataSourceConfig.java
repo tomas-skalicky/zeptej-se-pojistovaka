@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 import org.hibernate.ejb.HibernatePersistence;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -20,6 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories("cz.zeptejsepojistovaka.persistence.repository")
+@ComponentScan("cz.zeptejsepojistovaka.persistence")
 public class DataSourceConfig {
 
     private static final String ENTITYMANAGER_PACKAGES_TO_SCAN = "cz.zeptejsepojistovaka.domainmodel";
