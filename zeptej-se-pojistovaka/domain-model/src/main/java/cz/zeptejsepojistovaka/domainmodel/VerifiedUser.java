@@ -57,7 +57,7 @@ public class VerifiedUser extends AbstractUser implements ContributionAuthor, Me
     @NonNull
     @Getter
     @Setter
-    @Column(name = IS_MALE_COLUMN_NAME)
+    @Column(name = IS_MALE_COLUMN_NAME, columnDefinition = HibernateConstants.BIT_TYPE)
     private boolean isMale;
 
     @NotBlank
@@ -77,6 +77,7 @@ public class VerifiedUser extends AbstractUser implements ContributionAuthor, Me
 
     @Getter
     @Setter
+    @Column(columnDefinition = HibernateConstants.BIT_TYPE)
     private boolean enabled = true;
 
     @Override
