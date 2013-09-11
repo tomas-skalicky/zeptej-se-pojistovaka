@@ -19,6 +19,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import cz.zeptejsepojistovaka.domainmodel.builder.RightBuilder;
+
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
@@ -101,5 +103,10 @@ public class VerifiedUser extends AbstractUser implements ContributionAuthor, Me
         return true;
     }
 
+    public void addRight(RightType rightType) {
+        if (this.rights == null) {
+            setRights(new HashSet<Right>());
+        }
+        this.rights.add(RightBuilder.newRight().withUser(this).withRightType(rightType).build());
     }
 }

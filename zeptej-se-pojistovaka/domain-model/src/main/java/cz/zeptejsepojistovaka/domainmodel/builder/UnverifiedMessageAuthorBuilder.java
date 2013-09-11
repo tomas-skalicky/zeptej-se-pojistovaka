@@ -6,7 +6,10 @@ public class UnverifiedMessageAuthorBuilder {
 
     private final UnverifiedMessageAuthor author = new UnverifiedMessageAuthor();
 
-    public static UnverifiedMessageAuthorBuilder unverifiedMessageAuthorBuilder() {
+    private UnverifiedMessageAuthorBuilder() {
+    }
+
+    public static UnverifiedMessageAuthorBuilder newUnverifiedMessageAuthor() {
         return new UnverifiedMessageAuthorBuilder();
     }
 
