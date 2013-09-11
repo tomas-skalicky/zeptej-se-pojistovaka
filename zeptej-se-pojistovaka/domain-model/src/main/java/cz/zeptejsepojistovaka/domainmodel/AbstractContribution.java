@@ -35,7 +35,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class AbstractContribution implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 6088344590164907016L;
 
     public static final int MIN_TEXT_LENGTH = 4;
     public static final String TABLE_NAME = "contributions";
