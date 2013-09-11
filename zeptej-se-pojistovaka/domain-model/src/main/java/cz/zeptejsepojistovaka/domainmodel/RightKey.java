@@ -2,7 +2,6 @@ package cz.zeptejsepojistovaka.domainmodel;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import lombok.EqualsAndHashCode;
@@ -27,14 +26,12 @@ public class RightKey implements Serializable {
     private static final long serialVersionUID = -2011790501836422973L;
 
     @NotNull
-    @Min(1)
     @NonNull
     @Getter
     @Setter
-    private int userId;
+    private VerifiedUser user;
 
     @NotNull
-    @Min(1)
     @NonNull
     @Getter
     @Setter

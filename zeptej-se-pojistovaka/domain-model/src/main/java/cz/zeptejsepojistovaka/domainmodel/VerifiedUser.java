@@ -1,15 +1,13 @@
 package cz.zeptejsepojistovaka.domainmodel;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import lombok.Getter;
@@ -51,11 +49,6 @@ public class VerifiedUser extends AbstractUser implements ContributionAuthor, Me
 
     @NonNull
     @Getter
-    private transient Sex sex;
-
-    @NotBlank
-    @NonNull
-    @Getter
     @Setter
     @Column(name = IS_MALE_COLUMN_NAME, columnDefinition = HibernateConstants.BIT_TYPE)
     private boolean isMale;
@@ -67,12 +60,10 @@ public class VerifiedUser extends AbstractUser implements ContributionAuthor, Me
     @Column(name = PASSWORD_HASH_COLUMN_NAME)
     private String passwordHash;
 
-    @NotNull
     @NonNull
     @Getter
     @Setter
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = Right.USER_ID_COLUMN_NAME, referencedColumnName = AbstractUser.ID_COLUMN_NAME)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private Set<Right> rights;
 
     @Getter
@@ -110,8 +101,5 @@ public class VerifiedUser extends AbstractUser implements ContributionAuthor, Me
         return true;
     }
 
-    public void setSex(Sex sex) {
-        this.sex = sex;
-        this.isMale = (this.sex == Sex.MALE);
     }
 }

@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,7 +25,6 @@ public abstract class AbstractUser implements User {
     public static final String TABLE_NAME = "users";
     public static final String ID_COLUMN_NAME = "id";
 
-    @Min(1)
     @Getter
     @Setter
     @Id

@@ -1,17 +1,19 @@
 package cz.zeptejsepojistovaka.domainmodel;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
@@ -21,7 +23,6 @@ import org.springframework.security.core.GrantedAuthority;
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
-@NoArgsConstructor
 @ToString
 @Entity
 @Table(name = Right.TABLE_NAME)
@@ -35,16 +36,15 @@ public class Right implements GrantedAuthority {
     public static final String RIGHT_TYPE_COLUMN_NAME = "right_type";
 
     @NotNull
-    @Min(1)
     @NonNull
     @Getter
     @Setter
     @Id
-    @Column(name = USER_ID_COLUMN_NAME)
-    private int userId;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = USER_ID_COLUMN_NAME, referencedColumnName = AbstractUser.ID_COLUMN_NAME)
+    private VerifiedUser user;
 
     @NotNull
-    @Min(1)
     @NonNull
     @Getter
     @Setter
