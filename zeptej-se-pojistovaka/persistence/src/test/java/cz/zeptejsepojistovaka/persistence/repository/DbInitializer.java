@@ -19,7 +19,6 @@ class DbInitializer {
     private static CustomVerifiedUserRepository customVerifiedUserRepository;
     private static UnverifiedContributionAuthorRepository unverifiedContributionAuthorRepository;
     private static UnverifiedMessageAuthorRepository unverifiedMessageAuthorRepository;
-    private static AnswerRepository answerRepository;
 
     static {
         injectBeans();
@@ -36,7 +35,6 @@ class DbInitializer {
         unverifiedContributionAuthorRepository = context
                 .getBean(UnverifiedContributionAuthorRepository.class);
         unverifiedMessageAuthorRepository = context.getBean(UnverifiedMessageAuthorRepository.class);
-        answerRepository = context.getBean(AnswerRepository.class);
     }
 
     private static void trancateAffectedTables() {
