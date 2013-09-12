@@ -1,4 +1,4 @@
-package cz.zeptejsepojistovaka.controllers;
+package cz.zeptejsepojistovaka.presentation.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
