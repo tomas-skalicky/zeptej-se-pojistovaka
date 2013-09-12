@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <%-- Filled by WelcomeController --%>
+    <input type="hidden" id="requestContextPath" value="${requestContextPath}" />
+
     <div class="container">
         <div class="row">
             <tiles:insertAttribute name="header" />
