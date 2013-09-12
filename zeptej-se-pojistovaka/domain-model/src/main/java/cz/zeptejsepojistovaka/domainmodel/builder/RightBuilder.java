@@ -15,12 +15,12 @@ public class RightBuilder {
         return new RightBuilder();
     }
 
-    public RightBuilder withUser(VerifiedUser user) {
+    public RightBuilder with(VerifiedUser user) {
         this.right.setUser(user);
         return this;
     }
 
-    public RightBuilder withRightType(RightType rightType) {
+    public RightBuilder with(RightType rightType) {
         this.right.setRightType(rightType);
         return this;
     }

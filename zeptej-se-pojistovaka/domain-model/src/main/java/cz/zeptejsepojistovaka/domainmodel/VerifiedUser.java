@@ -107,6 +107,6 @@ public class VerifiedUser extends AbstractUser implements ContributionAuthor, Me
         if (this.rights == null) {
             setRights(new HashSet<Right>());
         }
-        this.rights.add(RightBuilder.newRight().withUser(this).withRightType(rightType).build());
+        this.rights.add(RightBuilder.newRight().with(this).with(rightType).build());
     }
 }
