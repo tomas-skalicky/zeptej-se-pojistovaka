@@ -664,6 +664,14 @@ function normalizeAnswer(answerForm) {
 }
 
 function persistNewAnswer(answerForm, answerParams) {
+	$.post(getRequestContextPath() + "/odpoved/nova/ulozit/", answerParams)
+			.done(function() {
+				alert("second success");
+			}).fail(function() {
+				alert("error");
+			}).always(function() {
+				alert("finished");
+			});
 	// TODO : AJAX
 	// This will be later replaced by value returned by a database.
 	answerParams['id'] = Math.floor((Math.random() * 100000) + 100);
