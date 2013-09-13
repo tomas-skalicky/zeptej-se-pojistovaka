@@ -8,13 +8,14 @@ import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import cz.zeptejsepojistovaka.businesslogic.config.BusinessLogicConfig;
 import cz.zeptejsepojistovaka.persistence.config.DataSourceConfig;
 
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
 @Configuration
-@Import({ DataSourceConfig.class, CacheConfig.class })
+@Import({ DataSourceConfig.class, CacheConfig.class, BusinessLogicConfig.class })
 @ComponentScan(basePackages = "cz.zeptejsepojistovaka", excludeFilters = @Filter(value = Controller.class, type = FilterType.ANNOTATION))
 @EnableWebMvc
 public class AppConfig {
