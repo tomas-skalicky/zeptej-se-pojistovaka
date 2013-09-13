@@ -1,17 +1,3 @@
-var EDIT = 'Upravit';
-var DELETE = 'Smazat';
-var ANSWER = 'Odpovědět';
-var CANCEL = "Zrušit";
-var ASK_QUESTION = 'Položit otázku';
-
-var IN_BAD_FORMAT = 've špatném formatu';
-
-var BR_HTML_ELEMENT = '<br />';
-var NEW_LINE = '\n';
-
-var THREE_DOTS = '...';
-var COLON = ':';
-
 function clearVal(element) {
 	element.val('');
 }

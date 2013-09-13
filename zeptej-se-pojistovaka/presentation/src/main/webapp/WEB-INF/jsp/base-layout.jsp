@@ -9,9 +9,6 @@
 </head>
 
 <body>
-    <%-- Filled by WelcomeController --%>
-    <input type="hidden" id="requestContextPath" value="${requestContextPath}" />
-
     <div class="container">
         <div class="row">
             <tiles:insertAttribute name="header" />
@@ -37,6 +34,13 @@
     <%@ include file="/WEB-INF/jsp/modal-dialogs/contact-modal.jsp"%>
     <%@ include file="/WEB-INF/jsp/modal-dialogs/cv-modal.jsp"%>
 
+    <%-- Filled by WelcomeController --%>
+    <input type="hidden" id="requestContextPath" value="${requestContextPath}" />
+    
+    <!-- Localized messages for JavaScript files -->
+    <%@ include file="/WEB-INF/jsp/global-localized-messages.jsp"%>
+
+    <!-- Contains all JavaScript imports. -->
     <%@ include file="/WEB-INF/jsp/footer-javascripts.jsp"%>
 </body>
 </html>

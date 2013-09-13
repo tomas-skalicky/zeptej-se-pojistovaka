@@ -6,7 +6,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="modal-title">Kontakt</h3>
+                <h3 class="modal-title"><spring:message code="contact" /></h3>
             </div>
             <div class="modal-body">
                 <section class="contacts">
@@ -80,7 +80,7 @@
                 </section>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Zavřít</button>
+                <button class="btn btn-info" data-dismiss="modal" aria-hidden="true"><spring:message code="close" /></button>
             </div>
         </div>
     </div>

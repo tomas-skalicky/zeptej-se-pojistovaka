@@ -4,7 +4,7 @@
 <section id="questions-and-answers" class="col-12 col-sm-7">
     <h3 class="left-header dark-grey-container">otázky & odpovědi</h3>
     <div id="ask-question-bar">
-        <button class="btn btn-link btn-large" type="button">Položit otázku</button>
+        <button class="btn btn-link btn-large" type="button"><spring:message code="ask-question" /></button>
         <div class="clear"></div>
     </div>
 
@@ -23,9 +23,9 @@
                                 <div class="arrow"></div>
                                 <h3 class="popover-title">
                                     <span class="question-thema">Popover top</span><span class="controls"> <span
-                                        class="glyphicon glyphicon-pencil edit" data-toggle="tooltip" title="Upravit"></span> <a
+                                        class="glyphicon glyphicon-pencil edit" data-toggle="tooltip" title="<spring:message code="edit" />"></span> <a
                                         href="#delete-modal" role="button" data-toggle="modal" class="delete"><span
-                                            class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Smazat"></span></a></span>
+                                            class="glyphicon glyphicon-remove" data-toggle="tooltip" title="<spring:message code="delete" />"></span></a></span>
                                 </h3>
                                 <div class="popover-content">
                                     <div class="question-text">
@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="popover-footer grey">
                                     <span class="author-name">Anonym</span> <span class="dot">·</span>
-                                    <button class="answer btn btn-link" type="button">Odpovědět</button>
+                                    <button class="answer btn btn-link" type="button"><spring:message code="answer" /></button>
                                     <span class="dot">·</span> <input name='creationTimestamp' type='hidden' value='1374346915000' /><span
                                         class="time continuously-updated"></span>
                                 </div>
@@ -75,8 +75,8 @@
                                     <div class="answer-text">Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque
                                         ornare sem lacinia quam venenatis vestibulum.</div>
                                     <span class="controls"><span class="glyphicon glyphicon-pencil edit" data-toggle="tooltip"
-                                        title="Upravit"></span><a href="#delete-modal" role="button" data-toggle="modal" class="delete"><span
-                                            class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Smazat"></span></a></span>
+                                        title="<spring:message code="edit" />"></span><a href="#delete-modal" role="button" data-toggle="modal" class="delete"><span
+                                            class="glyphicon glyphicon-remove" data-toggle="tooltip" title="<spring:message code="delete" />"></span></a></span>
                                 </div>
                                 <div class="popover-footer grey">
                                     <span class="author-name"><a href="#contact-modal" data-toggle="modal" class="show-contact">Marie
@@ -99,9 +99,9 @@
                                 <div class="arrow"></div>
                                 <h3 class="popover-title">
                                     <span class="question-thema">Popover top</span><span class="controls"><span
-                                        class="glyphicon glyphicon-pencil edit" data-toggle="tooltip" title="Upravit"></span><a
+                                        class="glyphicon glyphicon-pencil edit" data-toggle="tooltip" title="<spring:message code="edit" />"></span><a
                                         href="#delete-modal" role="button" data-toggle="modal" class="delete"><span
-                                            class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Smazat"></span></a></span>
+                                            class="glyphicon glyphicon-remove" data-toggle="tooltip" title="<spring:message code="delete" />"></span></a></span>
                                 </h3>
                                 <div class="popover-content">
                                     <div class="question-text">
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="popover-footer grey">
                                     <span class="author-name">Tom</span> <span class="dot">·</span>
-                                    <button class="answer btn btn-link" type="button">Odpovědět</button>
+                                    <button class="answer btn btn-link" type="button"><spring:message code="answer" /></button>
                                     <span class="dot">·</span> <input name='creationTimestamp' type='hidden' value='1374296515000' /><span
                                         class="time continuously-updated"></span>
                                 </div>
@@ -139,7 +139,7 @@
                                 </div>
                                 <div class="popover-footer grey">
                                     <span class="author-name">Anonym</span> <span class="dot">·</span>
-                                    <button class="answer btn btn-link" type="button">Odpovědět</button>
+                                    <button class="answer btn btn-link" type="button"><spring:message code="answer" /></button>
                                     <span class="dot">·</span> <input name='creationTimestamp' type='hidden' value='1374271315000' /><span
                                         class="time continuously-updated"></span>
                                 </div>
@@ -177,9 +177,9 @@
                                 <div class="arrow"></div>
                                 <h3 class="popover-title">
                                     <span class="question-thema">Popover top</span><span class="controls"><span
-                                        class="glyphicon glyphicon-pencil edit" data-toggle="tooltip" title="Upravit"></span><a
+                                        class="glyphicon glyphicon-pencil edit" data-toggle="tooltip" title="<spring:message code="edit" />"></span><a
                                         href="#delete-modal" role="button" data-toggle="modal" class="delete"><span
-                                            class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Smazat"></span></a></span>
+                                            class="glyphicon glyphicon-remove" data-toggle="tooltip" title="<spring:message code="delete" />"></span></a></span>
                                 </h3>
                                 <div class="popover-content">
                                     <div class="question-text">
@@ -190,7 +190,7 @@
                                 </div>
                                 <div class="popover-footer grey">
                                     <span class="author-name">Julie</span> <span class="dot">·</span>
-                                    <button class="answer btn btn-link" type="button">Odpovědět</button>
+                                    <button class="answer btn btn-link" type="button"><spring:message code="answer" /></button>
                                     <span class="dot">·</span> <input name='creationTimestamp' type='hidden' value='1374235855000' /><span
                                         class="time continuously-updated"></span>
                                 </div>
@@ -210,8 +210,8 @@
                                         Pellentesque ornare sem lacinia quam venenatis vestibulum.
                                     </div>
                                     <span class="controls"><span class="glyphicon glyphicon-pencil edit" data-toggle="tooltip"
-                                        title="Upravit"></span><a href="#delete-modal" data-toggle="modal" class="delete"><span
-                                            class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Smazat"></span></a></span>
+                                        title="<spring:message code="edit" />"></span><a href="#delete-modal" data-toggle="modal" class="delete"><span
+                                            class="glyphicon glyphicon-remove" data-toggle="tooltip" title="<spring:message code="delete" />"></span></a></span>
                                 </div>
                                 <div class="popover-footer grey">
                                     <span class="author-name"><a href="#contact-modal" data-toggle="modal" class="show-contact">Marie

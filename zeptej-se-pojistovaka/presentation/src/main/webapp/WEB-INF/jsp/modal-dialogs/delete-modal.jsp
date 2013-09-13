@@ -10,8 +10,8 @@
                 <h4 class="modal-title confirmation-question"></h4>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-info delete">Smazat</button>
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Zrušit</button>
+                <button class="btn btn-info delete"><spring:message code="delete" /></button>
+                <button class="btn" data-dismiss="modal" aria-hidden="true"><spring:message code="cancel" /></button>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="modal-title">Ochrana údajů</h3>
+                <h3 class="modal-title"><spring:message code="data-protection" /></h3>
             </div>
             <div class="modal-body">
                 <p>
@@ -15,7 +15,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Zavřít</button>
+                <button class="btn btn-info" data-dismiss="modal" aria-hidden="true"><spring:message code="close" /></button>
             </div>
         </div>
     </div>
