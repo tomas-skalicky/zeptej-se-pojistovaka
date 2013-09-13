@@ -10,8 +10,8 @@
 
 <script src="lib/js/zeptejsepojistovaka-bootstrap.js"></script>
 <script src="lib/js/zeptejsepojistovaka-String.js"></script>
-<script src="lib/js/zeptejsepojistovaka-utils.js"></script>
 <script src="lib/js/zeptejsepojistovaka-commons.js"></script>
+<script src="lib/js/zeptejsepojistovaka-utils.js"></script>
 <script src="lib/js/zeptejsepojistovaka-tooltip.js"></script>
 <script src="lib/js/zeptejsepojistovaka-introduction.js"></script>
 <script src="lib/js/zeptejsepojistovaka-tags.js"></script>
