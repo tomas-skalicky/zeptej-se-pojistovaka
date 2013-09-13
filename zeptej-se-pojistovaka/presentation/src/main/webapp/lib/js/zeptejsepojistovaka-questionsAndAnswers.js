@@ -153,7 +153,7 @@ function handleAddQuestion() {
 		return;
 	}
 	var questionParams = normalizeQuestion(questionForm);
-	questionParams = persistNewQuestion(questionForm, questionParams);
+	persistNewQuestion(questionForm, questionParams);
 	showNewQuestion(questionForm, questionParams);
 }
 
