@@ -27,6 +27,7 @@
         <spring.version>3.2.4.RELEASE</spring.version>
         <spring.security.version>3.1.4.RELEASE</spring.security.version>
         <hibernate.version>4.2.3.Final</hibernate.version>
+        <jacoco-maven-plugin.version>0.6.3.201306030806</jacoco-maven-plugin.version>
     </properties>
 
 
@@ -103,7 +104,7 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.6.3.201306030806</version>
+                    <version>${jacoco-maven-plugin.version}</version>
                     <executions>
                         <execution>
                             <id>pre-unit-test</id>
@@ -140,6 +141,33 @@
                             </configuration>
                         </execution>
                     </executions>
+                </plugin>
+
+                <!-- Plugin related to the m2e eclipse plugin. It helps to ignore warnings about a missing mapping 
+                    of lifecycle phases. -->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.jacoco</groupId>
+                                        <artifactId>jacoco-maven-plugin</artifactId>
+                                        <versionRange>[${jacoco-maven-plugin.version}]</versionRange>
+                                        <goals>
+                                            <goal>prepare-agent</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
