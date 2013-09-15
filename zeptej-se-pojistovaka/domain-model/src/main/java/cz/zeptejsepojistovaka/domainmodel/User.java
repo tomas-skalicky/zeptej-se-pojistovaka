@@ -7,9 +7,9 @@ import java.io.Serializable;
  */
 public interface User extends Serializable {
 
-    int getId();
+    Integer getId();
 
-    void setId(int id);
+    void setId(Integer id);
 
     String getName();
 

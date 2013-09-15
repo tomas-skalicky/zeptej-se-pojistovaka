@@ -46,7 +46,7 @@ public class Tag implements Serializable {
     @Setter
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
     @NotBlank
     @Size(min = MIN_NAME_LENGTH)

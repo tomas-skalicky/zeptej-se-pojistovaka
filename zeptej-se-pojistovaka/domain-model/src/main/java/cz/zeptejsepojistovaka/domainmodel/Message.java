@@ -40,7 +40,7 @@ public class Message implements Serializable {
     @Setter
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
     @NotNull
     @NonNull
