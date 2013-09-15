@@ -67,7 +67,6 @@ public abstract class AbstractContribution implements Serializable {
     @Type(type = HibernateConstants.TEXT_TYPE)
     private String text;
 
-    @NotNull
     @Past
     @Getter
     @Setter

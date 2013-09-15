@@ -623,8 +623,9 @@ function handleAddAnswer() {
 		return;
 	}
 	var answerParams = normalizeAnswer(answerForm);
-	persistNewAnswer(answerForm, answerParams);
-	showNewAnswer(answerForm, answerParams);
+	if (persistNewAnswer(answerForm, answerParams)) {
+		showNewAnswer(answerForm, answerParams);
+	}
 }
 
 /**
@@ -657,26 +658,48 @@ function checkAnswerTextInput(textElement) {
 }
 
 function normalizeAnswer(answerForm) {
+	var questionAnswersBlock = $(answerForm).closest('.thread');
 	return {
-		'author' : {},
-		'text' : encodeTextToHtml(answerForm.find('[name=answerText]').val())
+		'author' : {
+			'@type' : 'UNVERIFIED_CONTRIBUTION_AUTHOR'
+		},
+		'text' : encodeTextToHtml(answerForm.find('[name=answerText]').val()),
+		'thread' : {
+			'id' : parseInt(questionAnswersBlock.find('[name=threadId]').val())
+		},
+		'question' : {
+			'id' : parseInt(questionAnswersBlock.find('[name=questionId]')
+					.val())
+		}
 	};
 }
 
+/**
+ * @returns {@code true} if the answer has been successfully persisted;
+ *          {@code false} otherwise.
+ */
 function persistNewAnswer(answerForm, answerParams) {
-	$.post(getRequestContextPath() + "/odpoved/nova/ulozit/", answerParams)
-			.done(function() {
-				alert("second success");
-			}).fail(function() {
-				alert("error");
-			}).always(function() {
-				alert("finished");
-			});
-	// TODO : AJAX
-	// This will be later replaced by value returned by a database.
-	answerParams['id'] = Math.floor((Math.random() * 100000) + 100);
-	answerParams['creationTimestamp'] = getNowInMillisec();
-	return answerParams;
+	var isOk = true;
+	$.ajax({
+		url : REQUEST_CONTEXT_PATH + '/odpoved/nova/ulozit/',
+		type : POST_TYPE,
+		dataType : JSON_TYPE,
+		contentType: JSON_CONTENT_TYPE,
+		data : JSON.stringify(answerParams),
+		async : false
+	}).done(function(saveNewAnswerResponse) {
+		console.log(saveNewAnswerResponse);
+		alert('success');
+		var answer = saveNewAnswerResponse['answer'];
+		answerParams['id'] = answer['id'];
+		answerParams['creationTimestamp'] = answer['creationTimestamp'];
+		isOk = true;
+	}).fail(function(saveNewAnswerResponse) {
+		console.log(saveNewAnswerResponse);
+		alert('error');
+		isOk = false;
+	});
+	return isOk;
 }
 
 function showNewAnswer(answerForm, answerParams) {
