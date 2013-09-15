@@ -34,5 +34,9 @@
             <groupId>org.glassfish.web</groupId>
             <artifactId>javax.el</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+        </dependency>
     </dependencies>
 </project>

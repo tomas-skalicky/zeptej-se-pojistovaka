@@ -14,6 +14,8 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+import org.codehaus.jackson.annotate.JsonTypeInfo;
+import org.codehaus.jackson.annotate.JsonTypeName;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,10 +26,14 @@ import cz.zeptejsepojistovaka.domainmodel.builder.RightBuilder;
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
+@JsonTypeName(VerifiedUser.JSON_TYPE_NAME)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 @Entity
 public class VerifiedUser extends AbstractUser implements ContributionAuthor, MessageAuthor, UserDetails {
 
     private static final long serialVersionUID = 4376233966414060002L;
+
+    public static final String JSON_TYPE_NAME = "VERIFIED_USER";
 
     public static final String IS_MALE_COLUMN_NAME = "is_male";
     public static final String PASSWORD_HASH_COLUMN_NAME = "password_hash";

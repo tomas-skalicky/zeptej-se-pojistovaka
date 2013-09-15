@@ -1,5 +1,7 @@
 package cz.zeptejsepojistovaka.presentation.config;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.context.annotation.Bean;
@@ -8,14 +10,19 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.Ordered;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.accept.ContentNegotiationManager;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
@@ -54,6 +61,23 @@ public class DispatcherConfig extends WebMvcConfigurerAdapter {
         CookieLocaleResolver localeResolver = new CookieLocaleResolver();
         localeResolver.setDefaultLocale(new Locale("cs_cz"));
         return localeResolver;
+    }
+
+    @Bean
+    public ContentNegotiatingViewResolver contentNegotiatingViewResolver() {
+        ContentNegotiatingViewResolver viewResolver = new ContentNegotiatingViewResolver();
+        viewResolver.setOrder(Ordered.HIGHEST_PRECEDENCE);
+        viewResolver.setContentNegotiationManager(new ContentNegotiationManager());
+
+        List<View> defaultViews = new ArrayList<View>();
+        defaultViews.add(mappingJacksonJsonView());
+        viewResolver.setDefaultViews(defaultViews);
+        return viewResolver;
+    }
+
+    @Bean
+    public MappingJacksonJsonView mappingJacksonJsonView() {
+        return new MappingJacksonJsonView();
     }
 
     @Bean
