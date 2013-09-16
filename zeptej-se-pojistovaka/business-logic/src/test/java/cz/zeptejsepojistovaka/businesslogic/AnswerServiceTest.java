@@ -11,18 +11,14 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-import cz.zeptejsepojistovaka.businesslogic.config.BusinessLogicConfig;
 import cz.zeptejsepojistovaka.domainmodel.Answer;
 import cz.zeptejsepojistovaka.persistence.repository.AnswerRepository;
 
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
-@ContextConfiguration(classes = BusinessLogicConfig.class)
-public class AnswerServiceTest extends AbstractJUnit4SpringContextTests {
+public class AnswerServiceTest {
 
     @Mock
     private AnswerRepository answerRepository;

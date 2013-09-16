@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
 @Controller
-public class WelcomeController {
+public class WelcomePagesController {
 
-    private final Logger log = Logger.getLogger(WelcomeController.class);
+    private final Logger log = Logger.getLogger(WelcomePagesController.class);
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String init(HttpServletRequest request, ModelMap model) {
