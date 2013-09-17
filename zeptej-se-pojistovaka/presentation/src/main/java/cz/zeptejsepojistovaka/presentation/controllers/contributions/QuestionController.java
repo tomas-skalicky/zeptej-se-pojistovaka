@@ -32,7 +32,7 @@ public class QuestionController {
     SaveNewQuestionResponse saveNewQuestion(@RequestBody @Valid ContributionThread thread,
             BindingResult result) {
         this.log.debug("in Controller");
-        SaveNewQuestionResponseBuilder responseBuilder = SaveNewQuestionResponseBuilder
+        SaveQuestionResponseBuilder responseBuilder = SaveQuestionResponseBuilder
                 .newSaveNewQuestionResponseBuilder();
 
         if (result.hasErrors()) {

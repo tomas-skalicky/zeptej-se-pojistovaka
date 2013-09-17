@@ -7,7 +7,7 @@ import cz.zeptejsepojistovaka.domainmodel.ContributionThread;
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
-public class SaveNewQuestionResponse {
+public class SaveQuestionResponse {
 
     @Getter
     @Setter

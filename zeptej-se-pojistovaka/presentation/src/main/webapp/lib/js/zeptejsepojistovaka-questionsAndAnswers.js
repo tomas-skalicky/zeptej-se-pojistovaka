@@ -303,12 +303,12 @@ function persistNewQuestion(questionForm, threadJson) {
 				async : false
 			})
 			.done(
-					function(saveNewQuestionResponse) {
-						var thread = saveNewQuestionResponse['thread'];
+					function(saveQuestionResponse) {
+						var thread = saveQuestionResponse['thread'];
 						threadJson['id'] = thread['id'];
 						threadJson['question'] = thread['question'];
 						isOk = true;
-					}).fail(function(saveNewQuestionResponse) {
+					}).fail(function(saveQuestionResponse) {
 				isOk = false;
 			});
 	return isOk;
@@ -502,8 +502,8 @@ function persistUpdatedQuestion(questionForm, threadJson) {
 	return threadJson;
 }
 
-function showUpdatedQuestion(questionForm, threadParams) {
-	var question = threadParams['question'];
+function showUpdatedQuestion(questionForm, threadJson) {
+	var question = threadJson['question'];
 	var author = question['author'];
 
 	var editedQuestionElement = questionForm.prev();

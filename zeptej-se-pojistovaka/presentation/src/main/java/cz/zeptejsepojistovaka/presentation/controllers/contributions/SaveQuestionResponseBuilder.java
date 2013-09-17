@@ -8,33 +8,33 @@ import cz.zeptejsepojistovaka.domainmodel.ContributionThread;
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
-public class SaveNewQuestionResponseBuilder {
+public class SaveQuestionResponseBuilder {
 
-    private final SaveNewQuestionResponse response = new SaveNewQuestionResponse();
+    private final SaveQuestionResponse response = new SaveQuestionResponse();
 
-    private SaveNewQuestionResponseBuilder() {
+    private SaveQuestionResponseBuilder() {
     }
 
-    public static SaveNewQuestionResponseBuilder newSaveNewQuestionResponseBuilder() {
-        return new SaveNewQuestionResponseBuilder();
+    public static SaveQuestionResponseBuilder newSaveNewQuestionResponseBuilder() {
+        return new SaveQuestionResponseBuilder();
     }
 
-    public SaveNewQuestionResponseBuilder succeeded() {
+    public SaveQuestionResponseBuilder succeeded() {
         this.response.setSuccessful(true);
         return this;
     }
 
-    public SaveNewQuestionResponseBuilder failed() {
+    public SaveQuestionResponseBuilder failed() {
         this.response.setSuccessful(false);
         return this;
     }
 
-    public SaveNewQuestionResponseBuilder with(ContributionThread thread) {
+    public SaveQuestionResponseBuilder with(ContributionThread thread) {
         this.response.setThread(thread);
         return this;
     }
 
-    public SaveNewQuestionResponse build() {
+    public SaveQuestionResponse build() {
         removeThreadLoops(this.response.getThread());
         return this.response;
     }
