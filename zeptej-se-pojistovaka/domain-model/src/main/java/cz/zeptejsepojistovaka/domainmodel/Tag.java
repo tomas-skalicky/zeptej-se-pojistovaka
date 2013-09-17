@@ -42,6 +42,7 @@ public class Tag implements Serializable {
     public static final String PATTERN_COLUMN_NAME = "pattern";
 
     @Min(1)
+    @NonNull
     @Getter
     @Setter
     @Id

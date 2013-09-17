@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Min;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 /**
@@ -27,6 +28,7 @@ public abstract class AbstractUser implements User {
     public static final String ID_COLUMN_NAME = "id";
 
     @Min(1)
+    @NonNull
     @Getter
     @Setter
     @Id

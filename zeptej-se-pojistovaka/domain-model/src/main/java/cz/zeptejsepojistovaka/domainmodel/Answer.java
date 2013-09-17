@@ -8,7 +8,6 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 
 /**
@@ -22,7 +21,6 @@ public class Answer extends AbstractContribution {
     public static final String QUESTION_COLUMN_NAME = "question_id";
 
     @NotNull
-    @NonNull
     @Getter
     @Setter
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

@@ -36,6 +36,7 @@ public class Message implements Serializable {
     public static final String AUTHOR_COLUMN_NAME = "author_id";
 
     @Min(1)
+    @NonNull
     @Getter
     @Setter
     @Id

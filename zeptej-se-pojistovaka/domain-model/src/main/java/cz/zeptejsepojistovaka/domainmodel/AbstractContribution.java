@@ -45,6 +45,7 @@ public abstract class AbstractContribution implements Serializable {
     public static final String LAST_UPDATE_TIMESTAMP_COLUMN_NAME = "last_update_timestamp";
 
     @Min(1)
+    @NonNull
     @Getter
     @Setter
     @Id
@@ -68,19 +69,20 @@ public abstract class AbstractContribution implements Serializable {
     private String text;
 
     @Past
+    @NonNull
     @Getter
     @Setter
     @Column(name = CREATION_TIMESTAMP_COLUMN_NAME)
     private Timestamp creationTimestamp;
 
     @Past
+    @NonNull
     @Getter
     @Setter
     @Column(name = LAST_UPDATE_TIMESTAMP_COLUMN_NAME)
     private Timestamp lastUpdateTimestamp;
 
     @NotNull
-    @NonNull
     @Getter
     @Setter
     @OneToOne(fetch = FetchType.EAGER)

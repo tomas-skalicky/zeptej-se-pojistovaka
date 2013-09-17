@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 import lombok.Getter;
 import lombok.NonNull;
@@ -41,6 +42,7 @@ public class ContributionThread implements Serializable {
     public static final String THREAD_ID_COLUMN_NAME = "thread_id";
 
     @Min(1)
+    @NonNull
     @Getter
     @Setter
     @Id
@@ -73,7 +75,7 @@ public class ContributionThread implements Serializable {
      * The last change time in the whole thread, question and answers included. In other words, if anyone adds
      * (resp. edits) an answer, this timestamp will be set to its creation (resp. update) time.
      */
-    @NotNull
+    @Past
     @NonNull
     @Getter
     @Setter
