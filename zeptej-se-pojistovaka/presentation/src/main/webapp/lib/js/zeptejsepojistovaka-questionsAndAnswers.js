@@ -152,9 +152,11 @@ function handleAddQuestion() {
 	if (!checkQuestionFormInputs(questionForm)) {
 		return;
 	}
-	var questionParams = normalizeQuestion(questionForm);
-	persistNewQuestion(questionForm, questionParams);
-	showNewQuestion(questionForm, questionParams);
+	var threadJson = composeThreadJson(questionForm);
+	if (persistNewQuestion(questionForm, threadJson)) {
+		modifyThreadJsonForView(threadJson);
+		showNewQuestion(questionForm, threadJson);
+	}
 }
 
 /**
@@ -270,40 +272,55 @@ function checkQuestionTextInput(textElement) {
 	return true;
 }
 
-function normalizeQuestion(questionForm) {
+function composeThreadJson(questionForm) {
 	return {
-		'id' : '',
-		'tags' : '',
+		'thema' : getNullIfEmpty(questionForm.find('[name=questionThema]')
+				.val().trim()),
 		'question' : {
-			'id' : '',
-			'author' : {
-				'id' : '',
-				'name' : handleNoname(questionForm.find('[name=authorName]')
-						.val().trim()),
-				'email' : questionForm.find('[name=authorEmail]').val().trim()
-			},
-			'thema' : questionForm.find('[name=questionThema]').val().trim(),
 			'text' : encodeTextToHtml(questionForm.find('[name=questionText]')
 					.val()),
-			'creationTimestamp' : '',
-			'lastUpdateTimestamp' : '',
-			'answers' : []
-		}
+			'author' : {
+				'@type' : 'UNVERIFIED_CONTRIBUTION_AUTHOR',
+				'name' : getNullIfEmpty(questionForm.find('[name=authorName]')
+						.val().trim()),
+				'email' : getNullIfEmpty(questionForm
+						.find('[name=authorEmail]').val().trim())
+			}
+		},
+		'tags' : []
 	};
 }
 
-function persistNewQuestion(questionForm, questionParams) {
-	// TODO : AJAX
-	// This will be later replaced by value returned by a database.
-	questionParams['question']['id'] = Math
-			.floor((Math.random() * 100000) + 100);
-	questionParams['question']['creationTimestamp'] = getNowInMillisec();
-	return questionParams;
+function persistNewQuestion(questionForm, threadJson) {
+	var isOk = false;
+	$
+			.ajax({
+				url : REQUEST_CONTEXT_PATH + '/otazka/nova/ulozit/',
+				type : POST_TYPE,
+				dataType : JSON_TYPE,
+				contentType : JSON_CONTENT_TYPE,
+				data : JSON.stringify(threadJson),
+				async : false
+			})
+			.done(
+					function(saveNewQuestionResponse) {
+						var thread = saveNewQuestionResponse['thread'];
+						threadJson['id'] = thread['id'];
+						threadJson['question'] = thread['question'];
+						isOk = true;
+					}).fail(function(saveNewQuestionResponse) {
+				isOk = false;
+			});
+	return isOk;
 }
 
-function showNewQuestion(questionForm, questionParams) {
+function modifyThreadJsonForView(threadJson) {
+	threadJson['question']['author']['name'] = handleNoname(threadJson['question']['author']['name']);
+}
+
+function showNewQuestion(questionForm, threadJson) {
 	var allQuestionsBlock = $('#existing-questions .col-12');
-	allQuestionsBlock.prepend(getThreadHtml(questionParams));
+	allQuestionsBlock.prepend(getThreadHtml(threadJson));
 
 	toggleNewQuestionComponentsVisibility();
 
@@ -315,34 +332,35 @@ function showNewQuestion(questionForm, questionParams) {
 	enableBootstrapTooltips(newQuestionElement);
 }
 
-function getThreadHtml(threadParams) {
-	var question = threadParams['question'];
+function getThreadHtml(threadJson) {
+	var question = threadJson['question'];
 
 	var threadHtml = "<article class='thread'>"
-			+ getHiddenInputHtml('threadId', threadParams['id'])
-			+ getHiddenInputHtml('threadTags', threadParams['tags'])
-			+ getQuestionHtml(question);
+			+ getHiddenInputHtml('threadId', threadJson['id'])
+			+ getHiddenInputHtml('threadTags', threadJson['tags'])
+			+ getQuestionHtml(threadJson);
 
-	var answers = question["answers"];
+	var answers = question['answers'];
 	for ( var answerNum = 0; answerNum < answers.length; answerNum++) {
 		threadHtml += getAnswerHtml(answers[answerNum]);
 	}
 
-	threadHtml += "</article>";
+	threadHtml += '</article>';
 	return threadHtml;
 }
 
-function getQuestionHtml(questionParams) {
-	var creationTimestamp = questionParams['creationTimestamp'];
+function getQuestionHtml(threadJson) {
+	var questionJson = threadJson['question'];
+	var creationTimestamp = questionJson['creationTimestamp'];
 	return "<section class='question'>"
-			+ getHiddenInputHtml('questionId', questionParams['id'])
+			+ getHiddenInputHtml('questionId', questionJson['id'])
 			+ "        <img src='images/1233576218_panacek-png_67x100.png' class='figure-image' alt='' />"
 			+ "        <div class='popover-wrapper'>"
 			+ "            <div class='popover right'>"
 			+ "                <div class='arrow'></div>"
 			+ "                <h3 class='popover-title'>"
 			+ "                    <span class='question-thema'>"
-			+ questionParams['thema']
+			+ threadJson['thema']
 			+ "</span><span class='controls'><span class='glyphicon glyphicon-pencil edit' data-toggle='tooltip' title='"
 			+ EDIT
 			+ "'></span><a href='#delete-modal' role='button' data-toggle='modal' class='delete'><span class='glyphicon glyphicon-remove' data-toggle='tooltip' title='"
@@ -350,11 +368,11 @@ function getQuestionHtml(questionParams) {
 			+ "'></span></a></span></h3>"
 			+ "                <div class='popover-content'>"
 			+ "                    <div class='question-text'>"
-			+ questionParams['text']
+			+ questionJson['text']
 			+ "</div></div>"
 			+ "                <div class='popover-footer grey'>"
 			+ "                    <span class='author-name'>"
-			+ questionParams['author']['name']
+			+ questionJson['author']['name']
 			+ "</span> <span class='dot'>·</span> <button class='answer btn btn-link' type='button'>"
 			+ ANSWER + "</button> <span class='dot'>·</span> "
 			+ getHiddenInputHtml('creationTimestamp', creationTimestamp)
