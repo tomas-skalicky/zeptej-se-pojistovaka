@@ -1,5 +1,7 @@
 package cz.zeptejsepojistovaka.businesslogic;
 
+import java.sql.Timestamp;
+
 import cz.zeptejsepojistovaka.commons.util.TimestampUtils;
 import cz.zeptejsepojistovaka.domainmodel.AbstractContribution;
 
@@ -9,19 +11,23 @@ import cz.zeptejsepojistovaka.domainmodel.AbstractContribution;
 public abstract class AbstractContributionService {
 
     protected void setUpTimestamps(AbstractContribution contribution) {
+        setUpTimestamps(contribution, TimestampUtils.getNow());
+    }
+
+    protected void setUpTimestamps(AbstractContribution contribution, Timestamp timestamp) {
         if (contribution.getId() == null) {
-            setUpCreationTimestamps(contribution);
+            setUpCreationTimestamps(contribution, timestamp);
         } else {
-            setUpUpdateTimestamps(contribution);
+            setUpUpdateTimestamps(contribution, timestamp);
         }
     }
 
-    private void setUpCreationTimestamps(AbstractContribution contribution) {
-        contribution.setCreationTimestamp(TimestampUtils.getNow());
-        contribution.setLastUpdateTimestamp(contribution.getCreationTimestamp());
+    private void setUpCreationTimestamps(AbstractContribution contribution, Timestamp timestamp) {
+        contribution.setCreationTimestamp(timestamp);
+        contribution.setLastUpdateTimestamp(timestamp);
     }
 
-    private void setUpUpdateTimestamps(AbstractContribution contribution) {
-        contribution.setLastUpdateTimestamp(TimestampUtils.getNow());
+    private void setUpUpdateTimestamps(AbstractContribution contribution, Timestamp timestamp) {
+        contribution.setLastUpdateTimestamp(timestamp);
     }
 }
