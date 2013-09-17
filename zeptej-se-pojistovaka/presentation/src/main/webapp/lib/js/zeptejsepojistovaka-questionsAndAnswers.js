@@ -488,16 +488,18 @@ function handleEditQuestion() {
 	if (!checkQuestionFormInputs(questionForm)) {
 		return;
 	}
-	var questionParams = normalizeQuestion(questionForm);
-	persistUpdatedQuestion(questionForm, questionParams);
-	showUpdatedQuestion(questionForm, questionParams);
+	var threadJson = composeThreadJson(questionForm);
+	if (persistUpdatedQuestion(questionForm, threadJson)) {
+		modifyThreadJsonForView(threadJson);
+		showUpdatedQuestion(questionForm, threadJson);
+	}
 }
 
-function persistUpdatedQuestion(questionForm, questionParams) {
+function persistUpdatedQuestion(questionForm, threadJson) {
 	// TODO : AJAX
 	// var editedQuestionElement = questionForm.prev();
 	// var questionId = editedQuestionElement.find('[name=questionId]').val();
-	return questionParams;
+	return threadJson;
 }
 
 function showUpdatedQuestion(questionForm, threadParams) {
@@ -640,9 +642,9 @@ function handleAddAnswer() {
 	if (!checkAnswerFormInputs(answerForm)) {
 		return;
 	}
-	var answerParams = normalizeAnswer(answerForm);
-	if (persistNewAnswer(answerForm, answerParams)) {
-		showNewAnswer(answerForm, answerParams);
+	var answerJson = composeAnswerJson(answerForm);
+	if (persistNewAnswer(answerForm, answerJson)) {
+		showNewAnswer(answerForm, answerJson);
 	}
 }
 
@@ -675,7 +677,7 @@ function checkAnswerTextInput(textElement) {
 	return true;
 }
 
-function normalizeAnswer(answerForm) {
+function composeAnswerJson(answerForm) {
 	var questionAnswersBlock = $(answerForm).closest('.thread');
 	return {
 		'author' : {
@@ -697,12 +699,12 @@ function normalizeAnswer(answerForm) {
  *          {@code false} otherwise.
  */
 function persistNewAnswer(answerForm, answerParams) {
-	var isOk = true;
+	var isOk = false;
 	$.ajax({
 		url : REQUEST_CONTEXT_PATH + '/odpoved/nova/ulozit/',
 		type : POST_TYPE,
 		dataType : JSON_TYPE,
-		contentType: JSON_CONTENT_TYPE,
+		contentType : JSON_CONTENT_TYPE,
 		data : JSON.stringify(answerParams),
 		async : false
 	}).done(function(saveNewAnswerResponse) {
@@ -805,16 +807,17 @@ function handleEditAnswer() {
 	if (!checkAnswerFormInputs(answerForm)) {
 		return;
 	}
-	var answerParams = normalizeAnswer(answerForm);
-	persistUpdatedAnswer(answerForm, answerParams);
-	showUpdatedAnswer(answerForm, answerParams);
+	var answerJson = composeAnswerJson(answerForm);
+	if (persistUpdatedAnswer(answerForm, answerJson)) {
+		showUpdatedAnswer(answerForm, answerJson);
+	}
 }
 
 function persistUpdatedAnswer(answerForm, answerParams) {
 	// TODO : AJAX
 	// var editedAnswerElement = answerForm.prev();
 	// var answerId = editedAnswerElement.find('[name=answerId]').val();
-	return answerParams;
+	return true;
 }
 
 function showUpdatedAnswer(answerForm, answerParams) {
