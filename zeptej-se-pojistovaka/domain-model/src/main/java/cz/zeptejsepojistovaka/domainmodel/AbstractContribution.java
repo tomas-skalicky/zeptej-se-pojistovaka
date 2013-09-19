@@ -45,7 +45,6 @@ public abstract class AbstractContribution implements Serializable {
     public static final String LAST_UPDATE_TIMESTAMP_COLUMN_NAME = "last_update_timestamp";
 
     @Min(1)
-    @NonNull
     @Getter
     @Setter
     @Id

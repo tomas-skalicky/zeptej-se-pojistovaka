@@ -13,6 +13,11 @@ public class UnverifiedContributionAuthorBuilder {
         return new UnverifiedContributionAuthorBuilder();
     }
 
+    public UnverifiedContributionAuthorBuilder withId(Integer id) {
+        this.author.setId(id);
+        return this;
+    }
+
     public UnverifiedContributionAuthorBuilder withName(String name) {
         this.author.setName(name);
         return this;

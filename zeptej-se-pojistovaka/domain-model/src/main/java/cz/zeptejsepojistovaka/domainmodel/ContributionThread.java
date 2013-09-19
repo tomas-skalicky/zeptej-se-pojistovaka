@@ -42,7 +42,6 @@ public class ContributionThread implements Serializable {
     public static final String THREAD_ID_COLUMN_NAME = "thread_id";
 
     @Min(1)
-    @NonNull
     @Getter
     @Setter
     @Id

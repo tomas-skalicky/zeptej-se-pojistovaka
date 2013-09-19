@@ -13,6 +13,11 @@ public class UnverifiedMessageAuthorBuilder {
         return new UnverifiedMessageAuthorBuilder();
     }
 
+    public UnverifiedMessageAuthorBuilder withId(Integer id) {
+        this.author.setId(id);
+        return this;
+    }
+
     public UnverifiedMessageAuthorBuilder withName(String name) {
         this.author.setName(name);
         return this;
