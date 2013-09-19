@@ -2,8 +2,12 @@ package cz.zeptejsepojistovaka.presentation.controllers.contributions;
 
 import java.util.List;
 
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+
 import cz.zeptejsepojistovaka.domainmodel.Answer;
 import cz.zeptejsepojistovaka.domainmodel.ContributionThread;
+import cz.zeptejsepojistovaka.domainmodel.Question;
 
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
@@ -31,6 +35,21 @@ public class SaveQuestionResponseBuilder {
 
     public SaveQuestionResponseBuilder with(ContributionThread thread) {
         this.response.setThread(thread);
+        return this;
+    }
+
+    public SaveQuestionResponseBuilder withFieldErrors(List<FieldError> fieldErrors) {
+        this.response.setFieldErrors(fieldErrors);
+        return this;
+    }
+
+    public SaveQuestionResponseBuilder withGlobalErrors(List<ObjectError> globalErrors) {
+        this.response.setGlobalErrors(globalErrors);
+        return this;
+    }
+
+    public SaveQuestionResponseBuilder withExceptionMessage(String exceptionMessage) {
+        this.response.setExceptionMessage(exceptionMessage);
         return this;
     }
 

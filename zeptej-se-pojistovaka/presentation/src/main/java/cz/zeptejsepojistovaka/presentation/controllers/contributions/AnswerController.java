@@ -35,7 +35,8 @@ public class AnswerController {
                 .newSaveNewAnswerResponseBuilder();
 
         if (result.hasErrors()) {
-            return responseBuilder.failed().build();
+            return responseBuilder.failed().withFieldErrors(result.getFieldErrors())
+                    .withGlobalErrors(result.getGlobalErrors()).build();
         }
 
         try {
@@ -43,7 +44,7 @@ public class AnswerController {
             return responseBuilder.succeeded().with(savedAnswer).build();
         } catch (Exception e) {
             this.log.error(e);
-            return responseBuilder.failed().build();
+            return responseBuilder.failed().withExceptionMessage(e.getMessage()).build();
         }
     }
 }

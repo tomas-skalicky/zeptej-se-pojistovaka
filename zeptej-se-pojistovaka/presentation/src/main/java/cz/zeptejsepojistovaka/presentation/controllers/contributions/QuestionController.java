@@ -35,7 +35,8 @@ public class QuestionController {
                 .newSaveQuestionResponseBuilder();
 
         if (result.hasErrors()) {
-            return responseBuilder.failed().build();
+            return responseBuilder.failed().withFieldErrors(result.getFieldErrors())
+                    .withGlobalErrors(result.getGlobalErrors()).build();
         }
 
         try {
@@ -43,7 +44,9 @@ public class QuestionController {
             return responseBuilder.succeeded().with(savedThread).build();
         } catch (Exception e) {
             this.log.error(e);
-            return responseBuilder.failed().build();
+            return responseBuilder.failed().withExceptionMessage(e.getMessage()).build();
+        }
+    }
         }
     }
 }

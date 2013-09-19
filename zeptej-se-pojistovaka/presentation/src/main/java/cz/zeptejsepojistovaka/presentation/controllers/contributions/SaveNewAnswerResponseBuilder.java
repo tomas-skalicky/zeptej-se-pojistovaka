@@ -1,5 +1,10 @@
 package cz.zeptejsepojistovaka.presentation.controllers.contributions;
 
+import java.util.List;
+
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+
 import cz.zeptejsepojistovaka.domainmodel.Answer;
 
 /**
@@ -28,6 +33,21 @@ public class SaveNewAnswerResponseBuilder {
 
     public SaveNewAnswerResponseBuilder with(Answer answer) {
         this.response.setAnswer(answer);
+        return this;
+    }
+
+    public SaveNewAnswerResponseBuilder withFieldErrors(List<FieldError> fieldErrors) {
+        this.response.setFieldErrors(fieldErrors);
+        return this;
+    }
+
+    public SaveNewAnswerResponseBuilder withGlobalErrors(List<ObjectError> globalErrors) {
+        this.response.setGlobalErrors(globalErrors);
+        return this;
+    }
+
+    public SaveNewAnswerResponseBuilder withExceptionMessage(String exceptionMessage) {
+        this.response.setExceptionMessage(exceptionMessage);
         return this;
     }
 
