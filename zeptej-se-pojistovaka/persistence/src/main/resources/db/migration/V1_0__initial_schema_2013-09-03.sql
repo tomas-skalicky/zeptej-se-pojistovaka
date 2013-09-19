@@ -59,8 +59,8 @@ CREATE TABLE `contributions` (
     `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
     `author_id` INT(11) NOT NULL,
     `text` TEXT NOT NULL,
-    `creation_timestamp` TIMESTAMP NOT NULL,
-    `last_update_timestamp` TIMESTAMP,
+    `creation_time` TIMESTAMP NOT NULL,
+    `last_update_time` TIMESTAMP,
     `thread_id` INT(11) NOT NULL,
     `question_id` INT(11),
     CONSTRAINT `FK_contributions_users`

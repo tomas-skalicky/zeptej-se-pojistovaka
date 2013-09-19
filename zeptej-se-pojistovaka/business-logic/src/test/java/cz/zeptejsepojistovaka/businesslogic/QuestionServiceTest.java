@@ -43,9 +43,9 @@ public class QuestionServiceTest {
 
         Question savedQuestion = this.questionService.save(question);
 
-        long actualCreationTimestamp = savedQuestion.getCreationTimestamp().getTime();
-        assertTrue(actualCreationTimestamp >= now);
-        assertEquals(actualCreationTimestamp, savedQuestion.getLastUpdateTimestamp().getTime());
+        long actualCreationTime = savedQuestion.getCreationTime().getTime();
+        assertTrue(actualCreationTime >= now);
+        assertEquals(actualCreationTime, savedQuestion.getLastUpdateTime().getTime());
     }
 
     @Test

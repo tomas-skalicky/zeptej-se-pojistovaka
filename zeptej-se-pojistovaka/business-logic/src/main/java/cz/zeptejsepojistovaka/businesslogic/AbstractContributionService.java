@@ -23,11 +23,11 @@ public abstract class AbstractContributionService {
     }
 
     private void setUpCreationTimestamps(AbstractContribution contribution, Timestamp timestamp) {
-        contribution.setCreationTimestamp(timestamp);
-        contribution.setLastUpdateTimestamp(timestamp);
+        contribution.setCreationTime(timestamp);
+        contribution.setLastUpdateTime(timestamp);
     }
 
     private void setUpUpdateTimestamps(AbstractContribution contribution, Timestamp timestamp) {
-        contribution.setLastUpdateTimestamp(timestamp);
+        contribution.setLastUpdateTime(timestamp);
     }
 }

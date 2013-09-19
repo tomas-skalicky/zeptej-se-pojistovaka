@@ -41,8 +41,8 @@ public abstract class AbstractContribution implements Serializable {
     public static final String TABLE_NAME = "contributions";
     public static final String ID_COLUMN_NAME = "id";
     public static final String AUTHOR_COLUMN_NAME = "author_id";
-    public static final String CREATION_TIMESTAMP_COLUMN_NAME = "creation_timestamp";
-    public static final String LAST_UPDATE_TIMESTAMP_COLUMN_NAME = "last_update_timestamp";
+    public static final String CREATION_TIME_COLUMN_NAME = "creation_time";
+    public static final String LAST_UPDATE_TIME_COLUMN_NAME = "last_update_time";
 
     @Min(1)
     @Getter
@@ -71,15 +71,15 @@ public abstract class AbstractContribution implements Serializable {
     @NonNull
     @Getter
     @Setter
-    @Column(name = CREATION_TIMESTAMP_COLUMN_NAME)
-    private Timestamp creationTimestamp;
+    @Column(name = CREATION_TIME_COLUMN_NAME)
+    private Timestamp creationTime;
 
     @Past
     @NonNull
     @Getter
     @Setter
-    @Column(name = LAST_UPDATE_TIMESTAMP_COLUMN_NAME)
-    private Timestamp lastUpdateTimestamp;
+    @Column(name = LAST_UPDATE_TIME_COLUMN_NAME)
+    private Timestamp lastUpdateTime;
 
     @NotNull
     @Getter

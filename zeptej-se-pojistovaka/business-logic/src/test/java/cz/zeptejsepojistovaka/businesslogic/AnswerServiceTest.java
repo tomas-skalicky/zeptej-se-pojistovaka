@@ -40,8 +40,8 @@ public class AnswerServiceTest {
 
         Answer savedAnswer = this.answerService.save(answer);
 
-        long actualCreationTimestamp = savedAnswer.getCreationTimestamp().getTime();
-        assertTrue(actualCreationTimestamp >= now);
-        assertEquals(actualCreationTimestamp, savedAnswer.getLastUpdateTimestamp().getTime());
+        long actualCreationTime = savedAnswer.getCreationTime().getTime();
+        assertTrue(actualCreationTime >= now);
+        assertEquals(actualCreationTime, savedAnswer.getLastUpdateTime().getTime());
     }
 }

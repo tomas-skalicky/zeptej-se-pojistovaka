@@ -52,10 +52,11 @@ public class ContributionThreadServiceTest extends AbstractJUnit4SpringContextTe
 
         ContributionThread savedThread = this.threadService.save(thread);
 
-        long threadLastChangeTimestamp = savedThread.getLastChangeTime().getTime();
-        assertTrue(threadLastChangeTimestamp >= now);
+        long threadLastChangeTime = savedThread.getLastChangeTime().getTime();
+        assertTrue(threadLastChangeTime >= now);
         Question question = savedThread.getQuestion();
-        assertEquals(threadLastChangeTimestamp, question.getCreationTimestamp().getTime());
-        assertEquals(threadLastChangeTimestamp, question.getLastUpdateTimestamp().getTime());
+        assertEquals(threadLastChangeTime, question.getCreationTime().getTime());
+        assertEquals(threadLastChangeTime, question.getLastUpdateTime().getTime());
+    }
     }
 }
