@@ -40,11 +40,17 @@ public class SaveQuestionResponseBuilder {
     }
 
     private void removeThreadLoops(ContributionThread thread) {
-        thread.getQuestion().setThread(null);
-        List<Answer> answers = thread.getQuestion().getAnswers();
-        for (Answer answer : answers) {
-            answer.setThread(null);
-            answer.setQuestion(null);
+        if (thread != null) {
+            Question question = thread.getQuestion();
+            if (question != null) {
+
+                question.setThread(null);
+                List<Answer> answers = question.getAnswers();
+                for (Answer answer : answers) {
+                    answer.setThread(null);
+                    answer.setQuestion(null);
+                }
+            }
         }
     }
 }
