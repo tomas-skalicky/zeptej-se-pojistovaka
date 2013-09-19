@@ -39,6 +39,13 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <!-- see http://www.manydesigns.com/en/portofino/portofino3/tutorials/using-maven-profiles-and-resource-filtering/#TOC-Resource-filtering -->
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
 
         <plugins>
             <plugin>
