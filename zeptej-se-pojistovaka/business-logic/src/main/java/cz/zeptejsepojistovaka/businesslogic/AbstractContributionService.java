@@ -15,10 +15,10 @@ public abstract class AbstractContributionService {
     }
 
     protected void setUpTimestamps(AbstractContribution contribution, Timestamp timestamp) {
-        if (contribution.getId() == null) {
-            setUpCreationTimestamps(contribution, timestamp);
-        } else {
+        if (contribution.isPersistedInStorage()) {
             setUpUpdateTimestamps(contribution, timestamp);
+        } else {
+            setUpCreationTimestamps(contribution, timestamp);
         }
     }
 

@@ -27,13 +27,12 @@ public class QuestionController {
     private ContributionThreadService threadService;
 
     @Transactional
-    @RequestMapping(value = QuestionUrlParts.SAVE_NEW, method = RequestMethod.POST)
+    @RequestMapping(value = QuestionUrlParts.SAVE, method = RequestMethod.POST)
     public @ResponseBody
-    SaveNewQuestionResponse saveNewQuestion(@RequestBody @Valid ContributionThread thread,
-            BindingResult result) {
+    SaveQuestionResponse saveQuestion(@RequestBody @Valid ContributionThread thread, BindingResult result) {
         this.log.debug("in Controller");
         SaveQuestionResponseBuilder responseBuilder = SaveQuestionResponseBuilder
-                .newSaveNewQuestionResponseBuilder();
+                .newSaveQuestionResponseBuilder();
 
         if (result.hasErrors()) {
             return responseBuilder.failed().build();

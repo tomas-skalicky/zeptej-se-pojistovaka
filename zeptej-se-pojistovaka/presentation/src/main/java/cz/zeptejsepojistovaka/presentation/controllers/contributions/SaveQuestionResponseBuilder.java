@@ -15,7 +15,7 @@ public class SaveQuestionResponseBuilder {
     private SaveQuestionResponseBuilder() {
     }
 
-    public static SaveQuestionResponseBuilder newSaveNewQuestionResponseBuilder() {
+    public static SaveQuestionResponseBuilder newSaveQuestionResponseBuilder() {
         return new SaveQuestionResponseBuilder();
     }
 

@@ -6,8 +6,8 @@ package cz.zeptejsepojistovaka.presentation.controllers.contributions;
 public final class QuestionUrlParts {
 
     private static final String ROOT = "/otazka/";
-    private static final String NEW = ROOT + "nova/";
-    public static final String SAVE_NEW = NEW + "ulozit/";
+    public static final String SAVE = ROOT + "ulozit/";
+    public static final String DELETE = ROOT + "smazat/";
 
     private QuestionUrlParts() {
     }

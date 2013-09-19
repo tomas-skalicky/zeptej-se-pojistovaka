@@ -87,4 +87,8 @@ public abstract class AbstractContribution implements Serializable {
     @Setter
     @OneToOne(fetch = FetchType.EAGER)
     private ContributionThread thread;
+
+    public boolean isPersistedInStorage() {
+        return (getId() != null);
+    }
 }

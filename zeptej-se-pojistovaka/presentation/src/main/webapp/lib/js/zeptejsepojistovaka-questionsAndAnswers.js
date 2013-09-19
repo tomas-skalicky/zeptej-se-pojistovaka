@@ -149,13 +149,17 @@ function initNewQuestionFormControls() {
 
 function handleAddQuestion() {
 	var questionForm = $(this).closest('.question.new');
+	handleAddEditQuestion(questionForm, null, showNewQuestion);
+}
+
+function handleAddEditQuestion(questionForm, questionId, showQuestion) {
 	if (!checkQuestionFormInputs(questionForm)) {
 		return;
 	}
-	var threadJson = composeThreadJson(questionForm);
-	if (persistNewQuestion(questionForm, threadJson)) {
+	var threadJson = composeThreadJson(questionForm, questionId);
+	if (persistQuestion(questionForm, threadJson)) {
 		modifyThreadJsonForView(threadJson);
-		showNewQuestion(questionForm, threadJson);
+		showQuestion(questionForm, threadJson);
 	}
 }
 
@@ -272,11 +276,14 @@ function checkQuestionTextInput(textElement) {
 	return true;
 }
 
-function composeThreadJson(questionForm) {
+function composeThreadJson(questionForm, questionId) {
 	return {
+		'id' : getNullIfEmpty(parseInt(questionForm.closest('.thread').find(
+				'[name=threadId]').val())),
 		'thema' : getNullIfEmpty(questionForm.find('[name=questionThema]')
 				.val().trim()),
 		'question' : {
+			'id' : getNullIfEmpty(parseInt(questionId)),
 			'text' : encodeTextToHtml(questionForm.find('[name=questionText]')
 					.val()),
 			'author' : {
@@ -285,32 +292,30 @@ function composeThreadJson(questionForm) {
 						.val().trim()),
 				'email' : getNullIfEmpty(questionForm
 						.find('[name=authorEmail]').val().trim())
-			}
+			},
+			'answers' : []
 		},
 		'tags' : []
 	};
 }
 
-function persistNewQuestion(questionForm, threadJson) {
+function persistQuestion(questionForm, threadJson) {
 	var isOk = false;
-	$
-			.ajax({
-				url : REQUEST_CONTEXT_PATH + '/otazka/nova/ulozit/',
-				type : POST_TYPE,
-				dataType : JSON_TYPE,
-				contentType : JSON_CONTENT_TYPE,
-				data : JSON.stringify(threadJson),
-				async : false
-			})
-			.done(
-					function(saveQuestionResponse) {
-						var thread = saveQuestionResponse['thread'];
-						threadJson['id'] = thread['id'];
-						threadJson['question'] = thread['question'];
-						isOk = true;
-					}).fail(function(saveQuestionResponse) {
-				isOk = false;
-			});
+	$.ajax({
+		url : REQUEST_CONTEXT_PATH + '/otazka/ulozit/',
+		type : POST_TYPE,
+		dataType : JSON_TYPE,
+		contentType : JSON_CONTENT_TYPE,
+		data : JSON.stringify(threadJson),
+		async : false
+	}).done(function(saveQuestionResponse) {
+		var thread = saveQuestionResponse['thread'];
+		threadJson['id'] = thread['id'];
+		threadJson['question'] = thread['question'];
+		isOk = true;
+	}).fail(function(saveQuestionResponse) {
+		isOk = false;
+	});
 	return isOk;
 }
 
