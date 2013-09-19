@@ -545,13 +545,27 @@ function showDeleteQuestionModal() {
 function handleDeleteQuestion() {
 	var deleteModal = $('#delete-modal');
 	var questionId = deleteModal.find('[name=itemToBeDeletedId]').val();
-	persistDeletedQuestion(questionId);
-	hideDeletedQuestion(questionId);
-	deleteModal.modal('hide');
+	if (persistDeletedQuestion(questionId)) {
+		hideDeletedQuestion(questionId);
+		deleteModal.modal('hide');
+	}
 }
 
 function persistDeletedQuestion(questionId) {
-	// TODO : AJAX
+	var isOk = false;
+	$.ajax({
+		url : REQUEST_CONTEXT_PATH + '/otazka/smazat/',
+		type : POST_TYPE,
+		dataType : JSON_TYPE,
+		contentType : JSON_CONTENT_TYPE,
+		data : JSON.stringify(questionId),
+		async : false
+	}).done(function(deleteAnswerResponse) {
+		isOk = true;
+	}).fail(function(deleteAnswerResponse) {
+		isOk = false;
+	});
+	return isOk;
 }
 
 function hideDeletedQuestion(questionId) {

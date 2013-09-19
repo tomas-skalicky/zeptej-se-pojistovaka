@@ -47,6 +47,20 @@ public class QuestionController {
             return responseBuilder.failed().withExceptionMessage(e.getMessage()).build();
         }
     }
+
+    @Transactional
+    @RequestMapping(value = QuestionUrlParts.DELETE, method = RequestMethod.POST)
+    public @ResponseBody
+    DeleteQuestionResponse deleteQuestion(@RequestBody Integer questionId) {
+        this.log.debug("in Controller");
+        DeleteQuestionResponseBuilder responseBuilder = DeleteQuestionResponseBuilder
+                .newDeleteQuestionResponseBuilder();
+        try {
+            this.threadService.deleteByQuestionId(questionId);
+            return responseBuilder.succeeded().build();
+        } catch (Exception e) {
+            this.log.error(e);
+            return responseBuilder.failed().withExceptionMessage(e.getMessage()).build();
         }
     }
 }

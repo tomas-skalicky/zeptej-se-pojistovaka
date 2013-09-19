@@ -14,6 +14,11 @@ public class AnswerBuilder {
         return new AnswerBuilder();
     }
 
+    public AnswerBuilder withText(String text) {
+        this.answer.setText(text);
+        return this;
+    }
+
     public AnswerBuilder with(ContributionAuthor author) {
         this.answer.setAuthor(author);
         return this;

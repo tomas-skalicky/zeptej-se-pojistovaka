@@ -39,6 +39,10 @@ public class ContributionThreadService {
         question.setAnswers(new ArrayList<Answer>());
         this.questionService.setUpTimestamps(question, now);
 
+    @Transactional
+    public void deleteByQuestionId(Integer questionId) {
+        Question question = this.questionRepository.findOne(questionId);
+        this.threadRepository.delete(question.getThread());
         return this.threadRepository.save(thread);
     }
 }
