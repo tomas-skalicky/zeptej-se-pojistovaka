@@ -490,21 +490,8 @@ function initEditQuestionFormControls(questionForm) {
 
 function handleEditQuestion() {
 	var questionForm = $(this).closest('.question.edit');
-	if (!checkQuestionFormInputs(questionForm)) {
-		return;
-	}
-	var threadJson = composeThreadJson(questionForm);
-	if (persistUpdatedQuestion(questionForm, threadJson)) {
-		modifyThreadJsonForView(threadJson);
-		showUpdatedQuestion(questionForm, threadJson);
-	}
-}
-
-function persistUpdatedQuestion(questionForm, threadJson) {
-	// TODO : AJAX
-	// var editedQuestionElement = questionForm.prev();
-	// var questionId = editedQuestionElement.find('[name=questionId]').val();
-	return threadJson;
+	var questionId = questionForm.prev().find('[name=questionId]').val();
+	handleAddEditQuestion(questionForm, questionId, showUpdatedQuestion);
 }
 
 function showUpdatedQuestion(questionForm, threadJson) {
@@ -514,7 +501,7 @@ function showUpdatedQuestion(questionForm, threadJson) {
 	var editedQuestionElement = questionForm.prev();
 	editedQuestionElement.find('.author-email').text(author['email']);
 	editedQuestionElement.find('.author-name').text(author['name']);
-	editedQuestionElement.find('.question-thema').text(question['thema']);
+	editedQuestionElement.find('.question-thema').text(threadJson['thema']);
 	editedQuestionElement.find('.question-text').html(question['text']);
 
 	questionForm.remove();

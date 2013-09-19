@@ -1,6 +1,5 @@
 package cz.zeptejsepojistovaka.businesslogic;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.inject.Inject;
@@ -15,6 +14,7 @@ import cz.zeptejsepojistovaka.domainmodel.Answer;
 import cz.zeptejsepojistovaka.domainmodel.ContributionThread;
 import cz.zeptejsepojistovaka.domainmodel.Question;
 import cz.zeptejsepojistovaka.persistence.repository.ContributionThreadRepository;
+import cz.zeptejsepojistovaka.persistence.repository.QuestionRepository;
 
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
@@ -26,23 +26,40 @@ public class ContributionThreadService {
     private ContributionThreadRepository threadRepository;
 
     @Inject
+    private QuestionRepository questionRepository;
+
+    @Inject
     @Setter
     private QuestionService questionService;
 
     @Transactional
     public ContributionThread save(ContributionThread thread) {
-        Timestamp now = TimestampUtils.getNow();
-        thread.setLastChangeTime(now);
+        thread.setLastChangeTime(TimestampUtils.getNow());
+        prepareQuestionForSave(thread);
 
+        ContributionThread persistedThread = this.threadRepository.save(thread);
+        // To avoid LazyInitializationException later on.
+        persistedThread.getQuestion().getAnswers().isEmpty();
+        return persistedThread;
+    }
+
+    private void prepareQuestionForSave(ContributionThread thread) {
         Question question = thread.getQuestion();
+        if (question.isPersistedInStorage()) {
+            question = this.questionService.findOneAndOverwriteTextAuthorNameAndEmail(question);
+            thread.setQuestion(question);
+        }
+
         question.setThread(thread);
-        question.setAnswers(new ArrayList<Answer>());
-        this.questionService.setUpTimestamps(question, now);
+        if (question.getAnswers() == null) {
+            question.setAnswers(new ArrayList<Answer>());
+        }
+        this.questionService.setUpTimestamps(question, thread.getLastChangeTime());
+    }
 
     @Transactional
     public void deleteByQuestionId(Integer questionId) {
         Question question = this.questionRepository.findOne(questionId);
         this.threadRepository.delete(question.getThread());
-        return this.threadRepository.save(thread);
     }
 }
