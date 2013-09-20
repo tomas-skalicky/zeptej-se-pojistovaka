@@ -59,5 +59,9 @@ public class QuestionBuilder {
         if (this.question.getAnswers() == null) {
             this.question.setAnswers(new ArrayList<Answer>());
         }
+        if (this.question.getAuthor() == null) {
+            this.question.setAuthor(UnverifiedContributionAuthorBuilder.newUnverifiedContributionAuthor()
+                    .build());
+        }
     }
 }

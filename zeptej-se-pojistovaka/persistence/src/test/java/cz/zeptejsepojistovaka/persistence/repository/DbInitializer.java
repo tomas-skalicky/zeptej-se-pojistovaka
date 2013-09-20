@@ -92,6 +92,7 @@ class DbInitializer {
         insertThreadWithNoAnswer();
         insertThreadWithOneAnswer();
         insertThreadWithTwoAnswers();
+        insertThread4to21();
     }
 
     private void insertThreadWithNoAnswer() {
@@ -170,5 +171,24 @@ class DbInitializer {
         question.setAnswers(Arrays.asList(answer1, answer2));
 
         this.contributionThreadRepository.save(thread);
+    }
+
+    private void insertThread4to21() {
+        for (int threadNo = 4; threadNo <= 21; ++threadNo) {
+            Timestamp lastChangeTime = TimestampUtils.getNow();
+            ContributionThread thread = ContributionThreadBuilder.newThread()
+                    .withThema("thema No. " + threadNo).withLastChangeTime(lastChangeTime).build();
+
+            ContributionAuthor questionAuthor = this.unverifiedContributionAuthorRepository.findByEmail(
+                    UNVERIFIED_CONTRIBUTION_AUTHOR_2_EMAIL).get(0);
+            Timestamp questionCreationTime = lastChangeTime;
+            Timestamp questionLastUpdateTime = lastChangeTime;
+            Question question = QuestionBuilder.newQuestion().with(questionAuthor)
+                    .withText("question No. " + threadNo).with(thread).withCreationTime(questionCreationTime)
+                    .withLastUpdateTime(questionLastUpdateTime).build();
+            thread.setQuestion(question);
+
+            this.contributionThreadRepository.save(thread);
+        }
     }
 }
