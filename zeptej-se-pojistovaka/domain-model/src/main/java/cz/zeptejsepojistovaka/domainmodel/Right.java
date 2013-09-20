@@ -1,6 +1,5 @@
 package cz.zeptejsepojistovaka.domainmodel;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -35,12 +34,15 @@ public class Right implements GrantedAuthority {
     public static final String USER_ID_COLUMN_NAME = "user_id";
     public static final String RIGHT_TYPE_COLUMN_NAME = "right_type";
 
+    /**
+     * Do NOT propagate (cascade) any operation.
+     */
     @NotNull
     @NonNull
     @Getter
     @Setter
     @Id
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {})
     @JoinColumn(name = USER_ID_COLUMN_NAME, referencedColumnName = AbstractUser.ID_COLUMN_NAME)
     private VerifiedUser user;
 

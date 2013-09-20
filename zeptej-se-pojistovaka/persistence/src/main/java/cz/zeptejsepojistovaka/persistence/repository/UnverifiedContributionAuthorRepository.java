@@ -12,6 +12,12 @@ public interface UnverifiedContributionAuthorRepository extends
 
     /**
      * Retrieves all {@link UnverifiedContributionAuthor UnverifiedContributionAuthors} with the given
+     * {@code name}.
+     */
+    List<UnverifiedContributionAuthor> findByName(String name);
+
+    /**
+     * Retrieves all {@link UnverifiedContributionAuthor UnverifiedContributionAuthors} with the given
      * {@code email}. There may be more since the table contains not just {@link VerifiedUser}, but also the
      * unverified ones.
      */

@@ -3,7 +3,6 @@ package cz.zeptejsepojistovaka.domainmodel;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -51,11 +50,14 @@ public abstract class AbstractContribution implements Serializable {
     @GeneratedValue
     private Integer id;
 
+    /**
+     * Do NOT propagate (cascade) any operation.
+     */
     @NotNull
     @NonNull
     @Getter
     @Setter
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = AbstractUser.class, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = AbstractUser.class, cascade = {})
     @JoinColumn(name = AUTHOR_COLUMN_NAME, referencedColumnName = AbstractUser.ID_COLUMN_NAME)
     private ContributionAuthor author;
 

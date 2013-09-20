@@ -2,6 +2,7 @@ package cz.zeptejsepojistovaka.domainmodel;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -23,6 +24,6 @@ public class Question extends AbstractContribution {
     @NonNull
     @Getter
     @Setter
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "question", cascade = CascadeType.ALL)
     private List<Answer> answers;
 }
