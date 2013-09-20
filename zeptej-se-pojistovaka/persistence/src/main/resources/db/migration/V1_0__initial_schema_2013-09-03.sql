@@ -70,7 +70,8 @@ CREATE TABLE `contributions` (
     CONSTRAINT `FK_contributions_users`
         FOREIGN KEY (`author_id`)
         REFERENCES `users` (`id`)
-        ON UPDATE CASCADE,
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     CONSTRAINT `FK_contributions_threads`
         FOREIGN KEY (`thread_id`)
         REFERENCES `threads` (`id`)
