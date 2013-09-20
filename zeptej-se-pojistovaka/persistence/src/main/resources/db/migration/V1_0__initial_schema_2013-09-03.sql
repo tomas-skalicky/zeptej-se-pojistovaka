@@ -55,6 +55,9 @@ CREATE TABLE `threads` (
   `thema` VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/**
+ * Do NOT propage a deletion of an author.
+ */
 CREATE TABLE `contributions` (
     `DTYPE` VARCHAR(31) NOT NULL,
     `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
@@ -67,8 +70,7 @@ CREATE TABLE `contributions` (
     CONSTRAINT `FK_contributions_users`
         FOREIGN KEY (`author_id`)
         REFERENCES `users` (`id`)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE,
+        ON UPDATE CASCADE,
     CONSTRAINT `FK_contributions_threads`
         FOREIGN KEY (`thread_id`)
         REFERENCES `threads` (`id`)
