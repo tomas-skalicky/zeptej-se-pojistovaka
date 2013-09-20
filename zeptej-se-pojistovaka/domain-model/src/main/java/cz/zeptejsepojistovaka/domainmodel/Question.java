@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import lombok.Setter;
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
 @Entity
+@EqualsAndHashCode(callSuper = true)
 public class Question extends AbstractContribution {
 
     private static final long serialVersionUID = -1765131095010510075L;

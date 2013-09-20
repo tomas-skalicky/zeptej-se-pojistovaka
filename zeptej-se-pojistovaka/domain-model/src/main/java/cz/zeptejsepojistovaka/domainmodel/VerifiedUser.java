@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -29,6 +30,7 @@ import cz.zeptejsepojistovaka.domainmodel.builder.RightBuilder;
 @JsonTypeName(VerifiedUser.JSON_TYPE_NAME)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 @Entity
+@EqualsAndHashCode(callSuper = true)
 public class VerifiedUser extends AbstractUser implements ContributionAuthor, MessageAuthor, UserDetails {
 
     private static final long serialVersionUID = 4376233966414060002L;

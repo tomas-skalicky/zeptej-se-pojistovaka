@@ -20,6 +20,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -29,6 +30,7 @@ import lombok.Setter;
  */
 @Entity
 @Table(name = ContributionThread.TABLE_NAME)
+@EqualsAndHashCode
 public class ContributionThread implements Serializable {
 
     private static final long serialVersionUID = -4754136234136946020L;

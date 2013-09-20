@@ -9,6 +9,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -19,6 +20,7 @@ import lombok.Setter;
 @Entity
 @Table(name = AbstractUser.TABLE_NAME)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@EqualsAndHashCode
 public abstract class AbstractUser implements User {
 
     private static final long serialVersionUID = -2685209162891734528L;

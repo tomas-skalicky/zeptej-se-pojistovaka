@@ -19,6 +19,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -32,6 +33,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 @Table(name = AbstractContribution.TABLE_NAME)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@EqualsAndHashCode
 public abstract class AbstractContribution implements Serializable {
 
     private static final long serialVersionUID = 6088344590164907016L;

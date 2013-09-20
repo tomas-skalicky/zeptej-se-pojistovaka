@@ -6,6 +6,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ import lombok.Setter;
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
 @Entity
+@EqualsAndHashCode(callSuper = true)
 public class Answer extends AbstractContribution {
 
     private static final long serialVersionUID = 4729919240799217682L;

@@ -15,6 +15,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -27,6 +28,7 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 @Entity
 @Table(name = Message.TABLE_NAME)
+@EqualsAndHashCode
 public class Message implements Serializable {
 
     private static final long serialVersionUID = -5594858420775292615L;

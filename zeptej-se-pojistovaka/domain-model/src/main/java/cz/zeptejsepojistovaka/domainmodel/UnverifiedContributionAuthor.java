@@ -2,6 +2,7 @@ package cz.zeptejsepojistovaka.domainmodel;
 
 import javax.persistence.Entity;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,7 @@ import org.hibernate.validator.constraints.Email;
 @JsonTypeName(UnverifiedContributionAuthor.JSON_TYPE_NAME)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 @Entity
+@EqualsAndHashCode(callSuper = true)
 public class UnverifiedContributionAuthor extends AbstractUnverifiedUser implements ContributionAuthor {
 
     private static final long serialVersionUID = 5722350189695963109L;

@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -26,6 +27,7 @@ import org.springframework.security.core.GrantedAuthority;
 @Entity
 @Table(name = Right.TABLE_NAME)
 @IdClass(value = RightKey.class)
+@EqualsAndHashCode
 public class Right implements GrantedAuthority {
 
     private static final long serialVersionUID = -6965401950684956798L;
