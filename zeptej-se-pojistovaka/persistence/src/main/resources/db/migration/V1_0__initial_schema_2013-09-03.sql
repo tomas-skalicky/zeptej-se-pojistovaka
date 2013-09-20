@@ -24,7 +24,8 @@ CREATE TABLE `users` (
     `name` VARCHAR(50),
     `email` VARCHAR(100),
     `is_male` BOOLEAN,
-    CONSTRAINT `email_validator` CHECK (`email` LIKE '_%@_%._%')
+    CONSTRAINT `email_validator` CHECK (`email` LIKE '_%@_%._%'),
+    INDEX `email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `rights` (
