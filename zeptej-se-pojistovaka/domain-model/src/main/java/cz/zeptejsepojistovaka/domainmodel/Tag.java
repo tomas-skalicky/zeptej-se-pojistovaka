@@ -22,15 +22,20 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import lombok.ToString;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
+ * The {@code threads} property is excluded from the {@code equals}, {@code hashCode} and {@code toString}
+ * methods since the property is lazy loaded.
+ * 
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
 @Entity
 @Table(name = Tag.TABLE_NAME)
-@EqualsAndHashCode
+@EqualsAndHashCode(exclude = "threads")
+@ToString(exclude = "threads")
 public class Tag implements Serializable {
 
     private static final long serialVersionUID = 7998378353779938815L;
