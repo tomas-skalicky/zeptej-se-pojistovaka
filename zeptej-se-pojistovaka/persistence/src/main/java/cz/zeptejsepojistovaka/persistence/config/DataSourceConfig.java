@@ -9,8 +9,8 @@ import org.hibernate.ejb.HibernatePersistence;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories("cz.zeptejsepojistovaka.persistence.repository")
+@Import({ MainDataSourceConfig.class, TestDataSourceConfig.class })
 @ComponentScan("cz.zeptejsepojistovaka.persistence")
 public class DataSourceConfig {
 
@@ -29,22 +30,13 @@ public class DataSourceConfig {
     @Inject
     private DataSourcePropertyLoader dataSourcePropertyLoader;
 
-    @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-
-        dataSource.setDriverClassName(this.dataSourceProperties.getDatabaseDriverClass());
-        dataSource.setUrl(this.dataSourceProperties.getDatabaseConnectionUrl());
-        dataSource.setUsername(this.dataSourceProperties.getDatabaseUsername());
-        dataSource.setPassword(this.dataSourceProperties.getDatabasePassword());
-
-        return dataSource;
-    }
+    @Inject
+    private DataSource dataSource;
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactoryBean.setDataSource(dataSource());
+        entityManagerFactoryBean.setDataSource(this.dataSource);
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistence.class);
         entityManagerFactoryBean.setPackagesToScan(ENTITYMANAGER_PACKAGES_TO_SCAN);
 
