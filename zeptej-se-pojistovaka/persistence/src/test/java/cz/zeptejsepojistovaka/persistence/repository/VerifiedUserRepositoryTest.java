@@ -6,10 +6,12 @@ import javax.inject.Inject;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
+import cz.zeptejsepojistovaka.commons.annotation.InTest;
 import cz.zeptejsepojistovaka.domainmodel.VerifiedUser;
 import cz.zeptejsepojistovaka.persistence.config.DataSourceConfig;
 import cz.zeptejsepojistovaka.persistence.test.DbInitializerBootstrap;
@@ -18,6 +20,7 @@ import cz.zeptejsepojistovaka.persistence.test.DbInitializerBootstrap;
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
 @ContextConfiguration(classes = DataSourceConfig.class)
+@ActiveProfiles(profiles = InTest.PROFILE_NAME)
 @TransactionConfiguration(defaultRollback = true)
 public class VerifiedUserRepositoryTest extends AbstractJUnit4SpringContextTests {
 

@@ -15,11 +15,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.data.domain.Page;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import cz.zeptejsepojistovaka.businesslogic.config.BusinessLogicConfig;
+import cz.zeptejsepojistovaka.commons.annotation.InTest;
 import cz.zeptejsepojistovaka.commons.util.TimestampUtils;
 import cz.zeptejsepojistovaka.domainmodel.ContributionAuthor;
 import cz.zeptejsepojistovaka.domainmodel.ContributionThread;
@@ -35,6 +37,7 @@ import cz.zeptejsepojistovaka.persistence.test.DbInitializerBootstrap;
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
 @ContextConfiguration(classes = { BusinessLogicConfig.class, DataSourceConfig.class })
+@ActiveProfiles(profiles = InTest.PROFILE_NAME)
 @TransactionConfiguration(defaultRollback = true)
 public class ContributionThreadServiceTest extends AbstractJUnit4SpringContextTests {
 
