@@ -10,18 +10,18 @@ import lombok.RequiredArgsConstructor;
 
 import org.apache.commons.lang3.StringUtils;
 
-import cz.zeptejsepojistovaka.commons.annotation.Dev;
-import cz.zeptejsepojistovaka.commons.annotation.Production;
-import cz.zeptejsepojistovaka.commons.annotation.Test;
+import cz.zeptejsepojistovaka.commons.annotation.InDevelopment;
+import cz.zeptejsepojistovaka.commons.annotation.InProduction;
+import cz.zeptejsepojistovaka.commons.annotation.InTest;
 
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum Profile {
 
-    DEV(Dev.PROFILE_NAME) {
+    DEV(InDevelopment.PROFILE_NAME) {
     },
-    TEST(Test.PROFILE_NAME) {
+    TEST(InTest.PROFILE_NAME) {
     },
-    PRODUCTION(Production.PROFILE_NAME) {
+    PRODUCTION(InProduction.PROFILE_NAME) {
     };
 
     @NonNull

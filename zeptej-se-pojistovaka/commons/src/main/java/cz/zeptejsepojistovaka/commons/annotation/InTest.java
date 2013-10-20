@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Profile;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Profile(Dev.PROFILE_NAME)
-public @interface Dev {
+@Profile(InTest.PROFILE_NAME)
+public @interface InTest {
 
-    public static final String PROFILE_NAME = "DEV";
+    public static final String PROFILE_NAME = "TEST";
 }
