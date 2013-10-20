@@ -33,7 +33,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 @Table(name = AbstractContribution.TABLE_NAME)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@EqualsAndHashCode
+@EqualsAndHashCode(exclude = "thread")
 public abstract class AbstractContribution implements Serializable {
 
     private static final long serialVersionUID = 6088344590164907016L;

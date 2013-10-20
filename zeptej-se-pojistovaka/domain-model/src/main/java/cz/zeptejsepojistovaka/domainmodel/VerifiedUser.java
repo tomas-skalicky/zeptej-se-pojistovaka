@@ -73,7 +73,7 @@ public class VerifiedUser extends AbstractUser implements ContributionAuthor, Me
     @NonNull
     @Getter
     @Setter
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private Set<Right> rights;
 
     @Getter

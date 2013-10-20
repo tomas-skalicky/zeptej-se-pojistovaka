@@ -11,7 +11,7 @@ import cz.zeptejsepojistovaka.domainmodel.AbstractContribution;
 public abstract class AbstractContributionService {
 
     protected void setUpTimestamps(AbstractContribution contribution) {
-        setUpTimestamps(contribution, TimestampUtils.getNow());
+        setUpTimestamps(contribution, TimestampUtils.getNowFlooredToSec());
     }
 
     protected void setUpTimestamps(AbstractContribution contribution, Timestamp timestamp) {

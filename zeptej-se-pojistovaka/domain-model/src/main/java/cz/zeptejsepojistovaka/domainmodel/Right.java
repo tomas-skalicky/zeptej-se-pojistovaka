@@ -27,7 +27,7 @@ import org.springframework.security.core.GrantedAuthority;
 @Entity
 @Table(name = Right.TABLE_NAME)
 @IdClass(value = RightKey.class)
-@EqualsAndHashCode
+@EqualsAndHashCode(exclude = "user")
 public class Right implements GrantedAuthority {
 
     private static final long serialVersionUID = -6965401950684956798L;

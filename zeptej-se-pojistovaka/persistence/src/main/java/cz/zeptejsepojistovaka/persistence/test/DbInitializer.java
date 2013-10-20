@@ -1,4 +1,4 @@
-package cz.zeptejsepojistovaka.persistence.repository;
+package cz.zeptejsepojistovaka.persistence.test;
 
 import java.sql.Timestamp;
 import java.util.Arrays;
@@ -22,10 +22,16 @@ import cz.zeptejsepojistovaka.domainmodel.builder.QuestionBuilder;
 import cz.zeptejsepojistovaka.domainmodel.builder.UnverifiedContributionAuthorBuilder;
 import cz.zeptejsepojistovaka.domainmodel.builder.UnverifiedMessageAuthorBuilder;
 import cz.zeptejsepojistovaka.domainmodel.builder.VerifiedUserBuilder;
+import cz.zeptejsepojistovaka.persistence.repository.ContributionThreadRepository;
+import cz.zeptejsepojistovaka.persistence.repository.CustomVerifiedUserRepository;
+import cz.zeptejsepojistovaka.persistence.repository.RightRepository;
+import cz.zeptejsepojistovaka.persistence.repository.UnverifiedContributionAuthorRepository;
+import cz.zeptejsepojistovaka.persistence.repository.UnverifiedMessageAuthorRepository;
+import cz.zeptejsepojistovaka.persistence.repository.VerifiedUserRepository;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-class DbInitializer {
+public class DbInitializer {
 
     private static final String UNVERIFIED_CONTRIBUTION_AUTHOR_2_NAME = "Test Author Name";
     private static final String UNVERIFIED_CONTRIBUTION_AUTHOR_2_EMAIL = "contribution.author@abc.com";
@@ -48,13 +54,17 @@ class DbInitializer {
     @Inject
     private ContributionThreadRepository contributionThreadRepository;
 
-    void initDatabase() {
+    @Inject
+    private RightRepository rightRepository;
+
+    public void initDatabase() {
         trancateAffectedTables();
         insertUsers();
         insertThreads();
     }
 
     private void trancateAffectedTables() {
+        this.rightRepository.deleteAll();
         this.verifiedUserRepository.deleteAll();
         this.unverifiedContributionAuthorRepository.deleteAll();
         this.unverifiedMessageAuthorRepository.deleteAll();
@@ -96,7 +106,7 @@ class DbInitializer {
     }
 
     private void insertThreadWithNoAnswer() {
-        Timestamp lastChangeTime = TimestampUtils.getNow();
+        Timestamp lastChangeTime = TimestampUtils.getNowFlooredToSec();
         ContributionThread thread = ContributionThreadBuilder.newThread().withThema("thema with NO answer")
                 .withLastChangeTime(lastChangeTime).build();
 
@@ -113,7 +123,7 @@ class DbInitializer {
     }
 
     private void insertThreadWithOneAnswer() {
-        Timestamp lastChangeTime = TimestampUtils.getNow();
+        Timestamp lastChangeTime = TimestampUtils.getNowFlooredToSec();
         ContributionThread thread = ContributionThreadBuilder.newThread().withThema("thema with ONE answer")
                 .withLastChangeTime(lastChangeTime).build();
 
@@ -138,7 +148,7 @@ class DbInitializer {
     }
 
     private void insertThreadWithTwoAnswers() {
-        Timestamp lastChangeTime = TimestampUtils.getNow();
+        Timestamp lastChangeTime = TimestampUtils.getNowFlooredToSec();
         ContributionThread thread = ContributionThreadBuilder.newThread().withThema("thema with TWO answers")
                 .withLastChangeTime(lastChangeTime).build();
 
@@ -175,7 +185,7 @@ class DbInitializer {
 
     private void insertThread4to21() {
         for (int threadNo = 4; threadNo <= 21; ++threadNo) {
-            Timestamp lastChangeTime = TimestampUtils.getNow();
+            Timestamp lastChangeTime = TimestampUtils.getNowFlooredToSec();
             ContributionThread thread = ContributionThreadBuilder.newThread()
                     .withThema("thema No. " + threadNo).withLastChangeTime(lastChangeTime).build();
 
@@ -189,6 +199,13 @@ class DbInitializer {
             thread.setQuestion(question);
 
             this.contributionThreadRepository.save(thread);
+
+            try {
+                // Waits ten milliseconds to produce DB tuples which have a unambiguously defined order.
+                Thread.sleep(DateUtils.MILLIS_PER_SECOND);
+            } catch (InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 }

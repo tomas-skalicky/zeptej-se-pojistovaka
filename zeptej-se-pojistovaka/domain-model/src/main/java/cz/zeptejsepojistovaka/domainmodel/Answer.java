@@ -14,7 +14,7 @@ import lombok.Setter;
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
 @Entity
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude = "question")
 public class Answer extends AbstractContribution {
 
     private static final long serialVersionUID = 4729919240799217682L;

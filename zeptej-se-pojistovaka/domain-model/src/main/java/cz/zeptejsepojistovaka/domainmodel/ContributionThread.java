@@ -44,6 +44,8 @@ public class ContributionThread implements Serializable {
     public static final String ID_COLUMN_NAME = "id";
     public static final String LAST_CHANGE_TIME_COLUMN_NAME = "last_change_time";
 
+    public static final String LAST_CHANGE_TIME_PROPERTY_NAME = "lastChangeTime";
+
     public static final String TAG_THREAD_JOIN_TABLE_NAME = "tag_thread_references";
     public static final String TAG_ID_COLUMN_NAME = "tag_id";
     public static final String THREAD_ID_COLUMN_NAME = "thread_id";

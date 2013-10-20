@@ -6,6 +6,9 @@ import javax.inject.Inject;
 
 import lombok.Setter;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +25,11 @@ import cz.zeptejsepojistovaka.persistence.repository.QuestionRepository;
 @Service
 public class ContributionThreadService {
 
+    private static final int FIND_ALL_FIRST_PAGE_INDEX = 0;
+    private static final int FIND_ALL_PAGE_SIZE = 10;
+    private static final Sort FIND_ALL_SORT = new Sort(new Sort.Order(Sort.Direction.DESC,
+            ContributionThread.LAST_CHANGE_TIME_PROPERTY_NAME));
+
     @Inject
     private ContributionThreadRepository threadRepository;
 
@@ -34,12 +42,11 @@ public class ContributionThreadService {
 
     @Transactional
     public ContributionThread save(ContributionThread thread) {
-        thread.setLastChangeTime(TimestampUtils.getNow());
+        thread.setLastChangeTime(TimestampUtils.getNowFlooredToSec());
         prepareQuestionForSave(thread);
 
         ContributionThread persistedThread = this.threadRepository.save(thread);
         // To avoid LazyInitializationException later on.
-        persistedThread.getQuestion().getAnswers().isEmpty();
         return persistedThread;
     }
 
@@ -61,5 +68,16 @@ public class ContributionThreadService {
     public void deleteByQuestionId(Integer questionId) {
         Question question = this.questionRepository.findOne(questionId);
         this.threadRepository.delete(question.getThread());
+    }
+
+    /**
+     * Retrieves the first 10 {@link ContributionThread ContributionThreads} (according to the their last
+     * change time) from the databases sorted according to the <i>last change time</i> in the descending
+     * order.
+     */
+    @Transactional
+    public Page<ContributionThread> findLatest() {
+        return this.threadRepository.findAll(new PageRequest(FIND_ALL_FIRST_PAGE_INDEX, FIND_ALL_PAGE_SIZE,
+                FIND_ALL_SORT));
     }
 }
