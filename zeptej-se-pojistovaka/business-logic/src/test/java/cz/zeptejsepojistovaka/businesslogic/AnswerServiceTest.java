@@ -4,14 +4,13 @@ import static org.junit.Assert.*;
 import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 
-import java.util.Date;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import cz.zeptejsepojistovaka.commons.util.TimestampUtils;
 import cz.zeptejsepojistovaka.domainmodel.Answer;
 import cz.zeptejsepojistovaka.persistence.repository.AnswerRepository;
 
@@ -34,7 +33,7 @@ public class AnswerServiceTest {
     @Test
     public void testSave() throws Exception {
         Answer answer = new Answer();
-        long now = (new Date()).getTime();
+        long now = TimestampUtils.getNowFlooredToSec().getTime();
 
         when(this.answerRepository.save(any(Answer.class))).thenReturn(answer);
 
