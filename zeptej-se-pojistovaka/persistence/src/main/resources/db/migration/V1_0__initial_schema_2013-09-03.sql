@@ -1,15 +1,15 @@
-/**
- * Users and Authorities (= Rights).
- * 
- * The users table covers AbstractUser, VerifiedUser, AbstractUnverifiedUser,
- * UnverifiedContributionAuthor and UnverifiedMessageAuthor java classes.
- * 
- * IMPORTANT: see http://static.springsource.org/spring-security/site/docs/current/reference/appendix-schema.html
- *
- * DTYPE: Discriminator-Type column created by Hibernate
- * The email is UNIQUE, hence it is necessary to use "null" as the default
- * value, not the empty string.
- */
+--
+-- Users and Authorities (= Rights).
+-- 
+-- The users table covers AbstractUser, VerifiedUser, AbstractUnverifiedUser,
+-- UnverifiedContributionAuthor and UnverifiedMessageAuthor java classes.
+-- 
+-- IMPORTANT: see http://static.springsource.org/spring-security/site/docs/current/reference/appendix-schema.html
+--
+-- DTYPE: Discriminator-Type column created by Hibernate
+-- The email is UNIQUE, hence it is necessary to use "null" as the default
+-- value, not the empty string.
+--
 DROP TABLE IF EXISTS `tag_thread_references`;
 DROP TABLE IF EXISTS `contributions`;
 DROP TABLE IF EXISTS `threads`;
@@ -41,23 +41,23 @@ CREATE TABLE `rights` (
 
 
 
-/**
- * Threads and Contributions (Questions, Answers)
- * 
- * The contributions table covers AbstractContribution, Question and Answer
- * java classes.
- * 
- * DTYPE: Discriminator-Type column created by Hibernate
- * DATETIME vs. TIMESTAMP ... see http://stackoverflow.com/questions/409286/datetime-vs-timestamp
- */
+--
+-- Threads and Contributions (Questions, Answers)
+-- 
+-- The contributions table covers AbstractContribution, Question and Answer
+-- java classes.
+-- 
+-- DTYPE: Discriminator-Type column created by Hibernate
+-- DATETIME vs. TIMESTAMP ... see http://stackoverflow.com/questions/409286/datetime-vs-timestamp
+--
 CREATE TABLE `threads` (
   `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
   `thema` VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/**
- * Do NOT propage a deletion of an author.
- */
+--
+-- Do NOT propage a deletion of an author.
+--
 CREATE TABLE `contributions` (
     `DTYPE` VARCHAR(31) NOT NULL,
     `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
@@ -86,9 +86,9 @@ CREATE TABLE `contributions` (
 
 
 
-/**
- * Tags
- */
+--
+-- Tags
+--
 DROP TABLE IF EXISTS `tag_patterns`;
 DROP TABLE IF EXISTS `tags`;
 CREATE TABLE `tags` (
@@ -125,9 +125,9 @@ CREATE TABLE `tag_patterns` (
 
 
 
-/**
- * Messages
- */
+--
+-- Messages
+--
 CREATE TABLE `messages` (
     `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
     `type` VARCHAR(30) NOT NULL,
