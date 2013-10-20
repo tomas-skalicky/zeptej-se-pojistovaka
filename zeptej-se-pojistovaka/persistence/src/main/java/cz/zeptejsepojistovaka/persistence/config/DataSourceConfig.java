@@ -27,7 +27,7 @@ public class DataSourceConfig {
     private static final String ENTITYMANAGER_PACKAGES_TO_SCAN = "cz.zeptejsepojistovaka.domainmodel";
 
     @Inject
-    private DataSourceProperties dataSourceProperties;
+    private DataSourcePropertyLoader dataSourcePropertyLoader;
 
     @Bean
     public DataSource dataSource() {
@@ -55,12 +55,12 @@ public class DataSourceConfig {
 
     private Properties getHibernateProperties() {
         Properties properties = new Properties();
-        properties.put(DataSourceProperties.HIBERNATE_DIALECT_PROPERTY_NAME,
-                this.dataSourceProperties.getHibernateDialect());
-        properties.put(DataSourceProperties.HIBERNATE_SHOW_SQL_PROPERTY_NAME,
-                this.dataSourceProperties.isHibernateShowSql());
-        properties.put(DataSourceProperties.HIBERNATE_HBM2DDL_AUTO_PROPERTY_NAME,
-                this.dataSourceProperties.getHibernateHbm2ddlAuto());
+        properties.put(DataSourcePropertyLoader.HIBERNATE_DIALECT_PROPERTY_NAME,
+                this.dataSourcePropertyLoader.getHibernateDialect());
+        properties.put(DataSourcePropertyLoader.HIBERNATE_SHOW_SQL_PROPERTY_NAME,
+                this.dataSourcePropertyLoader.isHibernateShowSql());
+        properties.put(DataSourcePropertyLoader.HIBERNATE_HBM2DDL_AUTO_PROPERTY_NAME,
+                this.dataSourcePropertyLoader.getHibernateHbm2ddlAuto());
         return properties;
     }
 

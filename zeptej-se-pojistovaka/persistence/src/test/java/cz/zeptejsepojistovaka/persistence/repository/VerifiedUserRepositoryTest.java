@@ -19,8 +19,8 @@ import cz.zeptejsepojistovaka.persistence.test.DbInitializerBootstrap;
 /**
  * @author <a href="mailto:skalicky.tomas@gmail.com">Tomas Skalicky</a>
  */
-@ContextConfiguration(classes = DataSourceConfig.class)
 @ActiveProfiles(profiles = InTest.PROFILE_NAME)
+@ContextConfiguration(classes = DataSourceConfig.class)
 @TransactionConfiguration(defaultRollback = true)
 public class VerifiedUserRepositoryTest extends AbstractJUnit4SpringContextTests {
 

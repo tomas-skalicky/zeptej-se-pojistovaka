@@ -90,7 +90,7 @@
                     <configuration>
                         <initVersion>0</initVersion>
                         <driver>${db.driverClass}</driver>
-                        <url>${db.connectionUrl}</url>
+                        <url>${db.connectionUrlPrefix}${db.name}</url>
                         <user>${db.username}</user>
                         <password>${db.password}</password>
                     </configuration>
