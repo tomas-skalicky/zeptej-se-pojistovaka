@@ -46,6 +46,14 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.googlecode.flyway</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.extcos</groupId>
+            <artifactId>extcos</artifactId>
+        </dependency>
     </dependencies>
 
 
@@ -56,7 +64,7 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <configuration>
                     <locations>
-                        <location>classpath:db/migration</location>
+                        <location>classpath:cz/zeptejsepojistovaka/persistence/db/migration</location>
                     </locations>
                 </configuration>
             </plugin>

@@ -106,6 +106,9 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>2.4</version>
+                    <configuration>
+                        <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+                    </configuration>
                 </plugin>
 
                 <plugin>
@@ -417,6 +420,22 @@
                 <version>1.0.5</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>hsqldb</groupId>
+                <artifactId>hsqldb</artifactId>
+                <version>1.8.0.10</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.googlecode.flyway</groupId>
+                <artifactId>flyway-core</artifactId>
+                <version>2.2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.extcos</groupId>
+                <artifactId>extcos</artifactId>
+                <version>0.4b</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -427,33 +446,47 @@
             <id>development</id>
             <properties>
                 <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
-                <db.connectionUrl>jdbc:mysql://localhost:3306/zeptej_se_pojistovaka</db.connectionUrl>
+                <db.connectionUrlPrefix>jdbc:mysql://localhost:3306/</db.connectionUrlPrefix>
                 <db.username>root</db.username>
                 <db.password>password</db.password>
+                <db.name>zeptej_se_pojistovaka</db.name>
                 <hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
                 <hibernate.showSql>true</hibernate.showSql>
                 <!-- For test purposes -->
                 <hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
+                <profileName>DEV</profileName>
             </properties>
         </profile>
         <!-- Text environment -->
         <profile>
             <id>test</id>
             <properties>
-                <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
-                <db.connectionUrl>jdbc:mysql://localhost:3306/zeptej_se_pojistovaka_test</db.connectionUrl>
-                <db.username>root</db.username>
-                <db.password>password</db.password>
-                <hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
+                <db.driverClass></db.driverClass>
+                <db.connectionUrlPrefix></db.connectionUrlPrefix>
+                <db.username></db.username>
+                <db.password></db.password>
+                <db.name>zeptej_se_pojistovaka_test</db.name>
+                <hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
                 <hibernate.showSql>true</hibernate.showSql>
                 <!-- For test purposes -->
                 <hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
+                <profileName>TEST</profileName>
             </properties>
         </profile>
         <!-- Production environment -->
         <profile>
             <id>production</id>
             <properties>
+                <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
+                <db.connectionUrlPrefix></db.connectionUrlPrefix>
+                <db.username></db.username>
+                <db.password></db.password>
+                <db.name></db.name>
+                <hibernate.dialect></hibernate.dialect>
+                <hibernate.showSql></hibernate.showSql>
+                <!-- For test purposes -->
+                <hibernate.hbm2ddl.auto>none</hibernate.hbm2ddl.auto>
+                <profileName>PRODUCTION</profileName>
             </properties>
         </profile>
     </profiles>
