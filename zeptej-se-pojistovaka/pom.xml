@@ -425,9 +425,6 @@
         <!-- Development environment @ my laptop -->
         <profile>
             <id>development</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
                 <db.connectionUrl>jdbc:mysql://localhost:3306/zeptej_se_pojistovaka</db.connectionUrl>
