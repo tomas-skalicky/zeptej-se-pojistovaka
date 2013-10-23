@@ -3,6 +3,10 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
+    <property name="userTable.emailColumn.name" value="email" />
+    <property name="userTable.emailIndex.name" value="IDX_users_email" />
+
+
     <include file="cz/zeptejsepojistovaka/persistence/db/changelog/db.changelog-properties.xml" />
 
 
@@ -22,7 +26,7 @@
             <column name="password_hash" type="${varchar100}" />
             <column name="enabled" type="BOOLEAN" />
             <column name="name" type="${varchar50}" />
-            <column name="email" type="${varchar100}">
+            <column name="${userTable.emailColumn.name}" type="${varchar100}">
                 <constraints checkConstraint="_%@_%._%" />
             </column>
             <column name="is_male" type="BOOLEAN" />
@@ -34,13 +38,13 @@
     </changeSet>
 
 
-    <property name="userTable.emailIndex.name" value="IDX_users_email" />
-
     <changeSet id="1.0-createUserTableEmailIndex" author="Tomas Skalicky">
-        <createIndex tableName="${userTable.name}" indexName="${userTable.emailIndex.name}" />
+        <createIndex indexName="${userTable.emailIndex.name}" tableName="${userTable.name}">
+            <column name="${userTable.emailColumn.name}" />
+        </createIndex>
 
         <rollback>
-            <dropIndex tableName="${userTable.name}" indexName="${userTable.emailIndex.name}" />
+            <dropIndex indexName="${userTable.emailIndex.name}" tableName="${userTable.name}" />
         </rollback>
     </changeSet>
 

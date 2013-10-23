@@ -3,10 +3,11 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
+    <property name="threadTable.lastChangeTimeColumn.name" value="last_change_time" />
+
+
     <include file="cz/zeptejsepojistovaka/persistence/db/changelog/db.changelog-properties.xml" />
 
-
-    <property name="threadTable.lastChangeTimeColumn.name" value="last_change_time" />
 
     <changeSet id="2.0-addLastChangeTimeToThreadTable" author="Tomas Skalicky">
         <preConditions>

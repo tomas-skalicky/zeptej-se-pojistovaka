@@ -20,7 +20,8 @@ public class DataSourcePropertyLoader {
     private static final String DATABASE_CONNECTION_URL_PROPERTY_NAME = "database.connectionUrl";
     private static final String DATABASE_USERNAME_PROPERTY_NAME = "database.username";
     private static final String DATABASE_PASSWORD_PROPERTY_NAME = "database.password";
-    private static final String DATABASE_NAME_NAME = "database.name";
+
+    private static final String LIQUIBASE_CHANGE_LOG_FILE_NAME = "liquibase.changeLogFileName";
 
     static final String HIBERNATE_DIALECT_PROPERTY_NAME = "hibernate.dialect";
     static final String HIBERNATE_SHOW_SQL_PROPERTY_NAME = "hibernate.show_sql";
@@ -51,7 +52,7 @@ public class DataSourcePropertyLoader {
     @NonNull
     @Getter
     @Setter(AccessLevel.PRIVATE)
-    private String databaseName;
+    private String liquibaseChangeLogFileName;
 
     @NonNull
     @Getter
@@ -80,7 +81,7 @@ public class DataSourcePropertyLoader {
         setDatabaseConnectionUrl(loadedProperties.getProperty(DATABASE_CONNECTION_URL_PROPERTY_NAME));
         setDatabaseUsername(loadedProperties.getProperty(DATABASE_USERNAME_PROPERTY_NAME));
         setDatabasePassword(loadedProperties.getProperty(DATABASE_PASSWORD_PROPERTY_NAME));
-        setDatabaseName(loadedProperties.getProperty(DATABASE_NAME_NAME));
+        setLiquibaseChangeLogFileName(loadedProperties.getProperty(LIQUIBASE_CHANGE_LOG_FILE_NAME));
         setHibernateDialect(loadedProperties.getProperty(HIBERNATE_DIALECT_PROPERTY_NAME));
         setHibernateShowSql(Boolean.valueOf(loadedProperties.getProperty(HIBERNATE_SHOW_SQL_PROPERTY_NAME)));
         setHibernateHbm2ddlAuto(loadedProperties.getProperty(HIBERNATE_HBM2DDL_AUTO_PROPERTY_NAME));

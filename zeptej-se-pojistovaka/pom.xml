@@ -29,6 +29,7 @@
         <hibernate.version>4.2.6.Final</hibernate.version>
         <jacoco-maven-plugin.version>0.6.3.201306030806</jacoco-maven-plugin.version>
         <liquibase.version>3.0.6</liquibase.version>
+        <liquibase.changeLogFileName>cz/zeptejsepojistovaka/persistence/db/changelog/db.changelog-master.xml</liquibase.changeLogFileName>
     </properties>
 
 
@@ -141,6 +142,28 @@
                     </executions>
                 </plugin>
 
+                <plugin>
+                    <groupId>org.liquibase</groupId>
+                    <artifactId>liquibase-maven-plugin</artifactId>
+                    <version>${liquibase.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>process-resources</phase>
+                            <configuration>
+                                <changeLogFile>${db.liquibase.changeLogFileName}</changeLogFile>
+                                <driver>${db.driverClass}</driver>
+                                <url>${db.connectionUrl}</url>
+                                <username>${db.username}</username>
+                                <password>${db.password}</password>
+                                <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                            </configuration>
+                            <goals>
+                                <goal>update</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
                 <!-- Plugin related to the m2e eclipse plugin. It helps to ignore warnings about a missing mapping 
                     of lifecycle phases. -->
                 <plugin>
@@ -157,6 +180,19 @@
                                         <versionRange>[${jacoco-maven-plugin.version}]</versionRange>
                                         <goals>
                                             <goal>prepare-agent</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.liquibase</groupId>
+                                        <artifactId>liquibase-maven-plugin</artifactId>
+                                        <versionRange>[${liquibase.version}]</versionRange>
+                                        <goals>
+                                            <goal>update</goal>
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
@@ -415,11 +451,6 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>net.sf.extcos</groupId>
-                <artifactId>extcos</artifactId>
-                <version>0.4b</version>
-            </dependency>
-            <dependency>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-core</artifactId>
                 <version>${liquibase.version}</version>
@@ -434,10 +465,10 @@
             <id>development</id>
             <properties>
                 <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
-                <db.connectionUrlPrefix>jdbc:mysql://localhost:3306/</db.connectionUrlPrefix>
+                <db.connectionUrl>jdbc:mysql://localhost:3306/zeptej_se_pojistovaka</db.connectionUrl>
                 <db.username>root</db.username>
                 <db.password>password</db.password>
-                <db.name>zeptej_se_pojistovaka</db.name>
+                <db.liquibase.changeLogFileName>${liquibase.changeLogFileName}</db.liquibase.changeLogFileName>
                 <hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
                 <hibernate.showSql>true</hibernate.showSql>
                 <!-- For test purposes -->
@@ -449,11 +480,11 @@
         <profile>
             <id>test</id>
             <properties>
-                <db.driverClass></db.driverClass>
-                <db.connectionUrlPrefix></db.connectionUrlPrefix>
-                <db.username></db.username>
+                <db.driverClass>org.hsqldb.jdbcDriver</db.driverClass>
+                <db.connectionUrl>jdbc:hsqldb:mem:testdb;shutdown=true</db.connectionUrl>
+                <db.username>sa</db.username>
                 <db.password></db.password>
-                <db.name>zeptej_se_pojistovaka_test</db.name>
+                <db.liquibase.changeLogFileName>${liquibase.changeLogFileName}</db.liquibase.changeLogFileName>
                 <hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
                 <hibernate.showSql>true</hibernate.showSql>
                 <!-- For test purposes -->
@@ -466,10 +497,10 @@
             <id>production</id>
             <properties>
                 <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
-                <db.connectionUrlPrefix></db.connectionUrlPrefix>
+                <db.connectionUrl></db.connectionUrl>
                 <db.username></db.username>
                 <db.password></db.password>
-                <db.name></db.name>
+                <db.liquibase.changeLogFileName>${liquibase.changeLogFileName}</db.liquibase.changeLogFileName>
                 <hibernate.dialect></hibernate.dialect>
                 <hibernate.showSql></hibernate.showSql>
                 <!-- For test purposes -->

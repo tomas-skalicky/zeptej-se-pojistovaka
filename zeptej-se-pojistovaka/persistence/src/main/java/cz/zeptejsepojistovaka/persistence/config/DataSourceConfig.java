@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories("cz.zeptejsepojistovaka.persistence.repository")
-@Import({ MainDataSourceConfig.class, TestDataSourceConfig.class })
+@Import({ MainDataSourceConfig.class, TestHsqlDataSourceConfig.class })
 @ComponentScan("cz.zeptejsepojistovaka.persistence")
 public class DataSourceConfig {
 

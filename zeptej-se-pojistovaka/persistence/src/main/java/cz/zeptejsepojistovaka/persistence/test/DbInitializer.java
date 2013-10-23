@@ -58,17 +58,8 @@ public class DbInitializer {
     private RightRepository rightRepository;
 
     public void initDatabase() {
-        trancateAffectedTables();
         insertUsers();
         insertThreads();
-    }
-
-    private void trancateAffectedTables() {
-        this.rightRepository.deleteAll();
-        this.verifiedUserRepository.deleteAll();
-        this.unverifiedContributionAuthorRepository.deleteAll();
-        this.unverifiedMessageAuthorRepository.deleteAll();
-        this.contributionThreadRepository.deleteAll();
     }
 
     private void insertUsers() {

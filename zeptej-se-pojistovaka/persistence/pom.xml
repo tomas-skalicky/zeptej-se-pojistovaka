@@ -51,12 +51,18 @@
             <artifactId>hsqldb</artifactId>
         </dependency>
         <dependency>
-            <groupId>net.sf.extcos</groupId>
-            <artifactId>extcos</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
         </dependency>
     </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
