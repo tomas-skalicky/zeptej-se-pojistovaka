@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <property name="tagPatternJoinTable.name" value="tag_patterns" />
+    <property name="tagPatternJoinTable.tagIdColumn.name" value="tag_id" />
+    <property name="tagPatternJoinTable.patternColumn.name" value="pattern" />
+    <property name="tagPatternJoinTable.primaryKey.name" value="PK_tagPatterns_tagId_pattern" />
+    <property name="tagPatternJoinTable.foreighKeyToTag.name" value="FK_tagPatterns_tags" />
+
+
+    <include file="cz/zeptejsepojistovaka/persistence/db/changelog/db.changelog-properties.xml" />
+
+
+    <changeSet id="1.6-createTagPatternJoinTable" author="Tomas Skalicky">
+        <preConditions>
+            <tableExists tableName="${tagTable.name}" />
+        </preConditions>
+
+        <createTable tableName="${tagPatternJoinTable.name}">
+            <column name="${tagPatternJoinTable.tagIdColumn.name}" type="${int11}">
+                <constraints nullable="false" />
+            </column>
+            <column name="${tagPatternJoinTable.patternColumn.name}" type="${varchar100}">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="${tagPatternJoinTable.name}" />
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="1.6-addTagPatternJoinTablePrimaryKey" author="Tomas Skalicky">
+        <addPrimaryKey constraintName="${tagPatternJoinTable.primaryKey.name}" tableName="${tagPatternJoinTable.name}"
+            columnNames="${tagPatternJoinTable.tagIdColumn.name}, ${tagPatternJoinTable.patternColumn.name}" />
+
+        <rollback>
+            <dropPrimaryKey constraintName="${tagPatternJoinTable.primaryKey.name}" tableName="${tagPatternJoinTable.name}" />
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="1.6-addTagPatternJoinTableForeignKeyToTag" author="Tomas Skalicky">
+        <addForeignKeyConstraint constraintName="${tagPatternJoinTable.foreighKeyToTag.name}"
+            baseTableName="${tagPatternJoinTable.name}" baseColumnNames="${tagPatternJoinTable.tagIdColumn.name}"
+            referencedTableName="${tagTable.name}" referencedColumnNames="${tagTable.idColumn.name}" onUpdate="CASCADE"
+            onDelete="CASCADE" />
+
+        <rollback>
+            <dropForeignKeyConstraint constraintName="${tagPatternJoinTable.foreighKeyToTag.name}"
+                baseTableName="${tagPatternJoinTable.name}" />
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

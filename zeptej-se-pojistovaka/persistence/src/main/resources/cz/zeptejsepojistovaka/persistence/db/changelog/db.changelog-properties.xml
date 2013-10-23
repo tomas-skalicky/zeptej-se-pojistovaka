@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <property name="varchar30" value="VARCHAR(30)" />
+    <property name="varchar31" value="VARCHAR(31)" />
+    <property name="varchar50" value="VARCHAR(50)" />
+    <property name="varchar100" value="VARCHAR(100)" />
+    <property name="varchar255" value="VARCHAR(255)" />
+
+    <property name="int11" value="INT(11)" />
+
+    <property name="hibernate.discriminatorTypeColumn.name" value="DTYPE" />
+
+    <property name="userTable.name" value="users" />
+    <property name="userTable.idColumn.name" value="id" />
+
+    <property name="rightTable.name" value="rights" />
+
+    <property name="threadTable.name" value="threads" />
+    <property name="threadTable.idColumn.name" value="id" />
+
+    <property name="contributionTable.name" value="contributions" />
+    <property name="contributionTable.idColumn.name" value="id" />
+
+    <property name="tagTable.name" value="tags" />
+    <property name="tagTable.idColumn.name" value="id" />
+
+    <property name="messageTable.name" value="messages" />
+    <property name="messageTable.idColumn.name" value="id" />
+
+</databaseChangeLog>

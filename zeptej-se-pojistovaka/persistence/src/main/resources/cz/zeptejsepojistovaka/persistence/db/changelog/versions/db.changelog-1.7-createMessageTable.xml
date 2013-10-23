@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <property name="messageTable.authorIdColumn.name" value="author_id" />
+    <property name="messageTable.foreighKeyToUser.name" value="FK_messages_users" />
+
+
+    <include file="cz/zeptejsepojistovaka/persistence/db/changelog/db.changelog-properties.xml" />
+
+
+    <changeSet id="1.7-createMessageTable" author="Tomas Skalicky">
+        <preConditions>
+            <tableExists tableName="${userTable.name}" />
+        </preConditions>
+
+        <createTable tableName="${messageTable.name}">
+            <column name="${messageTable.idColumn.name}" type="${int11}" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="type" type="${varchar30}">
+                <constraints nullable="false" />
+            </column>
+            <column name="${messageTable.authorIdColumn.name}" type="${int11}">
+                <constraints nullable="false" />
+            </column>
+            <column name="text" type="TEXT" />
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="${messageTable.name}" />
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="1.7-addMessageTableForeignKeyToUser" author="Tomas Skalicky">
+        <addForeignKeyConstraint constraintName="${messageTable.foreighKeyToUser.name}"
+            baseTableName="${messageTable.name}" baseColumnNames="${messageTable.authorIdColumn.name}"
+            referencedTableName="${userTable.name}" referencedColumnNames="${userTable.idColumn.name}"
+            onUpdate="CASCADE" onDelete="CASCADE" />
+
+        <rollback>
+            <dropForeignKeyConstraint constraintName="${messageTable.foreighKeyToUser.name}"
+                baseTableName="${messageTable.name}" />
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

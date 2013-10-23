@@ -28,6 +28,7 @@
         <spring.security.version>3.1.4.RELEASE</spring.security.version>
         <hibernate.version>4.2.6.Final</hibernate.version>
         <jacoco-maven-plugin.version>0.6.3.201306030806</jacoco-maven-plugin.version>
+        <liquibase.version>3.0.6</liquibase.version>
     </properties>
 
 
@@ -81,19 +82,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
                     <version>2.4.1</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>com.googlecode.flyway</groupId>
-                    <artifactId>flyway-maven-plugin</artifactId>
-                    <version>2.2</version>
-                    <configuration>
-                        <initVersion>0</initVersion>
-                        <driver>${db.driverClass}</driver>
-                        <url>${db.connectionUrlPrefix}${db.name}</url>
-                        <user>${db.username}</user>
-                        <password>${db.password}</password>
-                    </configuration>
                 </plugin>
 
                 <plugin>
@@ -427,14 +415,14 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>com.googlecode.flyway</groupId>
-                <artifactId>flyway-core</artifactId>
-                <version>2.2.1</version>
-            </dependency>
-            <dependency>
                 <groupId>net.sf.extcos</groupId>
                 <artifactId>extcos</artifactId>
                 <version>0.4b</version>
+            </dependency>
+            <dependency>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-core</artifactId>
+                <version>${liquibase.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

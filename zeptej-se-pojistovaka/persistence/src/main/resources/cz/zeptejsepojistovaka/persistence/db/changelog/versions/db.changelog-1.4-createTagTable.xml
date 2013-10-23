@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <include file="cz/zeptejsepojistovaka/persistence/db/changelog/db.changelog-properties.xml" />
+
+
+    <changeSet id="1.4-createTagTable" author="Tomas Skalicky">
+        <createTable tableName="${tagTable.name}">
+            <column name="${tagTable.idColumn.name}" type="${int11}" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="name" type="${varchar50}">
+                <constraints nullable="false" unique="true" />
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="${tagTable.name}" />
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

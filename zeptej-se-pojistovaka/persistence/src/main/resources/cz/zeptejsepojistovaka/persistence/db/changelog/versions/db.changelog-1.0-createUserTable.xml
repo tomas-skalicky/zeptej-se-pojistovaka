@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <include file="cz/zeptejsepojistovaka/persistence/db/changelog/db.changelog-properties.xml" />
+
+
+    <!-- The users table covers AbstractUser, VerifiedUser, AbstractUnverifiedUser, UnverifiedContributionAuthor 
+        and UnverifiedMessageAuthor java classes. -->
+    <!-- IMPORTANT: see http://static.springsource.org/spring-security/site/docs/current/reference/appendix-schema.html -->
+    <!-- DTYPE: Discriminator-Type column created by Hibernate -->
+    <!-- The email is UNIQUE, hence it is necessary to use {@code null} as the default value, not the empty string. -->
+    <changeSet id="1.0-createUserTable" author="Tomas Skalicky">
+        <createTable tableName="${userTable.name}">
+            <column name="${hibernate.discriminatorTypeColumn.name}" type="${varchar31}">
+                <constraints nullable="false" />
+            </column>
+            <column name="${userTable.idColumn.name}" type="${int11}" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="password_hash" type="${varchar100}" />
+            <column name="enabled" type="BOOLEAN" />
+            <column name="name" type="${varchar50}" />
+            <column name="email" type="${varchar100}">
+                <constraints checkConstraint="_%@_%._%" />
+            </column>
+            <column name="is_male" type="BOOLEAN" />
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="${userTable.name}" />
+        </rollback>
+    </changeSet>
+
+
+    <property name="userTable.emailIndex.name" value="IDX_users_email" />
+
+    <changeSet id="1.0-createUserTableEmailIndex" author="Tomas Skalicky">
+        <createIndex tableName="${userTable.name}" indexName="${userTable.emailIndex.name}" />
+
+        <rollback>
+            <dropIndex tableName="${userTable.name}" indexName="${userTable.emailIndex.name}" />
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

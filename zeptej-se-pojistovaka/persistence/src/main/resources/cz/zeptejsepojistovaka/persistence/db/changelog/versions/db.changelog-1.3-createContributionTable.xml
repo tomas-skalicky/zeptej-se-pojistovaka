@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <property name="contributionTable.authorIdColumn.name" value="author_id" />
+    <property name="contributionTable.threadIdColumn.name" value="thread_id" />
+    <property name="contributionTable.questionIdColumn.name" value="question_id" />
+    <property name="contributionTable.foreighKeyToUser.name" value="FK_contributions_users" />
+    <property name="contributionTable.foreighKeyToThread.name" value="FK_contributions_threads" />
+    <property name="contributionTable.foreighKeyAnswerToQuestion.name" value="FK_answers_questions" />
+
+
+    <include file="cz/zeptejsepojistovaka/persistence/db/changelog/db.changelog-properties.xml" />
+
+
+    <!-- The contributions table covers AbstractContribution, Question and Answer java classes. -->
+    <!-- DTYPE: Discriminator-Type column created by Hibernate -->
+    <!-- DATETIME vs. TIMESTAMP ... see http://stackoverflow.com/questions/409286/datetime-vs-timestamp -->
+    <!-- Do NOT propagate a deletion of an author. -->
+    <changeSet id="1.3-createContributionTable" author="Tomas Skalicky">
+        <preConditions>
+            <tableExists tableName="${userTable.name}" />
+            <tableExists tableName="${threadTable.name}" />
+        </preConditions>
+
+        <createTable tableName="${contributionTable.name}">
+            <column name="${hibernate.discriminatorTypeColumn.name}" type="${varchar31}">
+                <constraints nullable="false" />
+            </column>
+            <column name="${contributionTable.idColumn.name}" type="${int11}" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="${contributionTable.authorIdColumn.name}" type="${int11}">
+                <constraints nullable="false" />
+            </column>
+            <column name="text" type="TEXT">
+                <constraints nullable="false" />
+            </column>
+            <column name="creation_time" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_update_time" type="TIMESTAMP" />
+            <column name="${contributionTable.threadIdColumn.name}" type="${int11}">
+                <constraints nullable="false" />
+            </column>
+            <column name="${contributionTable.questionIdColumn.name}" type="${int11}" />
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="${contributionTable.name}" />
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="1.3-addContributionTableForeignKeyToUser" author="Tomas Skalicky">
+        <addForeignKeyConstraint constraintName="${contributionTable.foreighKeyToUser.name}"
+            baseTableName="${contributionTable.name}" baseColumnNames="${contributionTable.authorIdColumn.name}"
+            referencedTableName="${userTable.name}" referencedColumnNames="${userTable.idColumn.name}"
+            onUpdate="CASCADE" onDelete="CASCADE" />
+
+        <rollback>
+            <dropForeignKeyConstraint constraintName="${contributionTable.foreighKeyToUser.name}"
+                baseTableName="${contributionTable.name}" />
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="1.3-addContributionTableForeignKeyToThread" author="Tomas Skalicky">
+        <addForeignKeyConstraint constraintName="${contributionTable.foreighKeyToThread.name}"
+            baseTableName="${contributionTable.name}" baseColumnNames="${contributionTable.threadIdColumn.name}"
+            referencedTableName="${threadTable.name}" referencedColumnNames="${threadTable.idColumn.name}"
+            onUpdate="CASCADE" onDelete="CASCADE" />
+
+        <rollback>
+            <dropForeignKeyConstraint constraintName="${contributionTable.foreighKeyToThread.name}"
+                baseTableName="${contributionTable.name}" />
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="1.3-addContributionTableForeignKeyAnswerToQuestion" author="Tomas Skalicky">
+        <addForeignKeyConstraint constraintName="${contributionTable.foreighKeyAnswerToQuestion.name}"
+            baseTableName="${contributionTable.name}" baseColumnNames="${contributionTable.questionIdColumn.name}"
+            referencedTableName="${contributionTable.name}" referencedColumnNames="${contributionTable.idColumn.name}"
+            onUpdate="CASCADE" onDelete="CASCADE" />
+
+        <rollback>
+            <dropForeignKeyConstraint constraintName="${contributionTable.foreighKeyAnswerToQuestion.name}"
+                baseTableName="${contributionTable.name}" />
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

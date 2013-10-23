@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <property name="tagThreadJoinTable.name" value="tag_thread_references" />
+    <property name="tagThreadJoinTable.tagIdColumn.name" value="tag_id" />
+    <property name="tagThreadJoinTable.threadIdColumn.name" value="thread_id" />
+    <property name="tagThreadJoinTable.primaryKey.name" value="PK_tagThreadReferences_tagId_threadId" />
+    <property name="tagThreadJoinTable.foreighKeyToTag.name" value="FK_tagThreadReferences_tags" />
+    <property name="tagThreadJoinTable.foreighKeyToThread.name" value="FK_tagThreadReferences_threads" />
+
+
+    <include file="cz/zeptejsepojistovaka/persistence/db/changelog/db.changelog-properties.xml" />
+
+
+    <changeSet id="1.5-createTagThreadJoinTable" author="Tomas Skalicky">
+        <preConditions>
+            <tableExists tableName="${tagTable.name}" />
+            <tableExists tableName="${threadTable.name}" />
+        </preConditions>
+
+        <createTable tableName="${tagThreadJoinTable.name}">
+            <column name="${tagThreadJoinTable.tagIdColumn.name}" type="${int11}">
+                <constraints nullable="false" />
+            </column>
+            <column name="${tagThreadJoinTable.threadIdColumn.name}" type="${int11}">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="${tagThreadJoinTable.name}" />
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="1.5-addTagThreadJoinTablePrimaryKey" author="Tomas Skalicky">
+        <addPrimaryKey constraintName="${tagThreadJoinTable.primaryKey.name}" tableName="${tagThreadJoinTable.name}"
+            columnNames="${tagThreadJoinTable.tagIdColumn.name}, ${tagThreadJoinTable.threadIdColumn.name}" />
+
+        <rollback>
+            <dropPrimaryKey constraintName="${tagThreadJoinTable.primaryKey.name}" tableName="${tagThreadJoinTable.name}" />
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="1.5-addTagThreadJoinTableForeignKeyToTag" author="Tomas Skalicky">
+        <addForeignKeyConstraint constraintName="${tagThreadJoinTable.foreighKeyToTag.name}"
+            baseTableName="${tagThreadJoinTable.name}" baseColumnNames="${tagThreadJoinTable.tagIdColumn.name}"
+            referencedTableName="${tagTable.name}" referencedColumnNames="${tagTable.idColumn.name}" onUpdate="CASCADE"
+            onDelete="CASCADE" />
+
+        <rollback>
+            <dropForeignKeyConstraint constraintName="${tagThreadJoinTable.foreighKeyToTag.name}"
+                baseTableName="${tagThreadJoinTable.name}" />
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="1.5-addTagThreadJoinTableForeignKeyToThread" author="Tomas Skalicky">
+        <addForeignKeyConstraint constraintName="${tagThreadJoinTable.foreighKeyToThread.name}"
+            baseTableName="${tagThreadJoinTable.name}" baseColumnNames="${tagThreadJoinTable.threadIdColumn.name}"
+            referencedTableName="${threadTable.name}" referencedColumnNames="${threadTable.idColumn.name}"
+            onUpdate="CASCADE" onDelete="CASCADE" />
+
+        <rollback>
+            <dropForeignKeyConstraint constraintName="${tagThreadJoinTable.foreighKeyToThread.name}"
+                baseTableName="${tagThreadJoinTable.name}" />
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

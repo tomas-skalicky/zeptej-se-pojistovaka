@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <include file="cz/zeptejsepojistovaka/persistence/db/changelog/db.changelog-properties.xml" />
+
+
+    <property name="threadTable.lastChangeTimeColumn.name" value="last_change_time" />
+
+    <changeSet id="2.0-addLastChangeTimeToThreadTable" author="Tomas Skalicky">
+        <preConditions>
+            <tableExists tableName="${threadTable.name}" />
+        </preConditions>
+
+        <addColumn tableName="${threadTable.name}">
+            <column name="${threadTable.lastChangeTimeColumn.name}" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+
+        <rollback>
+            <dropColumn tableName="${threadTable.name}" columnName="${threadTable.lastChangeTimeColumn.name}" />
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

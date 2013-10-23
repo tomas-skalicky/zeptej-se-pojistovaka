@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <property name="rightTable.userIdColumn.name" value="user_id" />
+    <property name="rightTable.rightTypeColumn.name" value="right_type" />
+    <property name="rightTable.primaryKey.name" value="PK_rights_userId_rightType" />
+    <property name="rightTable.foreighKeyToUser.name" value="FK_rights_users" />
+
+
+    <include file="cz/zeptejsepojistovaka/persistence/db/changelog/db.changelog-properties.xml" />
+
+
+    <changeSet id="1.1-createRightTable" author="Tomas Skalicky">
+        <preConditions>
+            <tableExists tableName="${userTable.name}" />
+        </preConditions>
+
+        <createTable tableName="${rightTable.name}">
+            <column name="${rightTable.userIdColumn.name}" type="${int11}">
+                <constraints nullable="false" />
+            </column>
+            <column name="${rightTable.rightTypeColumn.name}" type="${varchar50}">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="${rightTable.name}" />
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="1.1-addRightTablePrimaryKey" author="Tomas Skalicky">
+        <addPrimaryKey constraintName="${rightTable.primaryKey.name}" tableName="${rightTable.name}"
+            columnNames="${rightTable.userIdColumn.name}, ${rightTable.rightTypeColumn.name}" />
+
+        <rollback>
+            <dropPrimaryKey constraintName="${rightTable.primaryKey.name}" tableName="${rightTable.name}" />
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="1.1-addRightTableForeignKey" author="Tomas Skalicky">
+        <addForeignKeyConstraint constraintName="${rightTable.foreighKeyToUser.name}"
+            baseTableName="${rightTable.name}" baseColumnNames="${rightTable.userIdColumn.name}"
+            referencedTableName="${userTable.name}" referencedColumnNames="${userTable.idColumn.name}"
+            onUpdate="CASCADE" onDelete="CASCADE" />
+
+        <rollback>
+            <dropForeignKeyConstraint constraintName="${rightTable.foreighKeyToUser.name}"
+                baseTableName="${rightTable.name}" />
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
